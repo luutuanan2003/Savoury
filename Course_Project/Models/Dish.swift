@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Dish {
+struct Dish: Hashable {
     var name: String
     var type: String
     var image: String

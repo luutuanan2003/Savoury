@@ -14,7 +14,7 @@
 		0D4415372C7EFBA1004B4AB9 /* RecipeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415362C7EFBA1004B4AB9 /* RecipeScreen.swift */; };
 		0D44153E2C801AE7004B4AB9 /* CookingModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44153D2C801AE7004B4AB9 /* CookingModeView.swift */; };
 		0D4415402C802684004B4AB9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44153F2C802684004B4AB9 /* TimerView.swift */; };
-		0D4415422C804A8C004B4AB9 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415412C804A8C004B4AB9 /* Dish.swift */; };
+		0D4415462C804DAD004B4AB9 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415452C804DAD004B4AB9 /* Dish.swift */; };
 		0DD6F6D52C79D1540036E36A /* Course_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6F6D42C79D1540036E36A /* Course_ProjectApp.swift */; };
 		0DD6F6D92C79D1550036E36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6F6D82C79D1550036E36A /* Assets.xcassets */; };
 		0DD6F6DC2C79D1550036E36A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6F6DB2C79D1550036E36A /* Preview Assets.xcassets */; };
@@ -30,7 +30,7 @@
 		0D4415362C7EFBA1004B4AB9 /* RecipeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreen.swift; sourceTree = "<group>"; };
 		0D44153D2C801AE7004B4AB9 /* CookingModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingModeView.swift; sourceTree = "<group>"; };
 		0D44153F2C802684004B4AB9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		0D4415412C804A8C004B4AB9 /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dish.swift; path = "../../../../Documents/RMIT/iPhone Software Engineering/Project/Course_Project/Course_Project/Models/Dish.swift"; sourceTree = "<group>"; };
+		0D4415452C804DAD004B4AB9 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		0DD6F6D12C79D1540036E36A /* Savoury.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savoury.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD6F6D42C79D1540036E36A /* Course_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course_ProjectApp.swift; sourceTree = "<group>"; };
 		0DD6F6D82C79D1550036E36A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				0DD6F6E62C79DC100036E36A /* Category.swift */,
-				0D4415412C804A8C004B4AB9 /* Dish.swift */,
+				0D4415452C804DAD004B4AB9 /* Dish.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,13 +182,13 @@
 			files = (
 				0D44152D2C7DA3DE004B4AB9 /* CategoryTabView.swift in Sources */,
 				0DD6F6E92C79E0770036E36A /* CategoryButton.swift in Sources */,
+				0D4415462C804DAD004B4AB9 /* Dish.swift in Sources */,
 				0D44153E2C801AE7004B4AB9 /* CookingModeView.swift in Sources */,
 				0D44152F2C7DAA27004B4AB9 /* TabBarView.swift in Sources */,
 				0D4415332C7DB7B0004B4AB9 /* HomeScreen.swift in Sources */,
 				0D4415402C802684004B4AB9 /* TimerView.swift in Sources */,
 				0DD6F6D52C79D1540036E36A /* Course_ProjectApp.swift in Sources */,
 				0D4415352C7EF772004B4AB9 /* SelectionScreen.swift in Sources */,
-				0D4415422C804A8C004B4AB9 /* Dish.swift in Sources */,
 				0DD6F6E72C79DC100036E36A /* Category.swift in Sources */,
 				0D4415372C7EFBA1004B4AB9 /* RecipeScreen.swift in Sources */,
 			);
