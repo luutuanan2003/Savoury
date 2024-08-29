@@ -7,18 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D44152B2C7DA372004B4AB9 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44152A2C7DA372004B4AB9 /* Dish.swift */; };
+		0D44152D2C7DA3DE004B4AB9 /* CategoryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44152C2C7DA3DE004B4AB9 /* CategoryTabView.swift */; };
+		0D44152F2C7DAA27004B4AB9 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44152E2C7DAA27004B4AB9 /* TabBarView.swift */; };
+		0D4415332C7DB7B0004B4AB9 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415322C7DB7B0004B4AB9 /* HomeScreen.swift */; };
+		0D4415352C7EF772004B4AB9 /* SelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415342C7EF772004B4AB9 /* SelectionScreen.swift */; };
+		0D4415372C7EFBA1004B4AB9 /* RecipeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415362C7EFBA1004B4AB9 /* RecipeScreen.swift */; };
+		0D44153E2C801AE7004B4AB9 /* CookingModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44153D2C801AE7004B4AB9 /* CookingModeView.swift */; };
+		0D4415402C802684004B4AB9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44153F2C802684004B4AB9 /* TimerView.swift */; };
 		0DD6F6D52C79D1540036E36A /* Course_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6F6D42C79D1540036E36A /* Course_ProjectApp.swift */; };
-		0DD6F6D72C79D1540036E36A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6F6D62C79D1540036E36A /* ContentView.swift */; };
 		0DD6F6D92C79D1550036E36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6F6D82C79D1550036E36A /* Assets.xcassets */; };
 		0DD6F6DC2C79D1550036E36A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6F6DB2C79D1550036E36A /* Preview Assets.xcassets */; };
+		0DD6F6E72C79DC100036E36A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6F6E62C79DC100036E36A /* Category.swift */; };
+		0DD6F6E92C79E0770036E36A /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6F6E82C79E0770036E36A /* CategoryButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0DD6F6D12C79D1540036E36A /* Course_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Course_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D44152A2C7DA372004B4AB9 /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dish.swift; path = ../../../Dish.swift; sourceTree = "<group>"; };
+		0D44152C2C7DA3DE004B4AB9 /* CategoryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabView.swift; sourceTree = "<group>"; };
+		0D44152E2C7DAA27004B4AB9 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		0D4415322C7DB7B0004B4AB9 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		0D4415342C7EF772004B4AB9 /* SelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionScreen.swift; sourceTree = "<group>"; };
+		0D4415362C7EFBA1004B4AB9 /* RecipeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreen.swift; sourceTree = "<group>"; };
+		0D44153D2C801AE7004B4AB9 /* CookingModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingModeView.swift; sourceTree = "<group>"; };
+		0D44153F2C802684004B4AB9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		0DD6F6D12C79D1540036E36A /* Savoury.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savoury.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD6F6D42C79D1540036E36A /* Course_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course_ProjectApp.swift; sourceTree = "<group>"; };
-		0DD6F6D62C79D1540036E36A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0DD6F6D82C79D1550036E36A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DD6F6DB2C79D1550036E36A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0DD6F6E62C79DC100036E36A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		0DD6F6E82C79E0770036E36A /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +61,7 @@
 		0DD6F6D22C79D1540036E36A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0DD6F6D12C79D1540036E36A /* Course_Project.app */,
+				0DD6F6D12C79D1540036E36A /* Savoury.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,10 +69,16 @@
 		0DD6F6D32C79D1540036E36A /* Course_Project */ = {
 			isa = PBXGroup;
 			children = (
+				0DD6F6E52C79DBE70036E36A /* Models */,
+				0DD6F6E42C79DBD00036E36A /* Views */,
 				0DD6F6D42C79D1540036E36A /* Course_ProjectApp.swift */,
-				0DD6F6D62C79D1540036E36A /* ContentView.swift */,
+				0D4415322C7DB7B0004B4AB9 /* HomeScreen.swift */,
+				0D4415342C7EF772004B4AB9 /* SelectionScreen.swift */,
+				0D4415362C7EFBA1004B4AB9 /* RecipeScreen.swift */,
 				0DD6F6D82C79D1550036E36A /* Assets.xcassets */,
 				0DD6F6DA2C79D1550036E36A /* Preview Content */,
+				0D44153D2C801AE7004B4AB9 /* CookingModeView.swift */,
+				0D44153F2C802684004B4AB9 /* TimerView.swift */,
 			);
 			path = Course_Project;
 			sourceTree = "<group>";
@@ -67,12 +91,31 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		0DD6F6E42C79DBD00036E36A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DD6F6E82C79E0770036E36A /* CategoryButton.swift */,
+				0D44152C2C7DA3DE004B4AB9 /* CategoryTabView.swift */,
+				0D44152E2C7DAA27004B4AB9 /* TabBarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0DD6F6E52C79DBE70036E36A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0DD6F6E62C79DC100036E36A /* Category.swift */,
+				0D44152A2C7DA372004B4AB9 /* Dish.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0DD6F6D02C79D1540036E36A /* Course_Project */ = {
+		0DD6F6D02C79D1540036E36A /* Savoury */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0DD6F6DF2C79D1550036E36A /* Build configuration list for PBXNativeTarget "Course_Project" */;
+			buildConfigurationList = 0DD6F6DF2C79D1550036E36A /* Build configuration list for PBXNativeTarget "Savoury" */;
 			buildPhases = (
 				0DD6F6CD2C79D1540036E36A /* Sources */,
 				0DD6F6CE2C79D1540036E36A /* Frameworks */,
@@ -82,9 +125,9 @@
 			);
 			dependencies = (
 			);
-			name = Course_Project;
+			name = Savoury;
 			productName = Course_Project;
-			productReference = 0DD6F6D12C79D1540036E36A /* Course_Project.app */;
+			productReference = 0DD6F6D12C79D1540036E36A /* Savoury.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -115,7 +158,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0DD6F6D02C79D1540036E36A /* Course_Project */,
+				0DD6F6D02C79D1540036E36A /* Savoury */,
 			);
 		};
 /* End PBXProject section */
@@ -137,8 +180,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DD6F6D72C79D1540036E36A /* ContentView.swift in Sources */,
+				0D44152D2C7DA3DE004B4AB9 /* CategoryTabView.swift in Sources */,
+				0DD6F6E92C79E0770036E36A /* CategoryButton.swift in Sources */,
+				0D44153E2C801AE7004B4AB9 /* CookingModeView.swift in Sources */,
+				0D44152F2C7DAA27004B4AB9 /* TabBarView.swift in Sources */,
+				0D4415332C7DB7B0004B4AB9 /* HomeScreen.swift in Sources */,
+				0D44152B2C7DA372004B4AB9 /* Dish.swift in Sources */,
+				0D4415402C802684004B4AB9 /* TimerView.swift in Sources */,
 				0DD6F6D52C79D1540036E36A /* Course_ProjectApp.swift in Sources */,
+				0D4415352C7EF772004B4AB9 /* SelectionScreen.swift in Sources */,
+				0DD6F6E72C79DC100036E36A /* Category.swift in Sources */,
+				0D4415372C7EFBA1004B4AB9 /* RecipeScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +384,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0DD6F6DF2C79D1550036E36A /* Build configuration list for PBXNativeTarget "Course_Project" */ = {
+		0DD6F6DF2C79D1550036E36A /* Build configuration list for PBXNativeTarget "Savoury" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0DD6F6E02C79D1550036E36A /* Debug */,
