@@ -22,7 +22,9 @@ struct RecipeScreen: View {
                     Image(systemName: "arrow.left")
                         .foregroundColor(.black)
                         .padding()
-                        .background(Circle().fill(Color.yellow))
+                        .background(Circle()
+                            .fill(Color.yellow)
+                            .shadow(radius: 4))
                 }
                 Spacer()
 
@@ -87,13 +89,14 @@ struct RecipeScreen: View {
                 // Start cooking action
             }) {
                 Text("Start cooking")
-                    .font(.headline)
-                    .fontWeight(.bold)
+                    .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.black)
-                    .frame(maxWidth: .infinity, minHeight: 50)
-                    .background(Color.yellow)
-                    .cornerRadius(40)
-                    .padding(.bottom, -20)
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, 10)
+                    .background(Capsule()
+                        .fill(Color.yellow)
+                        .frame(height: 50)
+                        .shadow(radius: 4))
             }
             .padding()
         }

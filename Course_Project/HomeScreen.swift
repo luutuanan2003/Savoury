@@ -36,8 +36,7 @@ struct HomeScreen: View {
             .padding()
             
             CategoryTabView()
-            
-            Rectangle().fill(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255)).frame(width: .infinity, height: 1, alignment: .center)
+                    
             HStack{
                 Text("Top dishes of the day")
                     .font(.title)

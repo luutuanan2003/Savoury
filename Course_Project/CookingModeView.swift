@@ -28,7 +28,9 @@ struct CookingModeView: View {
                         .foregroundColor(.black)
                         .bold()
                         .padding()
-                        .background(Circle().fill(Color.yellow))
+                        .background(Circle()
+                            .fill(Color.yellow)
+                            .shadow(radius: 4))
                 }
                 Spacer()
                 Button(action: {
@@ -37,12 +39,15 @@ struct CookingModeView: View {
                     Image(systemName: "bookmark")
                         .foregroundColor(.black)
                         .padding()
-                        .background(Circle().fill(Color.white))
+                        .background(Circle()
+                            .fill(Color.white)
+                            .stroke(Color.black)
+                            .shadow(radius: 2))
                         
                 }
             }
-            .padding([.leading, .trailing, .top])
-            
+            .padding([.leading, .trailing])
+            .padding(.bottom)
             
             VStack {
                 // Step Image
@@ -142,7 +147,9 @@ struct CookingModeView: View {
                     Image(systemName: "house")
                         .foregroundColor(.black)
                         .padding()
-                        .background(Circle().fill(Color.yellow))
+                        .background(Circle()
+                            .fill(Color.yellow)
+                            .shadow(radius: 4))
                 }
                 Spacer()
                 Button(action: {
@@ -156,9 +163,10 @@ struct CookingModeView: View {
                 }
             }
             .padding(.top, 5)
-            .background(Color.white)
+            .padding(.bottom, 5)
             .cornerRadius(20)
             .padding(.horizontal)
+            .foregroundColor(.clear)
         }
         
     }

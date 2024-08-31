@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SelectionScreen: View {
+    @Binding var showSelectionScreen: Bool
     @State private var selectedLetter: Character = "B"  // Use Character for the selected letter
     @State private var selectedIngredients: [String] = ["Black glutinous (sticky) rice"]
     
@@ -24,10 +25,13 @@ struct SelectionScreen: View {
                 Button(action: {
                     // Back action
                 }) {
-                    Image(systemName: "arrow.left")
+                    Image(systemName: "chevron.backward")
+                        .bold()
                         .foregroundColor(.black)
                         .padding()
-                        .background(Circle().fill(Color.yellow))
+                        .background(Circle()
+                            .fill(Color.yellow)
+                            .shadow(radius: 4))
                 }
                 Spacer()
             }
@@ -99,13 +103,14 @@ struct SelectionScreen: View {
                 // Add to dish action
             }) {
                 Text("Add to dish")
-                    .font(.headline)
-                    .fontWeight(.bold)
+                    .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.black)
-                    .frame(maxWidth: .infinity, minHeight: 50)
-                    .background(Color.yellow)
-                    .cornerRadius(45)
-                    .padding(.bottom, -20)
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, 10)
+                    .background(Capsule()
+                        .fill(Color.yellow)
+                        .frame(height: 50)
+                        .shadow(radius: 4))
             }
             .padding()
         }
@@ -114,7 +119,8 @@ struct SelectionScreen: View {
 
 struct SelectionScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SelectionScreen()
+        SelectionScreen(showSelectionScreen: .constant(true))
     }
 }
+
 

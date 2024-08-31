@@ -9,101 +9,149 @@ import SwiftUI
 
 struct TimerView: View {
     @Binding var isTimerViewVisible: Bool
-    @State private var timeRemaining: Int = 0
-    @State private var isTimerRunning: Bool = false
+//    @State private var timeRemaining: Int = 0
+//    @State private var isTimerRunning: Bool = false
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.yellow)
-                .frame(width: 360, height: 304)
-            
-            VStack(spacing: 0) {
-                ZStack {
-                    Circle()
-                        .stroke(Color.black, lineWidth: 2)
-                        .frame(width: 100, height: 100)
-                        .background(Circle().fill(Color.yellow))
-                        .shadow(radius: 5)
-                    
-                    RadialLayout {
-                        ForEach(0..<7, id: \.self) { index in
-                            VStack {
-                                Text("\(index * 10)")
-                                    .font(.system(size: 20, weight: .bold))
-                                    .foregroundColor(.black)
-                                Spacer()
-                            }
-                             // Adjusts the spacing from the center
-                        }
-                    }
-                    .frame(width: 200, height: 200)
-                    
-                    
-                    
-                    
-                    // Timer needle
-                    VStack {
-                        Rectangle()
-                            .fill(Color.black)
-                            .frame(width: 4, height: 20)
-                        Spacer()
-                    }
-                    .frame(height: 100)
-                }
-                
-                
-                
-                HStack {
-                    Text(timeString(from: timeRemaining))
-                        .font(.system(size: 20, weight: .bold))
+        VStack(spacing: 0) {
+            // Top navigation bar
+            HStack {
+                Button(action: {
+                    // Back action
+                }) {
+                    Image(systemName: "chevron.backward")
                         .foregroundColor(.black)
-                    Spacer()
-                    Button(action: {
-                        isTimerRunning.toggle()
-                        startTimer()
-                        isTimerViewVisible = false
-                    }) {
-                        Text("Start")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.black)
-                            .padding()
-                            .background(Capsule().fill(Color.white))
-                            .overlay(
-                                Capsule()
-                                    .stroke(Color.black, lineWidth: 2)
-                            )
+                        .bold()
+                        .padding()
+                        .background(Circle()
+                            .fill(Color.yellow)
+                            .shadow(radius: 4))
+                }
+                Spacer()                
+            }
+            
+            Text("00:00:00")
+                .font(.system(size: 30, weight: .bold))
+                .foregroundColor(.black)
+                .padding(30)
+
+            
+            ZStack {
+                Circle()
+                    .stroke(Color.black, lineWidth: 3)
+                    .frame(width: 160, height: 160)
+                    .background(Circle().fill(Color.yellow))
+                    .shadow(radius: 5)
+                
+                RadialLayout {
+                    ForEach(0..<7, id: \.self) { index in
+                        VStack {
+                            Text("\(index * 10)")
+                                .font(.system(size: 22, weight: .bold))
+                                .foregroundColor(.black)
+                            Spacer()
+                        }
+                         // Adjusts the spacing from the center
                     }
                 }
-                .padding([.horizontal], 20)
+                .frame(width: 340, height: 280)
+                .padding(.top, 10)
+                
+                RadialLayout {
+                    ForEach(0..<7, id: \.self) {_ in
+                        Circle()
+                            .frame(width: 9, height: 10)
+                            .shadow(radius: 5)
+                    }
+                }
+                .frame(width: 260)
+                
+                // Timer needle
+                VStack {
+                    Rectangle()
+                        .fill(Color.black)
+                        .frame(width: 8, height: 25)
+                        .cornerRadius(4.0)
+                    Spacer()
+                }
+                .frame(height: 140)
             }
-            .padding()
+            
+            Spacer()
+            
+            VStack {
+                HStack(spacing: 0) {
+                    Capsule()
+                        .fill(Color.yellow)
+                        .frame(width: .infinity, height: 60)
+                        .shadow(radius: 4)
+                        .overlay(
+                            HStack(spacing: 0) {
+                                Text("HOUR")
+                                    .font(.system(size: 18, weight: .bold))
+                                    .foregroundColor(.black)
+                                    .padding()
+                                    .background(Capsule().fill(Color.white)
+                                        .frame(width: 100))
+                                
+                                Text("MIN")
+                                    .font(.system(size: 18, weight: .bold))
+                                    .foregroundColor(.black)
+                                    .padding(.vertical)
+                                    .frame(maxWidth: .infinity)
+                                
+                                Text("SEC")
+                                    .font(.system(size: 18, weight: .bold))
+                                    .foregroundColor(.black)
+                                    .padding(.vertical)
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .padding(.horizontal, 10)
+                        )
+                }
+                
+                .padding(.top, 40)
+                
+                Spacer()
+                
+                // Reset and Start buttons
+                HStack {
+                    Text("Reset")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(.black)
+                        .padding(.horizontal, 30)
+                        .padding(.vertical, 10)
+                    
+                        .background(Capsule()
+                            .fill(Color.yellow)
+                            .frame(height: 50)
+                            .shadow(radius: 4))
+                                                
+                    Spacer()
+                    
+                    Text("Start")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(.black)
+                        .padding(.horizontal, 30)
+                        .padding(.vertical, 10)
+                        .background(Capsule()
+                            .fill(Color.yellow)
+                            .frame(height: 50)
+                            .shadow(radius: 4))
+                }
+            }
+            .frame(width: 320)
         }
-        .frame(width: 350, height: 350)  // Ensure the entire content is within the yellow box
-        .padding(.top, 50)
-    }
-    
-    // Helper function to format the time
-    func timeString(from seconds: Int) -> String {
-        let minutes = seconds / 60
-        let seconds = seconds % 60
-        return String(format: "%02d:%02d", minutes, seconds)
-    }
-    
-    // Placeholder function for starting the timer
-    func startTimer() {
-        // Implement timer logic here
+        .padding()
     }
 }
+
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
         TimerView(isTimerViewVisible: .constant(true)) // Pass a constant binding for preview
     }
 }
-
-
-
 
 
 struct RadialLayout: Layout {

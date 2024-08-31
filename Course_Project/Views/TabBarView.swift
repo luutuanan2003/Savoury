@@ -9,7 +9,8 @@ import SwiftUI
 
 struct TabBarView: View {
     @State private var selectedTab: Tab = .home
-
+    @State var showSelectionScreen = false
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.white.edgesIgnoringSafeArea(.all)
@@ -54,23 +55,38 @@ struct TabBarView: View {
 
 enum Tab: String, CaseIterable {
     case home
-    case heart
-    case flame
     case bookmark
-    case clock
+    case camera
+    case cooking
+    case timer
 
     var iconName: String {
         switch self {
         case .home:
             return "house"
-        case .heart:
-            return "bookmark"
-        case .flame:
-            return "camera"
         case .bookmark:
+            return "bookmark"
+        case .camera:
+            return "camera"
+        case .cooking:
             return "frying.pan"
-        case .clock:
+        case .timer:
             return "timer"
+        }
+    }
+    
+    var iconScreen: String {
+        switch self {
+        case .home:
+            return "HomeScreen"
+        case .bookmark:
+            return "HomeScreen"
+        case .camera:
+            return "camera"
+        case .cooking:
+            return "HomeScreen"
+        case .timer:
+            return "TimerView"
         }
     }
 }
