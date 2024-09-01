@@ -112,7 +112,7 @@ struct HomeScreen: View {
                 TimerScreen(
                     isTimerViewVisible: $showTimerScreen,
                     fromInstructionScreen: $fromInstructionScreen)  // Pass the state to TimerScreen
-                    .transition(.move(edge: .bottom))
+                    .transition(.move(edge: .leading))
                     .zIndex(4)  // Ensure TimerScreen is on top
             }
 
