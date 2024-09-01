@@ -10,6 +10,8 @@ import SwiftUI
 
 // A SwiftUI view for displaying the instructions for cooking the selected recipe.
 
+// When the user presses on wok icon in the tab bar below, it will show the current cooking dish. If there is not a current dish, it will pop out a view saying that "Please choose a dish to cook" or something else similiar to notify the user.
+
 struct CookingModeScreen: View {
     
     // Binding to control the visibility of the other screens
