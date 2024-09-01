@@ -14,9 +14,9 @@ import SwiftUI
 struct RecipeScreen: View {
     
     // Binding to control the visibility of the other screens
-    @Binding var showSelectionScreen: Bool
+    @Binding var showIngredientsScreen: Bool
     @Binding var showRecipeScreen: Bool
-    @Binding var showCookingModeScreen: Bool
+    @Binding var showInstructionScreen: Bool
     
     // The name of the recipe, its ingredients and its image being displayed.
     var recipeName: String = "Tteokbokki"
@@ -33,7 +33,7 @@ struct RecipeScreen: View {
                 HStack {
                     Button(action: {
                         showRecipeScreen = false  // Hide RecipeScreen
-                        showSelectionScreen = true  // Go back to SelectionScreen
+                        showIngredientsScreen = true  // Go back to IngredientsScreen
                     }) {
                         Image(systemName: "chevron.backward")
                             .foregroundColor(.black)
@@ -104,7 +104,7 @@ struct RecipeScreen: View {
                 // Bottom button
                 Button(action: {
                     showRecipeScreen = false  // Hide RecipeScreen
-                    showCookingModeScreen = true  // Show CookingModeScreen
+                    showInstructionScreen = true  // Show CookingModeScreen
                 }) {
                     Text("Start cooking")
                         .font(.system(size: 18, weight: .bold))
@@ -125,6 +125,6 @@ struct RecipeScreen: View {
 
 struct RecipeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeScreen(showSelectionScreen: .constant(false), showRecipeScreen: .constant(true), showCookingModeScreen: .constant(false))
+        RecipeScreen(showIngredientsScreen: .constant(false), showRecipeScreen: .constant(true), showInstructionScreen: .constant(false))
     }
 }

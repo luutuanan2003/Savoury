@@ -13,7 +13,7 @@ import SwiftUI
 // The tab bar allows navigation between different sections of the app, including special handling for the camera and timer tabs for now and will be update soon.
 
 struct TabBarView: View {
-    @Binding var showSelectionScreen: Bool // Binding to control the visibility of the selection screen.
+    @Binding var showIngredientsScreen: Bool // Binding to control the visibility of the selection screen.
     
     @Binding var showTimerScreen: Bool // Binding to control the visibility of the timer screen.
     
@@ -27,8 +27,8 @@ struct TabBarView: View {
                 
                 ForEach(Tab.allCases, id: \.self) { tab in
                     Button(action: {
-                        if tab == .camera {
-                            showSelectionScreen = true
+                        if tab == .cooking {
+                            showIngredientsScreen = true
                         } else if tab == .timer {
                             showTimerScreen = true
                         } else {
@@ -69,7 +69,7 @@ struct TabBarView: View {
 
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView(showSelectionScreen: .constant(false),
+        TabBarView(showIngredientsScreen: .constant(false),
                    showTimerScreen: .constant(false))
     }
 }

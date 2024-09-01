@@ -1,5 +1,5 @@
 //
-//  SelectionScreen.swift
+//  IngredientsScreen.swift
 //  Savoury
 //
 //  Created by Elwiz Scott on 28/8/24.
@@ -12,13 +12,13 @@ import SwiftUI
 // A SwiftUI view for selecting ingredients from an alphabetical list.
 // This screen allows users to navigate, search, and select ingredients to add to a dish.
 
-struct SelectionScreen: View {
+struct IngredientsScreen: View {
     
     // Binding to control the visibility of the other screens
     
-    @Binding var showSelectionScreen: Bool
+    @Binding var showIngredientsScreen: Bool
     @Binding var showRecipeScreen: Bool
-    @Binding var showCookingModeScreen: Bool
+    @Binding var showInstructionScreen: Bool
     
     // State variable to track the currently selected letter for filtering ingredients.
     @State private var selectedLetter: Character = "B"
@@ -42,7 +42,7 @@ struct SelectionScreen: View {
                 // Top navigation bar
                 HStack {
                     Button(action: {
-                        showSelectionScreen = false
+                        showIngredientsScreen = false
                     }) {
                         Image(systemName: "chevron.backward")
                             .bold()
@@ -60,7 +60,7 @@ struct SelectionScreen: View {
                 
                 // Title
                 HStack {
-                    Text("Ingredient A-Z")
+                    Text("Ingredients A-Z")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Spacer()
@@ -122,7 +122,7 @@ struct SelectionScreen: View {
                 // Bottom button
                 Button(action: {
                     showRecipeScreen = true  // Show the RecipeScreen when "Add to dish" is pressed
-                    showSelectionScreen = false  // Hide SelectionScreen
+                    showIngredientsScreen = false  // Hide IngredientsScreen
                 }) {
                     Text("Add to dish")
                         .font(.system(size: 18, weight: .bold))
@@ -140,10 +140,10 @@ struct SelectionScreen: View {
     }
 }
 
-struct SelectionScreen_Previews: PreviewProvider {
+struct IngredientsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SelectionScreen(showSelectionScreen: .constant(true),
+        IngredientsScreen(showIngredientsScreen: .constant(true),
                         showRecipeScreen: .constant(false),
-                        showCookingModeScreen: .constant(false))
+                        showInstructionScreen: .constant(false))
     }
 }

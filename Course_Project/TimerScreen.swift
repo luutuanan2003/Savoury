@@ -10,18 +10,29 @@ import SwiftUI
 // This view make use of the custom layout provided in the lectorial code example in example 9, week 4 to resemble the twist timer appears in most of the kitchen ware.
 
 struct TimerScreen: View {
+    // Track where the TimerScreen was launched from
     @Binding var isTimerViewVisible: Bool
+    @Binding var fromInstructionScreen: Bool
+
 //    @State private var timeRemaining: Int = 0
 //    @State private var isTimerRunning: Bool = false
     
     var body: some View {
         ZStack {
-            Color.white.edgesIgnoringSafeArea(.all)  // White background to cover the entire screen
+            // White background to cover the entire screen
+            Color.white.edgesIgnoringSafeArea(.all)
+            
             VStack(spacing: 0) {
                 // Top navigation bar
                 HStack {
                     Button(action: {
                         // Back action
+                        if fromInstructionScreen {
+                            isTimerViewVisible = false  // Hide TimerScreen
+                            fromInstructionScreen = false  // Reset state
+                        } else {
+                            isTimerViewVisible = false  // Hide TimerScreen
+                        }
                     }) {
                         Image(systemName: "chevron.backward")
                             .foregroundColor(.black)
@@ -84,65 +95,43 @@ struct TimerScreen: View {
                 Spacer()
                 
                 VStack {
-                    HStack(spacing: 0) {
-                        Capsule()
-                            .fill(Color.yellow)
-                            .frame(width: .infinity, height: 60)
-                            .shadow(radius: 4)
-                            .overlay(
-                                HStack(spacing: 0) {
-                                    Text("HOUR")
-                                        .font(.system(size: 18, weight: .bold))
-                                        .foregroundColor(.black)
-                                        .padding()
-                                        .background(Capsule().fill(Color.white)
-                                            .frame(width: 100))
-                                    
-                                    Text("MIN")
-                                        .font(.system(size: 18, weight: .bold))
-                                        .foregroundColor(.black)
-                                        .padding(.vertical)
-                                        .frame(maxWidth: .infinity)
-                                    
-                                    Text("SEC")
-                                        .font(.system(size: 18, weight: .bold))
-                                        .foregroundColor(.black)
-                                        .padding(.vertical)
-                                        .frame(maxWidth: .infinity)
-                                }
-                                .padding(.horizontal, 10)
-                            )
-                    }
-                    
-                    .padding(.top, 40)
+                    TimeSelectionView()
                     
                     Spacer()
                     
                     // Reset and Start buttons
                     HStack {
-                        Text("Reset")
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundColor(.black)
-                            .padding(.horizontal, 30)
-                            .padding(.vertical, 10)
+                        Button(action: {
+                            // Action for Reset button
+                        }) {
+                            Text("Reset")
+                                .font(.system(size: 18, weight: .bold))
+                                .foregroundColor(.black)
+                                .padding(.horizontal, 30)
+                                .padding(.vertical, 10)
+                                .background(Capsule()
+                                    .fill(Color.yellow)
+                                    .frame(height: 50)
+                                    .shadow(radius: 4))
+                        }
                         
-                            .background(Capsule()
-                                .fill(Color.yellow)
-                                .frame(height: 50)
-                                .shadow(radius: 4))
-                                                    
                         Spacer()
                         
-                        Text("Start")
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundColor(.black)
-                            .padding(.horizontal, 30)
-                            .padding(.vertical, 10)
-                            .background(Capsule()
-                                .fill(Color.yellow)
-                                .frame(height: 50)
-                                .shadow(radius: 4))
+                        Button(action: {
+                            // Action for Start button
+                        }) {
+                            Text("Start")
+                                .font(.system(size: 18, weight: .bold))
+                                .foregroundColor(.black)
+                                .padding(.horizontal, 30)
+                                .padding(.vertical, 10)
+                                .background(Capsule()
+                                    .fill(Color.yellow)
+                                    .frame(height: 50)
+                                    .shadow(radius: 4))
+                        }
                     }
+
                 }
                 .frame(width: 320)
             }
@@ -155,7 +144,7 @@ struct TimerScreen: View {
 
 struct TimerScreen_Previews: PreviewProvider {
     static var previews: some View {
-        TimerScreen(isTimerViewVisible: .constant(true))
+        TimerScreen(isTimerViewVisible: .constant(true), fromInstructionScreen: .constant(false))
     }
 }
 

@@ -15,10 +15,11 @@ struct HomeScreen: View {
     
     // State to control the visibility of the  screens
     
-    @State private var showSelectionScreen = false
+    @State private var showIngredientsScreen = false
     @State private var showRecipeScreen = false
-    @State private var showCookingModeScreen = false
+    @State private var showInstructionScreen = false
     @State private var showTimerScreen = false
+    @State private var fromInstructionScreen = false
 
     // List of dishes to display on the home screen.
     @State var dishes = [
@@ -73,39 +74,46 @@ struct HomeScreen: View {
                 
                 // Using the TabBarView for navigating to other parts of the application.
                 TabBarView(
-                    showSelectionScreen: $showSelectionScreen,
+                    showIngredientsScreen: $showIngredientsScreen,
                     showTimerScreen: $showTimerScreen)
             }
             
-// Conditionally display the selected screen if @State variable above is true.
+            // Conditionally display the selected screen if @State variable above is true.
             
-            if showSelectionScreen {
-                SelectionScreen(
-                    showSelectionScreen: $showSelectionScreen,
+            if showIngredientsScreen {
+                IngredientsScreen(
+                    showIngredientsScreen: $showIngredientsScreen,
                     showRecipeScreen: $showRecipeScreen,
-                    showCookingModeScreen: $showCookingModeScreen)
+                    showInstructionScreen: $showInstructionScreen)
                     .transition(.move(edge: .leading))
                     .zIndex(1)
             }
             
             if showRecipeScreen {
                 RecipeScreen(
-                    showSelectionScreen: $showSelectionScreen,
+                    showIngredientsScreen: $showIngredientsScreen,
                     showRecipeScreen: $showRecipeScreen,
-                    showCookingModeScreen: $showCookingModeScreen)
+                    showInstructionScreen: $showInstructionScreen)
                     .transition(.move(edge: .leading))
                     .zIndex(2)
             }
             
-            if showCookingModeScreen {
-                CookingModeScreen(showCookingModeScreen: $showCookingModeScreen, showRecipeScreen: $showRecipeScreen)
+            if showInstructionScreen {
+                InstructionScreen(
+                    showInstructionScreen: $showInstructionScreen,
+                    showRecipeScreen: $showRecipeScreen,
+                    showTimerScreen: $showTimerScreen,
+                    fromInstructionScreen: $fromInstructionScreen)  // Pass the state for TimerScreen launch source
                     .transition(.move(edge: .leading))
                     .zIndex(3)
             }
+            
             if showTimerScreen {
-                TimerScreen(isTimerViewVisible: $showTimerScreen)
+                TimerScreen(
+                    isTimerViewVisible: $showTimerScreen,
+                    fromInstructionScreen: $fromInstructionScreen)  // Pass the state to TimerScreen
                     .transition(.move(edge: .bottom))
-                    .zIndex(1)  // Ensure TimerScreen is on top
+                    .zIndex(4)  // Ensure TimerScreen is on top
             }
 
         }

@@ -1,5 +1,5 @@
 //
-//  CookingModeScreen.swift
+//  InstructionScreen.swift
 //  Savoury
 //
 //  Created by Elwiz Scott on 29/8/24.
@@ -12,11 +12,14 @@ import SwiftUI
 
 // When the user presses on wok icon in the tab bar below, it will show the current cooking dish. If there is not a current dish, it will pop out a view saying that "Please choose a dish to cook" or something else similiar to notify the user.
 
-struct CookingModeScreen: View {
+struct InstructionScreen: View {
     
     // Binding to control the visibility of the other screens
-    @Binding var showCookingModeScreen: Bool
-    @Binding var showRecipeScreen: Bool  
+    @Binding var showInstructionScreen: Bool
+    @Binding var showRecipeScreen: Bool
+    @Binding var showTimerScreen: Bool  // Bind to control the TimerScreen visibility
+    @Binding var fromInstructionScreen: Bool  // Bind to track the TimerScreen launch source
+ 
     
     var stepIndex: Int = 2 // Current step index
     var totalSteps: Int = 5 // Total steps
@@ -32,7 +35,7 @@ struct CookingModeScreen: View {
                 // Top navigation bar
                 HStack {
                     Button(action: {
-                        showCookingModeScreen = false  // Hide CookingModeScreen
+                        showInstructionScreen = false  // Hide CookingModeScreen
                         showRecipeScreen = true  // Show RecipeScreen again
                     }) {
                         Image(systemName: "chevron.backward")
@@ -72,6 +75,8 @@ struct CookingModeScreen: View {
                         Spacer()
                         Button(action: {
                             // Timer button action
+                            fromInstructionScreen = true  // Mark that TimerScreen is opened from InstructionScreen
+                            showTimerScreen = true  // Show TimerScreen
                         }) {
                             ZStack {
                                 Capsule()
@@ -134,7 +139,7 @@ struct CookingModeScreen: View {
                     }
                     Spacer()
                     Button(action: {
-                        showCookingModeScreen = false
+                        showInstructionScreen = false
                         showRecipeScreen = false  // Hide RecipeScreen as well
                     }) {
                         Image(systemName: "house")
@@ -165,8 +170,12 @@ struct CookingModeScreen: View {
     }
 }
 
-struct CookingModeScreen_Previews: PreviewProvider {
+struct InstructionScreen_Previews: PreviewProvider {
     static var previews: some View {
-        CookingModeScreen(showCookingModeScreen: .constant(true), showRecipeScreen: .constant(false))
+        InstructionScreen(
+            showInstructionScreen: .constant(true),
+            showRecipeScreen: .constant(false),
+            showTimerScreen: .constant(false),
+            fromInstructionScreen: .constant(false))
     }
 }
