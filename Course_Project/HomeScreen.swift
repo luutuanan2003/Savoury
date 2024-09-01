@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-
 struct HomeScreen: View {
-    
+    @State private var showSelectionScreen = false
     @State var dishes = [
         Dish(name: "Nasi Lemak", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"]),
         Dish(name: "Nasi Lemak1", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"]),
         Dish(name: "Nasi Lemak2", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"]),
-        Dish(name: "Nasi Lemak3", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"])]
+        Dish(name: "Nasi Lemak3", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"])
+    ]
     
     let columns = [
         GridItem(.flexible()),
@@ -22,54 +22,57 @@ struct HomeScreen: View {
     ]
     
     var body: some View {
-        
-        VStack {
-            HStack{
-                Text("Welcome Home")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                Spacer()
-                Image(systemName: "magnifyingglass")
-                Image(systemName: "person.crop.circle")
+        ZStack {
+            VStack {
+                HStack {
+                    Text("Welcome Home")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                    Spacer()
+                    Image(systemName: "magnifyingglass")
+                    Image(systemName: "person.crop.circle")
+                        .padding(.horizontal)
+                }
+                .padding()
+                
+                CategoryTabView()
+                
+                HStack {
+                    Text("Top dishes of the day")
+                        .font(.title)
+                        .fontWeight(.black)
+                        .padding()
+                    Spacer()
+                }
+                
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        ForEach($dishes, id: \.self) { $dish in
+                            BasicTextImageRow(dish: $dish)
+                                .frame(width: 160, height: 200)
+                        }
+                    }
                     .padding(.horizontal)
-            }
-            .padding()
-            
-            CategoryTabView()
-                    
-            HStack{
-                Text("Top dishes of the day")
-                    .font(.title)
-                    .fontWeight(.black)
-                    .padding()
-                Spacer()
+                }
+                .frame(height: 430)
+                
+                TabBarView(showSelectionScreen: $showSelectionScreen)
             }
             
-            ScrollView {
-                            LazyVGrid(columns: columns, spacing: 16) {
-                                ForEach($dishes, id: \.self) { $dish in
-                                    BasicTextImageRow(dish: $dish)
-                                        .frame(width: 160, height: 200) // Adjusted the frame to fit the layout
-                                }
-                            }
-                            .padding(.horizontal)
+            if showSelectionScreen {
+                SelectionScreen(showSelectionScreen: $showSelectionScreen)
+//                    .transition(.move(edge: .trailing))
+//                    .zIndex(1)
             }
-            
-            .frame(height: 430) // Extend the height of the ScrollView
-            
-            TabBarView()
         }
     }
 }
-    
+
 struct BasicTextImageRow: View {
-    
-    // MARK: - Binding
-    
     @Binding var dish: Dish
     
     var body: some View {
-        VStack{
+        VStack {
             Image(dish.image)
                 .resizable()
                 .frame(width: 140, height: 140)

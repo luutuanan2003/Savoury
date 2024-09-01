@@ -75,10 +75,10 @@
 				0D4415322C7DB7B0004B4AB9 /* HomeScreen.swift */,
 				0D4415342C7EF772004B4AB9 /* SelectionScreen.swift */,
 				0D4415362C7EFBA1004B4AB9 /* RecipeScreen.swift */,
-				0DD6F6D82C79D1550036E36A /* Assets.xcassets */,
-				0DD6F6DA2C79D1550036E36A /* Preview Content */,
 				0D44153D2C801AE7004B4AB9 /* CookingModeView.swift */,
 				0D44153F2C802684004B4AB9 /* TimerView.swift */,
+				0DD6F6D82C79D1550036E36A /* Assets.xcassets */,
+				0DD6F6DA2C79D1550036E36A /* Preview Content */,
 			);
 			path = Course_Project;
 			sourceTree = "<group>";

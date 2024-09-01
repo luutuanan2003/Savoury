@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RecipeScreen: View {
+    @Binding var showRecipeScreen: Bool  // Bind this to control the screen visibility
+    @Binding var showSelectionScreen: Bool  // Bind this to toggle back to SelectionScreen
+    
     var recipeName: String = "Tteokbokki"
     var ingredients: [String] = ["Tomato", "Rice", "Egg", "Onion"]
     var recipeImage: String = "Tteokbokki" // Replace with the actual image name
@@ -17,10 +20,12 @@ struct RecipeScreen: View {
             // Top navigation bar
             HStack {
                 Button(action: {
-                    // Back action
+                    showRecipeScreen = false  // Hide RecipeScreen
+                    showSelectionScreen = true  // Show SelectionScreen
                 }) {
-                    Image(systemName: "arrow.left")
+                    Image(systemName: "chevron.backward")
                         .foregroundColor(.black)
+                        .bold()
                         .padding()
                         .background(Circle()
                             .fill(Color.yellow)
@@ -105,6 +110,6 @@ struct RecipeScreen: View {
 
 struct RecipeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeScreen()
+        RecipeScreen(showRecipeScreen: .constant(true), showSelectionScreen: .constant(false))
     }
 }

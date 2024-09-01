@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @Binding var showSelectionScreen: Bool
     @State private var selectedTab: Tab = .home
-    @State var showSelectionScreen = false
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -19,7 +19,11 @@ struct TabBarView: View {
                 
                 ForEach(Tab.allCases, id: \.self) { tab in
                     Button(action: {
-                        selectedTab = tab
+                        if tab == .camera {
+                            showSelectionScreen = true
+                        } else {
+                            selectedTab = tab
+                        }
                     }) {
                         Image(systemName: tab.iconName)
                             .resizable()
@@ -47,10 +51,10 @@ struct TabBarView: View {
                     .padding(.horizontal, 20)
             )
             .padding(.bottom, -10)
-            
         }
     }
 }
+
 
 
 enum Tab: String, CaseIterable {
@@ -74,26 +78,11 @@ enum Tab: String, CaseIterable {
             return "timer"
         }
     }
-    
-    var iconScreen: String {
-        switch self {
-        case .home:
-            return "HomeScreen"
-        case .bookmark:
-            return "HomeScreen"
-        case .camera:
-            return "camera"
-        case .cooking:
-            return "HomeScreen"
-        case .timer:
-            return "TimerView"
-        }
-    }
 }
 
 
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView()
+        TabBarView(showSelectionScreen: .constant(false))
     }
 }
