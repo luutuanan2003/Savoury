@@ -3,16 +3,24 @@
 //  a1-s3926655
 //
 //  Created by An Luu on 22/8/24.
-//
+// Modified by Kien 30/8/24
+// Check by An 1/9/24
 
 import SwiftUI
 
+// The main screen view of the application, providing an overview of various dishes,
+// navigation through categories, and access to different sections like the recipe and cooking mode screens.
+
 struct HomeScreen: View {
+    
+    // State to control the visibility of the  screens
+    
     @State private var showSelectionScreen = false
     @State private var showRecipeScreen = false
     @State private var showCookingModeScreen = false
     @State private var showTimerScreen = false
 
+    // List of dishes to display on the home screen.
     @State var dishes = [
         Dish(name: "Nasi Lemak", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"]),
         Dish(name: "Nasi Lemak1", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"]),
@@ -20,6 +28,7 @@ struct HomeScreen: View {
         Dish(name: "Nasi Lemak3", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"])
     ]
     
+    // Layout configuration for displaying dishes in a grid with flexible columns.
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -52,6 +61,7 @@ struct HomeScreen: View {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach($dishes, id: \.self) { $dish in
+                            // Using the BasicTextImageRow view
                             BasicTextImageRow(dish: $dish)
                                 .frame(width: 160, height: 200)
                         }
@@ -60,10 +70,14 @@ struct HomeScreen: View {
                 }
                 .frame(height: 430)
                 
+                
+                // Using the TabBarView for navigating to other parts of the application.
                 TabBarView(
                     showSelectionScreen: $showSelectionScreen,
                     showTimerScreen: $showTimerScreen)
             }
+            
+// Conditionally display the selected screen if @State variable above is true.
             
             if showSelectionScreen {
                 SelectionScreen(
@@ -94,27 +108,6 @@ struct HomeScreen: View {
                     .zIndex(1)  // Ensure TimerScreen is on top
             }
 
-        }
-    }
-}
-
-struct BasicTextImageRow: View {
-    @Binding var dish: Dish
-    
-    var body: some View {
-        VStack {
-            Image(dish.image)
-                .resizable()
-                .frame(width: 140, height: 140)
-                .cornerRadius(20)
-            
-            VStack(alignment: .leading) {
-                Text(dish.name)
-                    .font(.system(.title2, design: .rounded))
-                
-                Text(dish.type)
-                    .font(.system(.body, design: .rounded))
-            }
         }
     }
 }

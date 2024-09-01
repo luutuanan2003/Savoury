@@ -4,17 +4,24 @@
 //
 //  Created by Elwiz Scott on 28/8/24.
 //
+// Check by An 1/9/24
 
 import SwiftUI
 
+// A SwiftUI view for displaying the details of a selected recipe, including its name, ingredients, and an image.
+// Users can view the recipe and start cooking from this screen.
+
 struct RecipeScreen: View {
+    
+    // Binding to control the visibility of the other screens
     @Binding var showSelectionScreen: Bool
     @Binding var showRecipeScreen: Bool
     @Binding var showCookingModeScreen: Bool
     
+    // The name of the recipe, its ingredients and its image being displayed.
     var recipeName: String = "Tteokbokki"
     var ingredients: [String] = ["Tomato", "Rice", "Egg", "Onion"]
-    var recipeImage: String = "Tteokbokki" // Replace with the actual image name
+    var recipeImage: String = "Tteokbokki"
 
     var body: some View {
         ZStack {

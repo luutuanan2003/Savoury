@@ -5,7 +5,12 @@
 //  Created by Elwiz Scott on 24/8/24.
 //
 
+// Checked by An 1/9/24
+
 import SwiftUI
+
+// A SwiftUI view that represents a button for a specific category.
+// The button displays an icon and the name of the category, and it visually indicates whether the category is selected.
 
 struct CategoryButton: View {
     
@@ -16,7 +21,7 @@ struct CategoryButton: View {
     var body: some View {
         VStack {
             Button(action: {
-                        // No action here
+                // No action is needed for now; the button is purely for display purposes.
                     }) {
                         Image(systemName: category.categorySymbol)
                             .resizable()
@@ -30,7 +35,6 @@ struct CategoryButton: View {
                                 .frame(width: 74, height: 84))
                     }
             Text(category.categoryName)
-                
                 .bold()
                 .font(.footnote)
                 .foregroundColor(isSelected ? .black : .gray)

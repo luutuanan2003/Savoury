@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// This view make use of the custom layout provided in the lectorial code example in example 9, week 4 to resemble the twist timer appears in most of the kitchen ware.
+
 struct TimerScreen: View {
     @Binding var isTimerViewVisible: Bool
 //    @State private var timeRemaining: Int = 0
@@ -157,7 +159,7 @@ struct TimerScreen_Previews: PreviewProvider {
     }
 }
 
-
+// MARK: Modified RadialLayout
 struct RadialLayout: Layout {
     func sizeThatFits(
         proposal: ProposedViewSize,

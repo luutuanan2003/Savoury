@@ -5,17 +5,31 @@
 //  Created by Elwiz Scott on 28/8/24.
 //
 
+// Checked by An 1/9/24
+
 import SwiftUI
 
+// A SwiftUI view for selecting ingredients from an alphabetical list.
+// This screen allows users to navigate, search, and select ingredients to add to a dish.
+
 struct SelectionScreen: View {
+    
+    // Binding to control the visibility of the other screens
+    
     @Binding var showSelectionScreen: Bool
     @Binding var showRecipeScreen: Bool
     @Binding var showCookingModeScreen: Bool
     
+    // State variable to track the currently selected letter for filtering ingredients.
     @State private var selectedLetter: Character = "B"
+    
+    // State variable to track the ingredients selected by the user.
     @State private var selectedIngredients: [String] = ["Black glutinous (sticky) rice"]
     
+    // Array of letters for alphabetical navigation.
     let letters: [Character] = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    
+    // List of ingredients available for selection starting with "B".
     let ingredients = [
         "Baharat", "Balsamic vinegar", "Barberries", "Bay leaves",
         "Besan flour", "Black glutinous (sticky) rice", "Black pudding", "Bonito flakes"
@@ -24,7 +38,6 @@ struct SelectionScreen: View {
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.all) // White background to cover the entire screen
-            
             VStack {
                 // Top navigation bar
                 HStack {
@@ -39,7 +52,9 @@ struct SelectionScreen: View {
                                 .fill(Color.yellow)
                                 .shadow(radius: 4))
                     }
+                    
                     Spacer()
+                    
                 }
                 .padding(.leading)
                 

@@ -4,12 +4,17 @@
 //
 //  Created by Elwiz Scott on 29/8/24.
 //
+// Checked by An 1/9/24
 
 import SwiftUI
 
+// A SwiftUI view for displaying the instructions for cooking the selected recipe.
+
 struct CookingModeScreen: View {
+    
+    // Binding to control the visibility of the other screens
     @Binding var showCookingModeScreen: Bool
-    @Binding var showRecipeScreen: Bool  // Add this binding to control RecipeScreen visibility
+    @Binding var showRecipeScreen: Bool  
     
     var stepIndex: Int = 2 // Current step index
     var totalSteps: Int = 5 // Total steps

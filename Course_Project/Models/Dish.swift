@@ -5,8 +5,12 @@
 //  Created by An Luu on 22/8/24.
 //
 
+// Checked by An 1/9/24
+
 import Foundation
 
+// A struct representing a dish in the application.
+// This model holds all the relevant details about a dish, including its name, type, image, favorite status, and ingredients.
 
 struct Dish: Hashable {
     var name: String

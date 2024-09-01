@@ -5,12 +5,19 @@
 //  Created by Elwiz Scott on 27/8/24.
 //
 
+// Checked by An 1/9/24
+
 import SwiftUI
 
+// A SwiftUI view representing a custom tab bar for the application.
+// The tab bar allows navigation between different sections of the app, including special handling for the camera and timer tabs for now and will be update soon.
+
 struct TabBarView: View {
-    @Binding var showSelectionScreen: Bool
-    @Binding var showTimerScreen: Bool
-    @State private var selectedTab: Tab = .home
+    @Binding var showSelectionScreen: Bool // Binding to control the visibility of the selection screen.
+    
+    @Binding var showTimerScreen: Bool // Binding to control the visibility of the timer screen.
+    
+    @State private var selectedTab: Tab = .home // State variable to track the currently selected tab, defaulting to the home tab.
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -43,6 +50,7 @@ struct TabBarView: View {
                 }
                 
                 Spacer()
+                
             }
             .padding(.horizontal, 10)
             .padding(.vertical, 0)
@@ -54,31 +62,6 @@ struct TabBarView: View {
                     .padding(.horizontal, 20)
             )
             .padding(.bottom, -10)
-        }
-    }
-}
-
-
-
-enum Tab: String, CaseIterable {
-    case home
-    case bookmark
-    case camera
-    case cooking
-    case timer
-
-    var iconName: String {
-        switch self {
-        case .home:
-            return "house"
-        case .bookmark:
-            return "bookmark"
-        case .camera:
-            return "camera"
-        case .cooking:
-            return "frying.pan"
-        case .timer:
-            return "timer"
         }
     }
 }
