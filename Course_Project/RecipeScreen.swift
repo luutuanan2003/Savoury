@@ -24,9 +24,10 @@ struct RecipeScreen: View {
     var recipeImage: String = "Tteokbokki"
 
     var body: some View {
+        
+        // White background to cover the entire screen
         ZStack {
-            Color.white.edgesIgnoringSafeArea(.all) // White background to cover the entire screen
-            
+            Color.white.edgesIgnoringSafeArea(.all)
             VStack {
                 // Top navigation bar
                 HStack {
@@ -57,6 +58,7 @@ struct RecipeScreen: View {
                 .padding(.horizontal)
                 
                 // Recipe Card
+                // TODO: Card view must be implemented so at each recipe/dish will be in the card and tilted to reveal the card underneatho and geasture wipe left or right to denied or accept the recipe/dish
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(Color.white)
