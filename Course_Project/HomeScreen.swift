@@ -9,6 +9,10 @@ import SwiftUI
 
 struct HomeScreen: View {
     @State private var showSelectionScreen = false
+    @State private var showRecipeScreen = false
+    @State private var showCookingModeScreen = false
+    @State private var showTimerScreen = false
+
     @State var dishes = [
         Dish(name: "Nasi Lemak", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"]),
         Dish(name: "Nasi Lemak1", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"]),
@@ -56,14 +60,40 @@ struct HomeScreen: View {
                 }
                 .frame(height: 430)
                 
-                TabBarView(showSelectionScreen: $showSelectionScreen)
+                TabBarView(
+                    showSelectionScreen: $showSelectionScreen,
+                    showTimerScreen: $showTimerScreen)
             }
             
             if showSelectionScreen {
-                SelectionScreen(showSelectionScreen: $showSelectionScreen)
-//                    .transition(.move(edge: .trailing))
-//                    .zIndex(1)
+                SelectionScreen(
+                    showSelectionScreen: $showSelectionScreen,
+                    showRecipeScreen: $showRecipeScreen,
+                    showCookingModeScreen: $showCookingModeScreen)
+                    .transition(.move(edge: .leading))
+                    .zIndex(1)
             }
+            
+            if showRecipeScreen {
+                RecipeScreen(
+                    showSelectionScreen: $showSelectionScreen,
+                    showRecipeScreen: $showRecipeScreen,
+                    showCookingModeScreen: $showCookingModeScreen)
+                    .transition(.move(edge: .leading))
+                    .zIndex(2)
+            }
+            
+            if showCookingModeScreen {
+                CookingModeScreen(showCookingModeScreen: $showCookingModeScreen, showRecipeScreen: $showRecipeScreen)
+                    .transition(.move(edge: .leading))
+                    .zIndex(3)
+            }
+            if showTimerScreen {
+                TimerScreen(isTimerViewVisible: $showTimerScreen)
+                    .transition(.move(edge: .bottom))
+                    .zIndex(1)  // Ensure TimerScreen is on top
+            }
+
         }
     }
 }

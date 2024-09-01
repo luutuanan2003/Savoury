@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
     @Binding var showSelectionScreen: Bool
+    @Binding var showTimerScreen: Bool
     @State private var selectedTab: Tab = .home
     
     var body: some View {
@@ -21,6 +22,8 @@ struct TabBarView: View {
                     Button(action: {
                         if tab == .camera {
                             showSelectionScreen = true
+                        } else if tab == .timer {
+                            showTimerScreen = true
                         } else {
                             selectedTab = tab
                         }
@@ -83,6 +86,7 @@ enum Tab: String, CaseIterable {
 
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView(showSelectionScreen: .constant(false))
+        TabBarView(showSelectionScreen: .constant(false),
+                   showTimerScreen: .constant(false))
     }
 }

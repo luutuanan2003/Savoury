@@ -9,9 +9,11 @@ import SwiftUI
 
 struct SelectionScreen: View {
     @Binding var showSelectionScreen: Bool
+    @Binding var showRecipeScreen: Bool
+    @Binding var showCookingModeScreen: Bool
+    
     @State private var selectedLetter: Character = "B"
     @State private var selectedIngredients: [String] = ["Black glutinous (sticky) rice"]
-    @State private var showRecipeScreen = false
     
     let letters: [Character] = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
     let ingredients = [
@@ -21,106 +23,103 @@ struct SelectionScreen: View {
     
     var body: some View {
         ZStack {
-            Color.white.edgesIgnoringSafeArea(.all)
+            Color.white.edgesIgnoringSafeArea(.all) // White background to cover the entire screen
             
-            if showRecipeScreen {
-                RecipeScreen(showRecipeScreen: $showRecipeScreen, showSelectionScreen: $showSelectionScreen)  // Pass the bindings
-            } else {
-                VStack {
-                    // Top navigation bar
-                    HStack {
-                        Button(action: {
-                            showSelectionScreen = false
-                        }) {
-                            Image(systemName: "chevron.backward")
-                                .bold()
-                                .foregroundColor(.black)
-                                .padding()
-                                .background(Circle()
-                                    .fill(Color.yellow)
-                                    .shadow(radius: 4))
-                        }
-                        Spacer()
-                    }
-                    .padding(.leading)
-                    
-                    // Title
-                    HStack {
-                        Text("Ingredient A-Z")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    
-                    // Search bar
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray)
-                        Text("Search")
-                            .foregroundColor(.gray)
-                        Spacer()
-                    }
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .opacity(0.8)
-                    .cornerRadius(40)
-                    .padding(.horizontal)
-                    
-                    // Alphabet scroll
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 10) {
-                            ForEach(letters, id: \.self) { letter in
-                                Text(String(letter))
-                                    .font(.system(size: 16, weight: .bold))
-                                    .foregroundColor(selectedLetter == letter ? .yellow : .black)
-                                    .onTapGesture {
-                                        selectedLetter = letter
-                                    }
-                            }
-                        }
-                    }
-                    .padding(.horizontal)
-                    .padding(.top, 10)
-                    
-                    // Ingredients list
-                    List {
-                        ForEach(ingredients, id: \.self) { ingredient in
-                            HStack {
-                                Circle()
-                                    .fill(selectedIngredients.contains(ingredient) ? Color.yellow : Color.gray.opacity(0.2))
-                                    .frame(width: 20, height: 20)
-                                Text(ingredient)
-                                Spacer()
-                            }
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                if selectedIngredients.contains(ingredient) {
-                                    selectedIngredients.removeAll { $0 == ingredient }
-                                } else {
-                                    selectedIngredients.append(ingredient)
-                                }
-                            }
-                        }
-                    }
-                    .listStyle(PlainListStyle())
-                    
-                    // Bottom button
+            VStack {
+                // Top navigation bar
+                HStack {
                     Button(action: {
-                        showRecipeScreen = true  // Show the RecipeScreen when "Add to dish" is pressed
+                        showSelectionScreen = false
                     }) {
-                        Text("Add to dish")
-                            .font(.system(size: 18, weight: .bold))
+                        Image(systemName: "chevron.backward")
+                            .bold()
                             .foregroundColor(.black)
-                            .padding(.horizontal, 30)
-                            .padding(.vertical, 10)
-                            .background(Capsule()
+                            .padding()
+                            .background(Circle()
                                 .fill(Color.yellow)
-                                .frame(height: 50)
                                 .shadow(radius: 4))
                     }
-                    .padding()
+                    Spacer()
                 }
+                .padding(.leading)
+                
+                // Title
+                HStack {
+                    Text("Ingredient A-Z")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                
+                // Search bar
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.gray)
+                    Text("Search")
+                        .foregroundColor(.gray)
+                    Spacer()
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .opacity(0.8)
+                .cornerRadius(40)
+                .padding(.horizontal)
+                
+                // Alphabet scroll
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(letters, id: \.self) { letter in
+                            Text(String(letter))
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(selectedLetter == letter ? .yellow : .black)
+                                .onTapGesture {
+                                    selectedLetter = letter
+                                }
+                        }
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.top, 10)
+                
+                // Ingredients list
+                List {
+                    ForEach(ingredients, id: \.self) { ingredient in
+                        HStack {
+                            Circle()
+                                .fill(selectedIngredients.contains(ingredient) ? Color.yellow : Color.gray.opacity(0.2))
+                                .frame(width: 20, height: 20)
+                            Text(ingredient)
+                            Spacer()
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if selectedIngredients.contains(ingredient) {
+                                selectedIngredients.removeAll { $0 == ingredient }
+                            } else {
+                                selectedIngredients.append(ingredient)
+                            }
+                        }
+                    }
+                }
+                .listStyle(PlainListStyle())
+                
+                // Bottom button
+                Button(action: {
+                    showRecipeScreen = true  // Show the RecipeScreen when "Add to dish" is pressed
+                    showSelectionScreen = false  // Hide SelectionScreen
+                }) {
+                    Text("Add to dish")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(.black)
+                        .padding(.horizontal, 30)
+                        .padding(.vertical, 10)
+                        .background(Capsule()
+                            .fill(Color.yellow)
+                            .frame(height: 50)
+                            .shadow(radius: 4))
+                }
+                .padding()
             }
         }
     }
@@ -128,6 +127,8 @@ struct SelectionScreen: View {
 
 struct SelectionScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SelectionScreen(showSelectionScreen: .constant(true))
+        SelectionScreen(showSelectionScreen: .constant(true),
+                        showRecipeScreen: .constant(false),
+                        showCookingModeScreen: .constant(false))
     }
 }
