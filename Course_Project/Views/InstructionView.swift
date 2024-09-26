@@ -8,18 +8,15 @@
 
 import SwiftUI
 
-// A SwiftUI view for displaying the instructions for cooking the selected recipe.
-
-// When the user presses on wok icon in the tab bar below, it will show the current cooking dish. If there is not a current dish, it will pop out a view saying that "Please choose a dish to cook" or something else similiar to notify the user.
-
+/// A SwiftUI view for displaying the instructions for cooking the selected recipe.
+/// When the user presses on wok icon in the tab bar below, it will show the current cooking dish. If there is not a current dish, it will pop out a view saying that "Please choose a dish to cook" or something else similiar to notify the user.
 struct InstructionView: View {
     
-    // Binding to control the visibility of the other screens
+    /// Binding to control the visibility of the other screens
     @Binding var showInstructionScreen: Bool
     @Binding var showRecipeScreen: Bool
-    @Binding var showTimerScreen: Bool  // Bind to control the TimerScreen visibility
-    @Binding var fromInstructionScreen: Bool  // Bind to track the TimerScreen launch source
- 
+    @Binding var showTimerScreen: Bool
+    @Binding var fromInstructionScreen: Bool  
     
     var stepIndex: Int = 2 // Current step index
     var totalSteps: Int = 5 // Total steps

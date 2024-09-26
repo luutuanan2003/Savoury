@@ -9,9 +9,8 @@
 
 import Foundation
 
-// An enum representing the different tabs available in the application.
-// Each case corresponds to a specific tab, such as home, bookmark, camera, cooking, and timer.
-
+/// An enum representing the different tabs available in the application.
+/// Each case corresponds to a specific tab, such as home, bookmark, camera, cooking, and timer.
 enum Tab: String, CaseIterable {
     case home
     case bookmark

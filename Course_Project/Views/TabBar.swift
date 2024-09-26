@@ -9,15 +9,15 @@
 
 import SwiftUI
 
-// A SwiftUI view representing a custom tab bar for the application.
-// The tab bar allows navigation between different sections of the app, including special handling for the camera and timer tabs for now and will be update soon.
-
+/// A SwiftUI view representing a custom tab bar for the application.
+/// The tab bar allows navigation between different sections of the app, including special handling for the camera and timer tabs for now and will be update soon.
 struct TabBar: View {
-    @Binding var showIngredientsScreen: Bool // Binding to control the visibility of the selection screen.
+    // Binding to control the visibility of the screens.
+    @Binding var showIngredientsScreen: Bool
+    @Binding var showTimerScreen: Bool
     
-    @Binding var showTimerScreen: Bool // Binding to control the visibility of the timer screen.
-    
-    @State private var selectedTab: Tab = .home // State variable to track the currently selected tab, defaulting to the home tab.
+    /// State variable to track the currently selected tab, defaulting to the home tab.
+    @State private var selectedTab: Tab = .home
     
     var body: some View {
         ZStack(alignment: .bottom) {

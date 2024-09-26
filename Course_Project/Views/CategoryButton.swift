@@ -9,9 +9,8 @@
 
 import SwiftUI
 
-// A SwiftUI view that represents a button for a specific category.
-// The button displays an icon and the name of the category, and it visually indicates whether the category is selected.
-
+/// A SwiftUI view that represents a button for a specific category.
+/// The button displays an icon and the name of the category, and it visually indicates whether the category is selected.
 struct CategoryButton: View {
     
     let category: Category

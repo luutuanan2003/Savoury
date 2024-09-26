@@ -8,20 +8,17 @@
 
 import SwiftUI
 
-// The main screen view of the application, providing an overview of various dishes,
-// navigation through categories, and access to different sections like the recipe and cooking mode screens.
-
+///The main screen view of the application, providing an overview of various dishes, navigation through categories, and access to different sections like the recipe and cooking mode screens.
 struct HomeView: View {
     
-    // State to control the visibility of the  screens
-    
+    /// State to control the visibility of the  screens
     @State private var showIngredientsScreen = false
     @State private var showRecipeScreen = false
     @State private var showInstructionScreen = false
     @State private var showTimerScreen = false
     @State private var fromInstructionScreen = false
 
-    // List of dishes to display on the home screen.
+    /// List of dishes to display on the home screen.
     @State var dishes = [
         Dish(name: "Nasi Lemak", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"]),
         Dish(name: "Nasi Lemak1", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"]),

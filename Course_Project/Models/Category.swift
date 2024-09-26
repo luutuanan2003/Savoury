@@ -10,9 +10,8 @@
 import Foundation
 
 
-// Enum representing different categories used within the application.
-// Each case corresponds to a specific type of category, such as popular items, recently added items, desserts, and main dishes.
-
+/// Enum representing different categories used within the application.
+/// Each case corresponds to a specific type of category, such as popular items, recently added items, desserts, and main dishes.
 enum Category {
     case popular, recently, dessert, maindishes
     
@@ -29,7 +28,7 @@ enum Category {
         }
     }
     
-    // SF-Symbol to return the system symbol name associated with each case.
+    /// SF-Symbol to return the system symbol name associated with each case.
     var categorySymbol: String {
         switch self {
         case .popular:

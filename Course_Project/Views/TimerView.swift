@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-// This view make use of the custom layout provided in the lectorial code example in example 9, week 4 to resemble the twist timer appears in most of the kitchen ware.
-
+/// This view make use of the custom layout provided in the lectorial code example in example 9, week 4 to resemble the twist timer appears in most of the kitchen ware.
 struct TimerView: View {
-    // Track where the TimerScreen was launched from
+    /// Track where the TimerScreen was launched from
     @Binding var isTimerViewVisible: Bool
     @Binding var fromInstructionScreen: Bool
 

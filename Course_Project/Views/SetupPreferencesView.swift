@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// This SwiftUI view facilitates the configuration of user dietary preferences and allergy selections.
+/// It features an interactive list where users can select their allergies and diet preferences using multiple-choice options. The selections are managed through dynamic updates to the binding sets of selectedAllergies and selectedDiets.
 struct SetupPreferencesView: View {
     @Binding var show: Bool
     @State private var selectedAllergies: Set<Allergy> = []

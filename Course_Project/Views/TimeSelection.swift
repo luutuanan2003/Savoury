@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-// A SwiftUI view representing a custom hour min sec bar for the application.
-
+/// A SwiftUI view representing a custom hour min sec bar for the application.
 struct TimeSelection: View {
     @State private var selectedTimeUnit: TimeUnit = .hour
 

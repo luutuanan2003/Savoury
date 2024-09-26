@@ -8,7 +8,7 @@
 import SwiftUI
 import Auth0
 
-
+/// This swiftUI view is taken from https://auth0.com/blog/get-started-ios-authentication-swift-swiftui-part-1-login-logout/#Install--Auth0-swift
 struct UserAuthenticationView: View {
   
   @State private var isAuthenticated = false

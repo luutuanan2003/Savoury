@@ -7,7 +7,8 @@
 
 import JWTDecode
 
-
+/// Defines the Profile structure for managing user information in the Savoury app.
+/// Includes methods for initializing an empty profile and constructing a profile from a JWT token.
 struct Profile {
   
   let id: String

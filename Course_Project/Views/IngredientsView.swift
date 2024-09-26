@@ -9,27 +9,25 @@
 
 import SwiftUI
 
-// A SwiftUI view for selecting ingredients from an alphabetical list.
-// This screen allows users to navigate, search, and select ingredients to add to a dish.
-
+/// A SwiftUI view for selecting ingredients from an alphabetical list.
+/// This screen allows users to navigate, search, and select ingredients to add to a dish.
 struct IngredientsView: View {
     
-    // Binding to control the visibility of the other screens
-    
+    /// Binding to control the visibility of the other screens
     @Binding var showIngredientsScreen: Bool
     @Binding var showRecipeScreen: Bool
     @Binding var showInstructionScreen: Bool
     
-    // State variable to track the currently selected letter for filtering ingredients.
+    /// State variable to track the currently selected letter for filtering ingredients.
     @State private var selectedLetter: Character = "B"
     
-    // State variable to track the ingredients selected by the user.
+    /// State variable to track the ingredients selected by the user.
     @State private var selectedIngredients: [String] = ["Black glutinous (sticky) rice"]
     
-    // Array of letters for alphabetical navigation.
+    /// Array of letters for alphabetical navigation.
     let letters: [Character] = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
     
-    // List of ingredients available for selection starting with "B".
+    /// List of ingredients available for selection starting with "B".
     let ingredients = [
         "Baharat", "Balsamic vinegar", "Barberries", "Bay leaves",
         "Besan flour", "Black glutinous (sticky) rice", "Black pudding", "Bonito flakes"

@@ -1,29 +1,14 @@
 //
-//  Preference.swift
+//  Diet.swift
 //  Savoury
 //
-//  Created by An Luu on 23/9/24.
+//  Created by An Luu on 26/9/24.
 //
 
 import Foundation
 
-enum Allergy: CaseIterable, CustomStringConvertible {
-    case dairyFree, glutenFree, peanutFree, shellfishFree
-
-    var description: String {
-        switch self {
-        case .dairyFree:
-            return "Dairy Free"
-        case .glutenFree:
-            return "Gluten Free"
-        case .peanutFree:
-            return "Peanut Free"
-        case .shellfishFree:
-            return "Shellfish Free"
-        }
-    }
-}
-
+///  Defines enums for dietary preferences and allergies used in the Savoury app.
+///  - Diet: Covers diets such as Vegan, Keto, and others, providing clear labels for UI display.
 enum Diet: CaseIterable, CustomStringConvertible {
     case vegan, vegetarian, porkFree, keto, lowFat, highProtein, highFiber, balanced
 
@@ -48,5 +33,3 @@ enum Diet: CaseIterable, CustomStringConvertible {
         }
     }
 }
-
-

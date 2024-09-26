@@ -9,9 +9,8 @@
 
 import SwiftUI
 
-// A SwiftUI view that represents a row displaying a dish's image along with its name and type.
-// This view is used to visually present a dish within a grid or list.
-
+/// A SwiftUI view that represents a row displaying a dish's image along with its name and type.
+/// This view is used to visually present a dish within a grid or list.
 struct BasicTextImageRow: View {
     @Binding var dish: Dish
     

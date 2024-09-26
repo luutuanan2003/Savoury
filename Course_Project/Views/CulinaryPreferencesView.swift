@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// This SwiftUI view is designed to guide users through setting up their dietary preferences and allergen alerts.
+/// It features an introductory screen that leads to the SetupPreferencesView for detailed preference configuration.
 struct CulinaryPreferencesView: View {
     
     @State var show = false

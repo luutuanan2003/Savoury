@@ -25,12 +25,14 @@
 		C6BBE0542C84226D00ED637D /* BasicTextImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BBE0532C84226D00ED637D /* BasicTextImageRow.swift */; };
 		C6D2067A2CA1322A00E8D196 /* CulinaryPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D206792CA1322A00E8D196 /* CulinaryPreferencesView.swift */; };
 		C6D2067C2CA1380900E8D196 /* SetupPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2067B2CA1380900E8D196 /* SetupPreferencesView.swift */; };
-		C6D2067E2CA1419000E8D196 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2067D2CA1419000E8D196 /* Preference.swift */; };
 		C6D206802CA3EA7300E8D196 /* Auth0.swift in Resources */ = {isa = PBXBuildFile; fileRef = C6D2067F2CA3EA7300E8D196 /* Auth0.swift */; };
 		C6D206832CA3EC9700E8D196 /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = C6D206822CA3EC9700E8D196 /* Auth0 */; };
 		C6D206872CA3EDBB00E8D196 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6D206862CA3EDBB00E8D196 /* Auth0.plist */; };
 		C6D206892CA3F38E00E8D196 /* UserAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D206882CA3F38E00E8D196 /* UserAuthenticationView.swift */; };
 		C6D2068B2CA3F3AF00E8D196 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2068A2CA3F3AF00E8D196 /* Profile.swift */; };
+		C6D2068F2CA50B8700E8D196 /* SavouryCatalog.docc in Sources */ = {isa = PBXBuildFile; fileRef = C6D2068E2CA50B8700E8D196 /* SavouryCatalog.docc */; };
+		C6D206912CA510E600E8D196 /* Allergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D206902CA510E600E8D196 /* Allergy.swift */; };
+		C6D206932CA5111F00E8D196 /* Diet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D206922CA5111F00E8D196 /* Diet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,11 +55,13 @@
 		C6BBE0532C84226D00ED637D /* BasicTextImageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextImageRow.swift; sourceTree = "<group>"; };
 		C6D206792CA1322A00E8D196 /* CulinaryPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulinaryPreferencesView.swift; sourceTree = "<group>"; };
 		C6D2067B2CA1380900E8D196 /* SetupPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPreferencesView.swift; sourceTree = "<group>"; };
-		C6D2067D2CA1419000E8D196 /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		C6D2067F2CA3EA7300E8D196 /* Auth0.swift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Auth0.swift; path = "../../../../../../Developer/Xcode/DerivedData/iOS_SwiftUI_Login-dflryuebvllqpaehnquvuuamkkbx/SourcePackages/checkouts/Auth0.swift"; sourceTree = "<group>"; };
 		C6D206862CA3EDBB00E8D196 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		C6D206882CA3F38E00E8D196 /* UserAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationView.swift; sourceTree = "<group>"; };
 		C6D2068A2CA3F3AF00E8D196 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		C6D2068E2CA50B8700E8D196 /* SavouryCatalog.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SavouryCatalog.docc; sourceTree = "<group>"; };
+		C6D206902CA510E600E8D196 /* Allergy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allergy.swift; sourceTree = "<group>"; };
+		C6D206922CA5111F00E8D196 /* Diet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 				0DD6F6D82C79D1550036E36A /* Assets.xcassets */,
 				0DD6F6DA2C79D1550036E36A /* Preview Content */,
 				C6D206862CA3EDBB00E8D196 /* Auth0.plist */,
+				C6D2068E2CA50B8700E8D196 /* SavouryCatalog.docc */,
 			);
 			path = Course_Project;
 			sourceTree = "<group>";
@@ -136,8 +141,9 @@
 				0DD6F6E62C79DC100036E36A /* Category.swift */,
 				0D4415452C804DAD004B4AB9 /* Dish.swift */,
 				C6BBE0512C841F0300ED637D /* Tab.swift */,
-				C6D2067D2CA1419000E8D196 /* Preference.swift */,
 				C6D2068A2CA3F3AF00E8D196 /* Profile.swift */,
+				C6D206902CA510E600E8D196 /* Allergy.swift */,
+				C6D206922CA5111F00E8D196 /* Diet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -221,9 +227,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D44152D2C7DA3DE004B4AB9 /* CategoryTab.swift in Sources */,
-				C6D2067E2CA1419000E8D196 /* Preference.swift in Sources */,
 				0DD6F6E92C79E0770036E36A /* CategoryButton.swift in Sources */,
 				0D4415462C804DAD004B4AB9 /* Dish.swift in Sources */,
+				C6D206912CA510E600E8D196 /* Allergy.swift in Sources */,
 				C6D2067C2CA1380900E8D196 /* SetupPreferencesView.swift in Sources */,
 				C6BBE0522C841F0300ED637D /* Tab.swift in Sources */,
 				0D44153E2C801AE7004B4AB9 /* InstructionView.swift in Sources */,
@@ -232,8 +238,10 @@
 				C6D2067A2CA1322A00E8D196 /* CulinaryPreferencesView.swift in Sources */,
 				C6BBE0542C84226D00ED637D /* BasicTextImageRow.swift in Sources */,
 				0D4415402C802684004B4AB9 /* TimerView.swift in Sources */,
+				C6D206932CA5111F00E8D196 /* Diet.swift in Sources */,
 				0DD6F6D52C79D1540036E36A /* Savoury.swift in Sources */,
 				0D44154A2C843F96004B4AB9 /* TimeSelection.swift in Sources */,
+				C6D2068F2CA50B8700E8D196 /* SavouryCatalog.docc in Sources */,
 				0D4415352C7EF772004B4AB9 /* IngredientsView.swift in Sources */,
 				0DD6F6E72C79DC100036E36A /* Category.swift in Sources */,
 				C6D2068B2CA3F3AF00E8D196 /* Profile.swift in Sources */,
