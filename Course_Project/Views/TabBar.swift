@@ -66,7 +66,6 @@ struct TabBar: View {
     }
 }
 
-
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
         TabBar(showIngredientsScreen: .constant(false),
