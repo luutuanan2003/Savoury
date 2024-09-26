@@ -34,7 +34,7 @@ struct CulinaryPreferencesView: View {
                     Spacer()
                 }
                 Spacer()
-                Image("PreferenceScreenArt")
+                Image("guyCooking")
                     .padding()
                 Spacer()
                 NavigationLink(destination: SetupPreferencesView(show: $show)) {

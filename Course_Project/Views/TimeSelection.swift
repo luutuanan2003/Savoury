@@ -2,7 +2,7 @@
 //  TimeSelectionView.swift
 //  Savoury
 //
-//  Created by Elwiz Scott on 1/9/24.
+//  Created by Kien Le on 1/9/24.
 //
 
 import SwiftUI

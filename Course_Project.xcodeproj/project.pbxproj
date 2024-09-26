@@ -25,7 +25,6 @@
 		C6BBE0542C84226D00ED637D /* BasicTextImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BBE0532C84226D00ED637D /* BasicTextImageRow.swift */; };
 		C6D2067A2CA1322A00E8D196 /* CulinaryPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D206792CA1322A00E8D196 /* CulinaryPreferencesView.swift */; };
 		C6D2067C2CA1380900E8D196 /* SetupPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2067B2CA1380900E8D196 /* SetupPreferencesView.swift */; };
-		C6D206802CA3EA7300E8D196 /* Auth0.swift in Resources */ = {isa = PBXBuildFile; fileRef = C6D2067F2CA3EA7300E8D196 /* Auth0.swift */; };
 		C6D206832CA3EC9700E8D196 /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = C6D206822CA3EC9700E8D196 /* Auth0 */; };
 		C6D206872CA3EDBB00E8D196 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6D206862CA3EDBB00E8D196 /* Auth0.plist */; };
 		C6D206892CA3F38E00E8D196 /* UserAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D206882CA3F38E00E8D196 /* UserAuthenticationView.swift */; };
@@ -55,7 +54,6 @@
 		C6BBE0532C84226D00ED637D /* BasicTextImageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextImageRow.swift; sourceTree = "<group>"; };
 		C6D206792CA1322A00E8D196 /* CulinaryPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulinaryPreferencesView.swift; sourceTree = "<group>"; };
 		C6D2067B2CA1380900E8D196 /* SetupPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPreferencesView.swift; sourceTree = "<group>"; };
-		C6D2067F2CA3EA7300E8D196 /* Auth0.swift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Auth0.swift; path = "../../../../../../Developer/Xcode/DerivedData/iOS_SwiftUI_Login-dflryuebvllqpaehnquvuuamkkbx/SourcePackages/checkouts/Auth0.swift"; sourceTree = "<group>"; };
 		C6D206862CA3EDBB00E8D196 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		C6D206882CA3F38E00E8D196 /* UserAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationView.swift; sourceTree = "<group>"; };
 		C6D2068A2CA3F3AF00E8D196 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 		0DD6F6DA2C79D1550036E36A /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				C6D2067F2CA3EA7300E8D196 /* Auth0.swift */,
 				0DD6F6DB2C79D1550036E36A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -213,7 +210,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DD6F6DC2C79D1550036E36A /* Preview Assets.xcassets in Resources */,
-				C6D206802CA3EA7300E8D196 /* Auth0.swift in Resources */,
 				0DD6F6D92C79D1550036E36A /* Assets.xcassets in Resources */,
 				C6D206872CA3EDBB00E8D196 /* Auth0.plist in Resources */,
 			);

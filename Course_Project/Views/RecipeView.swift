@@ -1,8 +1,8 @@
 //
-//  RecipeScreen.swift
+//  RecipeView.swift
 //  Savoury
 //
-//  Created by Elwiz Scott on 28/8/24.
+//  Created by Kien Le on 28/8/24.
 //
 // Check by An 1/9/24
 

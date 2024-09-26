@@ -2,7 +2,7 @@
 //  TimerScreen.swift
 //  Savoury
 //
-//  Created by Elwiz Scott on 29/8/24.
+//  Created by Kien Le on 29/8/24.
 //
 
 import SwiftUI

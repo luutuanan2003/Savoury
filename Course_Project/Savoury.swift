@@ -1,8 +1,8 @@
 //
-//  Course_ProjectApp.swift
-//  Course_Project
+//  Savoury.swift
+//  Savoury
 //
-//  Created by Elwiz Scott on 24/8/24.
+//  Created by Kien Le on 24/8/24.
 //
 
 // Checked by An 1/9/24
@@ -13,8 +13,8 @@ import SwiftUI
 struct Savoury: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
-//            UserAuthenticationView()
+//            HomeView()
+            UserAuthenticationView()
         }
     }
 }

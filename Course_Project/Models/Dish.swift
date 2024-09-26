@@ -1,6 +1,6 @@
 //
 //  Dish.swift
-//  a1-s3926655
+//  Savoury
 //
 //  Created by An Luu on 22/8/24.
 //

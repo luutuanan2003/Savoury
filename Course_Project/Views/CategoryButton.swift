@@ -1,8 +1,8 @@
 //
 //  CategoryButton.swift
-//  Course_Project
+//  Savoury
 //
-//  Created by Elwiz Scott on 24/8/24.
+//  Created by Kien Le on 24/8/24.
 //
 
 // Checked by An 1/9/24
