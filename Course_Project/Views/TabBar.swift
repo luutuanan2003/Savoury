@@ -12,7 +12,7 @@ import SwiftUI
 // A SwiftUI view representing a custom tab bar for the application.
 // The tab bar allows navigation between different sections of the app, including special handling for the camera and timer tabs for now and will be update soon.
 
-struct TabBarView: View {
+struct TabBar: View {
     @Binding var showIngredientsScreen: Bool // Binding to control the visibility of the selection screen.
     
     @Binding var showTimerScreen: Bool // Binding to control the visibility of the timer screen.
@@ -69,7 +69,7 @@ struct TabBarView: View {
 
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView(showIngredientsScreen: .constant(false),
+        TabBar(showIngredientsScreen: .constant(false),
                    showTimerScreen: .constant(false))
     }
 }

@@ -10,10 +10,11 @@
 import SwiftUI
 
 @main
-struct Course_ProjectApp: App {
+struct Savoury: App {
     var body: some Scene {
         WindowGroup {
-            HomeScreen()
+            HomeView()
+//            UserAuthenticationView()
         }
     }
 }

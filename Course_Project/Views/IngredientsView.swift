@@ -12,7 +12,7 @@ import SwiftUI
 // A SwiftUI view for selecting ingredients from an alphabetical list.
 // This screen allows users to navigate, search, and select ingredients to add to a dish.
 
-struct IngredientsScreen: View {
+struct IngredientsView: View {
     
     // Binding to control the visibility of the other screens
     
@@ -142,7 +142,7 @@ struct IngredientsScreen: View {
 
 struct IngredientsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientsScreen(showIngredientsScreen: .constant(true),
+        IngredientsView(showIngredientsScreen: .constant(true),
                         showRecipeScreen: .constant(false),
                         showInstructionScreen: .constant(false))
     }

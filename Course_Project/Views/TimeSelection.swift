@@ -9,7 +9,7 @@ import SwiftUI
 
 // A SwiftUI view representing a custom hour min sec bar for the application.
 
-struct TimeSelectionView: View {
+struct TimeSelection: View {
     @State private var selectedTimeUnit: TimeUnit = .hour
 
     var body: some View {
@@ -49,5 +49,5 @@ enum TimeUnit: String, CaseIterable {
 
 
 #Preview {
-    TimeSelectionView()
+    TimeSelection()
 }

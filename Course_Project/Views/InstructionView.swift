@@ -12,7 +12,7 @@ import SwiftUI
 
 // When the user presses on wok icon in the tab bar below, it will show the current cooking dish. If there is not a current dish, it will pop out a view saying that "Please choose a dish to cook" or something else similiar to notify the user.
 
-struct InstructionScreen: View {
+struct InstructionView: View {
     
     // Binding to control the visibility of the other screens
     @Binding var showInstructionScreen: Bool
@@ -172,7 +172,7 @@ struct InstructionScreen: View {
 
 struct InstructionScreen_Previews: PreviewProvider {
     static var previews: some View {
-        InstructionScreen(
+        InstructionView(
             showInstructionScreen: .constant(true),
             showRecipeScreen: .constant(false),
             showTimerScreen: .constant(false),

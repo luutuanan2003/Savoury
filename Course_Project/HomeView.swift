@@ -11,7 +11,7 @@ import SwiftUI
 // The main screen view of the application, providing an overview of various dishes,
 // navigation through categories, and access to different sections like the recipe and cooking mode screens.
 
-struct HomeScreen: View {
+struct HomeView: View {
     
     // State to control the visibility of the  screens
     
@@ -49,7 +49,7 @@ struct HomeScreen: View {
                 }
                 .padding()
                 
-                CategoryTabView()
+                CategoryTab()
                 
                 HStack {
                     Text("Top dishes of the day")
@@ -73,7 +73,7 @@ struct HomeScreen: View {
                 
                 
                 // Using the TabBarView for navigating to other parts of the application.
-                TabBarView(
+                TabBar(
                     showIngredientsScreen: $showIngredientsScreen,
                     showTimerScreen: $showTimerScreen)
             }
@@ -81,7 +81,7 @@ struct HomeScreen: View {
             // Conditionally display the selected screen if @State variable above is true.
             
             if showIngredientsScreen {
-                IngredientsScreen(
+                IngredientsView(
                     showIngredientsScreen: $showIngredientsScreen,
                     showRecipeScreen: $showRecipeScreen,
                     showInstructionScreen: $showInstructionScreen)
@@ -90,7 +90,7 @@ struct HomeScreen: View {
             }
             
             if showRecipeScreen {
-                RecipeScreen(
+                RecipeView(
                     showIngredientsScreen: $showIngredientsScreen,
                     showRecipeScreen: $showRecipeScreen,
                     showInstructionScreen: $showInstructionScreen)
@@ -99,7 +99,7 @@ struct HomeScreen: View {
             }
             
             if showInstructionScreen {
-                InstructionScreen(
+                InstructionView(
                     showInstructionScreen: $showInstructionScreen,
                     showRecipeScreen: $showRecipeScreen,
                     showTimerScreen: $showTimerScreen,
@@ -109,7 +109,7 @@ struct HomeScreen: View {
             }
             
             if showTimerScreen {
-                TimerScreen(
+                TimerView(
                     isTimerViewVisible: $showTimerScreen,
                     fromInstructionScreen: $fromInstructionScreen)  // Pass the state to TimerScreen
                     .transition(.move(edge: .leading))
@@ -122,6 +122,6 @@ struct HomeScreen: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreen()
+        HomeView()
     }
 }

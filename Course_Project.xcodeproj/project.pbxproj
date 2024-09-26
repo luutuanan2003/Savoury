@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D44152D2C7DA3DE004B4AB9 /* CategoryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44152C2C7DA3DE004B4AB9 /* CategoryTabView.swift */; };
-		0D44152F2C7DAA27004B4AB9 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44152E2C7DAA27004B4AB9 /* TabBarView.swift */; };
-		0D4415332C7DB7B0004B4AB9 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415322C7DB7B0004B4AB9 /* HomeScreen.swift */; };
-		0D4415352C7EF772004B4AB9 /* IngredientsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415342C7EF772004B4AB9 /* IngredientsScreen.swift */; };
-		0D4415372C7EFBA1004B4AB9 /* RecipeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415362C7EFBA1004B4AB9 /* RecipeScreen.swift */; };
-		0D44153E2C801AE7004B4AB9 /* InstructionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44153D2C801AE7004B4AB9 /* InstructionScreen.swift */; };
-		0D4415402C802684004B4AB9 /* TimerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44153F2C802684004B4AB9 /* TimerScreen.swift */; };
+		0D44152D2C7DA3DE004B4AB9 /* CategoryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44152C2C7DA3DE004B4AB9 /* CategoryTab.swift */; };
+		0D44152F2C7DAA27004B4AB9 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44152E2C7DAA27004B4AB9 /* TabBar.swift */; };
+		0D4415332C7DB7B0004B4AB9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415322C7DB7B0004B4AB9 /* HomeView.swift */; };
+		0D4415352C7EF772004B4AB9 /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415342C7EF772004B4AB9 /* IngredientsView.swift */; };
+		0D4415372C7EFBA1004B4AB9 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415362C7EFBA1004B4AB9 /* RecipeView.swift */; };
+		0D44153E2C801AE7004B4AB9 /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44153D2C801AE7004B4AB9 /* InstructionView.swift */; };
+		0D4415402C802684004B4AB9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44153F2C802684004B4AB9 /* TimerView.swift */; };
 		0D4415462C804DAD004B4AB9 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415452C804DAD004B4AB9 /* Dish.swift */; };
-		0D44154A2C843F96004B4AB9 /* TimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415492C843F96004B4AB9 /* TimeSelectionView.swift */; };
-		0DD6F6D52C79D1540036E36A /* Course_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6F6D42C79D1540036E36A /* Course_ProjectApp.swift */; };
+		0D44154A2C843F96004B4AB9 /* TimeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415492C843F96004B4AB9 /* TimeSelection.swift */; };
+		0DD6F6D52C79D1540036E36A /* Savoury.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6F6D42C79D1540036E36A /* Savoury.swift */; };
 		0DD6F6D92C79D1550036E36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6F6D82C79D1550036E36A /* Assets.xcassets */; };
 		0DD6F6DC2C79D1550036E36A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6F6DB2C79D1550036E36A /* Preview Assets.xcassets */; };
 		0DD6F6E72C79DC100036E36A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6F6E62C79DC100036E36A /* Category.swift */; };
@@ -26,20 +26,25 @@
 		C6D2067A2CA1322A00E8D196 /* CulinaryPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D206792CA1322A00E8D196 /* CulinaryPreferencesView.swift */; };
 		C6D2067C2CA1380900E8D196 /* SetupPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2067B2CA1380900E8D196 /* SetupPreferencesView.swift */; };
 		C6D2067E2CA1419000E8D196 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2067D2CA1419000E8D196 /* Preference.swift */; };
+		C6D206802CA3EA7300E8D196 /* Auth0.swift in Resources */ = {isa = PBXBuildFile; fileRef = C6D2067F2CA3EA7300E8D196 /* Auth0.swift */; };
+		C6D206832CA3EC9700E8D196 /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = C6D206822CA3EC9700E8D196 /* Auth0 */; };
+		C6D206872CA3EDBB00E8D196 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6D206862CA3EDBB00E8D196 /* Auth0.plist */; };
+		C6D206892CA3F38E00E8D196 /* UserAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D206882CA3F38E00E8D196 /* UserAuthenticationView.swift */; };
+		C6D2068B2CA3F3AF00E8D196 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2068A2CA3F3AF00E8D196 /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D44152C2C7DA3DE004B4AB9 /* CategoryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabView.swift; sourceTree = "<group>"; };
-		0D44152E2C7DAA27004B4AB9 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		0D4415322C7DB7B0004B4AB9 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
-		0D4415342C7EF772004B4AB9 /* IngredientsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsScreen.swift; sourceTree = "<group>"; };
-		0D4415362C7EFBA1004B4AB9 /* RecipeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreen.swift; sourceTree = "<group>"; };
-		0D44153D2C801AE7004B4AB9 /* InstructionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionScreen.swift; sourceTree = "<group>"; };
-		0D44153F2C802684004B4AB9 /* TimerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerScreen.swift; sourceTree = "<group>"; };
+		0D44152C2C7DA3DE004B4AB9 /* CategoryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTab.swift; sourceTree = "<group>"; };
+		0D44152E2C7DAA27004B4AB9 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		0D4415322C7DB7B0004B4AB9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ../HomeView.swift; sourceTree = "<group>"; };
+		0D4415342C7EF772004B4AB9 /* IngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
+		0D4415362C7EFBA1004B4AB9 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		0D44153D2C801AE7004B4AB9 /* InstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
+		0D44153F2C802684004B4AB9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		0D4415452C804DAD004B4AB9 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
-		0D4415492C843F96004B4AB9 /* TimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionView.swift; sourceTree = "<group>"; };
+		0D4415492C843F96004B4AB9 /* TimeSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelection.swift; sourceTree = "<group>"; };
 		0DD6F6D12C79D1540036E36A /* Savoury.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savoury.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0DD6F6D42C79D1540036E36A /* Course_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course_ProjectApp.swift; sourceTree = "<group>"; };
+		0DD6F6D42C79D1540036E36A /* Savoury.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Savoury.swift; sourceTree = "<group>"; };
 		0DD6F6D82C79D1550036E36A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DD6F6DB2C79D1550036E36A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0DD6F6E62C79DC100036E36A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -49,6 +54,10 @@
 		C6D206792CA1322A00E8D196 /* CulinaryPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulinaryPreferencesView.swift; sourceTree = "<group>"; };
 		C6D2067B2CA1380900E8D196 /* SetupPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPreferencesView.swift; sourceTree = "<group>"; };
 		C6D2067D2CA1419000E8D196 /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
+		C6D2067F2CA3EA7300E8D196 /* Auth0.swift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Auth0.swift; path = "../../../../../../Developer/Xcode/DerivedData/iOS_SwiftUI_Login-dflryuebvllqpaehnquvuuamkkbx/SourcePackages/checkouts/Auth0.swift"; sourceTree = "<group>"; };
+		C6D206862CA3EDBB00E8D196 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
+		C6D206882CA3F38E00E8D196 /* UserAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationView.swift; sourceTree = "<group>"; };
+		C6D2068A2CA3F3AF00E8D196 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D206832CA3EC9700E8D196 /* Auth0 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,16 +93,10 @@
 			children = (
 				0DD6F6E52C79DBE70036E36A /* Models */,
 				0DD6F6E42C79DBD00036E36A /* Views */,
-				0DD6F6D42C79D1540036E36A /* Course_ProjectApp.swift */,
-				0D4415322C7DB7B0004B4AB9 /* HomeScreen.swift */,
-				0D4415342C7EF772004B4AB9 /* IngredientsScreen.swift */,
-				0D4415362C7EFBA1004B4AB9 /* RecipeScreen.swift */,
-				0D44153D2C801AE7004B4AB9 /* InstructionScreen.swift */,
-				0D44153F2C802684004B4AB9 /* TimerScreen.swift */,
-				C6D206792CA1322A00E8D196 /* CulinaryPreferencesView.swift */,
-				C6D2067B2CA1380900E8D196 /* SetupPreferencesView.swift */,
+				0DD6F6D42C79D1540036E36A /* Savoury.swift */,
 				0DD6F6D82C79D1550036E36A /* Assets.xcassets */,
 				0DD6F6DA2C79D1550036E36A /* Preview Content */,
+				C6D206862CA3EDBB00E8D196 /* Auth0.plist */,
 			);
 			path = Course_Project;
 			sourceTree = "<group>";
@@ -100,6 +104,7 @@
 		0DD6F6DA2C79D1550036E36A /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				C6D2067F2CA3EA7300E8D196 /* Auth0.swift */,
 				0DD6F6DB2C79D1550036E36A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -108,11 +113,19 @@
 		0DD6F6E42C79DBD00036E36A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C6D206792CA1322A00E8D196 /* CulinaryPreferencesView.swift */,
+				C6D2067B2CA1380900E8D196 /* SetupPreferencesView.swift */,
+				0D4415322C7DB7B0004B4AB9 /* HomeView.swift */,
+				0D4415342C7EF772004B4AB9 /* IngredientsView.swift */,
+				0D4415362C7EFBA1004B4AB9 /* RecipeView.swift */,
+				0D44153D2C801AE7004B4AB9 /* InstructionView.swift */,
+				0D44153F2C802684004B4AB9 /* TimerView.swift */,
 				0DD6F6E82C79E0770036E36A /* CategoryButton.swift */,
-				0D44152C2C7DA3DE004B4AB9 /* CategoryTabView.swift */,
-				0D44152E2C7DAA27004B4AB9 /* TabBarView.swift */,
+				0D44152C2C7DA3DE004B4AB9 /* CategoryTab.swift */,
+				0D44152E2C7DAA27004B4AB9 /* TabBar.swift */,
 				C6BBE0532C84226D00ED637D /* BasicTextImageRow.swift */,
-				0D4415492C843F96004B4AB9 /* TimeSelectionView.swift */,
+				0D4415492C843F96004B4AB9 /* TimeSelection.swift */,
+				C6D206882CA3F38E00E8D196 /* UserAuthenticationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,6 +137,7 @@
 				0D4415452C804DAD004B4AB9 /* Dish.swift */,
 				C6BBE0512C841F0300ED637D /* Tab.swift */,
 				C6D2067D2CA1419000E8D196 /* Preference.swift */,
+				C6D2068A2CA3F3AF00E8D196 /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -144,6 +158,9 @@
 			dependencies = (
 			);
 			name = Savoury;
+			packageProductDependencies = (
+				C6D206822CA3EC9700E8D196 /* Auth0 */,
+			);
 			productName = Course_Project;
 			productReference = 0DD6F6D12C79D1540036E36A /* Savoury.app */;
 			productType = "com.apple.product-type.application";
@@ -172,6 +189,9 @@
 				Base,
 			);
 			mainGroup = 0DD6F6C82C79D1540036E36A;
+			packageReferences = (
+				C6D206812CA3EC9700E8D196 /* XCRemoteSwiftPackageReference "Auth0" */,
+			);
 			productRefGroup = 0DD6F6D22C79D1540036E36A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -187,7 +207,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DD6F6DC2C79D1550036E36A /* Preview Assets.xcassets in Resources */,
+				C6D206802CA3EA7300E8D196 /* Auth0.swift in Resources */,
 				0DD6F6D92C79D1550036E36A /* Assets.xcassets in Resources */,
+				C6D206872CA3EDBB00E8D196 /* Auth0.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,23 +220,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D44152D2C7DA3DE004B4AB9 /* CategoryTabView.swift in Sources */,
+				0D44152D2C7DA3DE004B4AB9 /* CategoryTab.swift in Sources */,
 				C6D2067E2CA1419000E8D196 /* Preference.swift in Sources */,
 				0DD6F6E92C79E0770036E36A /* CategoryButton.swift in Sources */,
 				0D4415462C804DAD004B4AB9 /* Dish.swift in Sources */,
 				C6D2067C2CA1380900E8D196 /* SetupPreferencesView.swift in Sources */,
 				C6BBE0522C841F0300ED637D /* Tab.swift in Sources */,
-				0D44153E2C801AE7004B4AB9 /* InstructionScreen.swift in Sources */,
-				0D44152F2C7DAA27004B4AB9 /* TabBarView.swift in Sources */,
-				0D4415332C7DB7B0004B4AB9 /* HomeScreen.swift in Sources */,
+				0D44153E2C801AE7004B4AB9 /* InstructionView.swift in Sources */,
+				0D44152F2C7DAA27004B4AB9 /* TabBar.swift in Sources */,
+				0D4415332C7DB7B0004B4AB9 /* HomeView.swift in Sources */,
 				C6D2067A2CA1322A00E8D196 /* CulinaryPreferencesView.swift in Sources */,
 				C6BBE0542C84226D00ED637D /* BasicTextImageRow.swift in Sources */,
-				0D4415402C802684004B4AB9 /* TimerScreen.swift in Sources */,
-				0DD6F6D52C79D1540036E36A /* Course_ProjectApp.swift in Sources */,
-				0D44154A2C843F96004B4AB9 /* TimeSelectionView.swift in Sources */,
-				0D4415352C7EF772004B4AB9 /* IngredientsScreen.swift in Sources */,
+				0D4415402C802684004B4AB9 /* TimerView.swift in Sources */,
+				0DD6F6D52C79D1540036E36A /* Savoury.swift in Sources */,
+				0D44154A2C843F96004B4AB9 /* TimeSelection.swift in Sources */,
+				0D4415352C7EF772004B4AB9 /* IngredientsView.swift in Sources */,
 				0DD6F6E72C79DC100036E36A /* Category.swift in Sources */,
-				0D4415372C7EFBA1004B4AB9 /* RecipeScreen.swift in Sources */,
+				C6D2068B2CA3F3AF00E8D196 /* Profile.swift in Sources */,
+				0D4415372C7EFBA1004B4AB9 /* RecipeView.swift in Sources */,
+				C6D206892CA3F38E00E8D196 /* UserAuthenticationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +384,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "KienLe.Course-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = Savoury;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -388,7 +412,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "KienLe.Course-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = Savoury;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -418,6 +442,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C6D206812CA3EC9700E8D196 /* XCRemoteSwiftPackageReference "Auth0" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/Auth0.swift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C6D206822CA3EC9700E8D196 /* Auth0 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6D206812CA3EC9700E8D196 /* XCRemoteSwiftPackageReference "Auth0" */;
+			productName = Auth0;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0DD6F6C92C79D1540036E36A /* Project object */;
 }

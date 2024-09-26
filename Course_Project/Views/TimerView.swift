@@ -9,7 +9,7 @@ import SwiftUI
 
 // This view make use of the custom layout provided in the lectorial code example in example 9, week 4 to resemble the twist timer appears in most of the kitchen ware.
 
-struct TimerScreen: View {
+struct TimerView: View {
     // Track where the TimerScreen was launched from
     @Binding var isTimerViewVisible: Bool
     @Binding var fromInstructionScreen: Bool
@@ -95,7 +95,7 @@ struct TimerScreen: View {
                 Spacer()
                 
                 VStack {
-                    TimeSelectionView()
+                    TimeSelection()
                     
                     Spacer()
                     
@@ -144,7 +144,7 @@ struct TimerScreen: View {
 
 struct TimerScreen_Previews: PreviewProvider {
     static var previews: some View {
-        TimerScreen(isTimerViewVisible: .constant(true), fromInstructionScreen: .constant(false))
+        TimerView(isTimerViewVisible: .constant(true), fromInstructionScreen: .constant(false))
     }
 }
 

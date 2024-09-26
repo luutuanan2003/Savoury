@@ -11,7 +11,7 @@ import SwiftUI
 // A SwiftUI view for displaying the details of a selected recipe, including its name, ingredients, and an image.
 // Users can view the recipe and start cooking from this screen.
 
-struct RecipeScreen: View {
+struct RecipeView: View {
     
     // Binding to control the visibility of the other screens
     @Binding var showIngredientsScreen: Bool
@@ -125,6 +125,6 @@ struct RecipeScreen: View {
 
 struct RecipeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeScreen(showIngredientsScreen: .constant(false), showRecipeScreen: .constant(true), showInstructionScreen: .constant(false))
+        RecipeView(showIngredientsScreen: .constant(false), showRecipeScreen: .constant(true), showInstructionScreen: .constant(false))
     }
 }

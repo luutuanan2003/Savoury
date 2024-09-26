@@ -12,7 +12,7 @@ import SwiftUI
 // A SwiftUI view that displays a horizontal scrollable list of category buttons.
 // Users can select a category by tapping on one of the buttons, and the selected category will be highlighted. But for now the default value is "popular" case
 
-struct CategoryTabView: View {
+struct CategoryTab: View {
     @State private var selectedCategory: Category = .popular
     
     var body: some View {
@@ -37,6 +37,6 @@ struct CategoryTabView: View {
 
 struct CategoryTabView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryTabView()
+        CategoryTab()
     }
 }
