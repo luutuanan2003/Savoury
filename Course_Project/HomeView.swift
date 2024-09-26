@@ -11,6 +11,10 @@ import SwiftUI
 ///The main screen view of the application, providing an overview of various dishes, navigation through categories, and access to different sections like the recipe and cooking mode screens.
 struct HomeView: View {
     
+    /// This username value is passed in by the authentication process
+    var username: String
+
+    
     /// State to control the visibility of the  screens
     @State private var showIngredientsScreen = false
     @State private var showRecipeScreen = false
@@ -36,7 +40,8 @@ struct HomeView: View {
         ZStack {
             VStack {
                 HStack {
-                    Text("Welcome Home")
+                    // instead of saying welcome home, it will said welcome username
+                    Text("Welcome, \(username)!")
                         .font(.title3)
                         .fontWeight(.bold)
                     Spacer()
@@ -119,6 +124,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(username: "Dummy")
     }
 }

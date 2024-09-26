@@ -13,8 +13,8 @@ import SwiftUI
 struct Savoury: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
-//            UserAuthenticationView()
+//            HomeView()
+            UserAuthenticationView()
         }
     }
 }
