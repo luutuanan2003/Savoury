@@ -18,6 +18,15 @@ struct SearchView: View {
     // ViewModel to fetch recipes based on search query
     @ObservedObject var recipeViewModel = RecipeSearch()
     
+    // Filtered recipes based on the search query
+    var filteredRecipes: [RecipeHit] {
+        if searchQuery.isEmpty {
+            return recipeViewModel.recipes
+        } else {
+            return recipeViewModel.recipes.filter { $0.recipe.label.localizedCaseInsensitiveContains(searchQuery) }
+        }
+    }
+    
     // For grid layout similar to home screen
     let columns = [
         GridItem(.flexible()),
@@ -26,82 +35,41 @@ struct SearchView: View {
     
     var body: some View {
         ZStack {
-            Color.white.edgesIgnoringSafeArea(.all) // White background to cover the entire screen
-            VStack {
-                // Top navigation bar
-                HStack {
-                    Button(action: {
-                        showIngredientsScreen = false
-                    }) {
-                        Image(systemName: "chevron.backward")
-                            .bold()
-                            .foregroundColor(.black)
-                            .padding()
-                            .background(Circle()
-                                .fill(Color.yellow)
-                                .shadow(radius: 4))
-                    }
-                    Spacer()
-                }
-                .padding(.leading)
-                
-                // Title
-                HStack {
-                    Text("Search Recipes")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                
-                // Search bar
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.gray)
-                    TextField("Search for ingredients", text: $searchQuery, onCommit: {
-                        recipeViewModel.searchRecipes(for: searchQuery)
-                    })
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Spacer()
-                }
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(40)
-                .padding(.horizontal)
-                
-                // ScrollView with LazyVGrid for a grid layout
-                if !recipeViewModel.recipes.isEmpty {
+            NavigationView {
+                VStack {
+                    // ScrollView with LazyVGrid for a grid layout
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 16) {
-                            ForEach(recipeViewModel.recipes, id: \.id) { recipeHit in
+                            ForEach(filteredRecipes, id: \.id) { recipeHit in
                                 ImageDishView(recipe: recipeHit.recipe)
                             }
                         }
                         .padding(.horizontal)
                     }
-                } else {
-                    Text("No recipes found. Start searching!")
-                        .padding()
+                    .searchable(text: $searchQuery, prompt: "Search recipes") // Add searchable to the ScrollView
+                    .navigationTitle("Search Recipes") // Navigation title for the screen
+                    .onSubmit(of: .search) {
+                        recipeViewModel.searchRecipes(for: searchQuery) // Perform search when submitting
+                    }
                 }
-                
-                Spacer()
-                
-                // Bottom button
-//                Button(action: {
-//                    
-//                }) {
-//                    Text("Go to Recipe")
-//                        .font(.system(size: 18, weight: .bold))
-//                        .foregroundColor(.black)
-//                        .padding(.horizontal, 30)
-//                        .padding(.vertical, 10)
-//                        .background(Capsule()
-//                            .fill(Color.yellow)
-//                            .frame(height: 50)
-//                            .shadow(radius: 4))
-//                }
-//                .padding()
             }
+            
+            HStack {
+                Button(action: {
+                    showIngredientsScreen = false
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .bold()
+                        .foregroundColor(.black)
+                        .padding()
+                        .background(Circle()
+                            .fill(Color.yellow)
+                            .shadow(radius: 4))
+                }
+                Spacer()
+            }
+            .padding(.leading)
+            .padding(.bottom, 760)
         }
     }
 }
@@ -109,7 +77,8 @@ struct SearchView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView(showIngredientsScreen: .constant(true),
-                     showRecipeScreen: .constant(false),
-                     showInstructionScreen: .constant(false))
+                   showRecipeScreen: .constant(false),
+                   showInstructionScreen: .constant(false))
     }
 }
+

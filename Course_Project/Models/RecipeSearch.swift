@@ -10,8 +10,8 @@ import Foundation
 // ViewModel for fetching recipes
 class RecipeSearch: ObservableObject {
     @Published var recipes: [RecipeHit] = []
-    @Published var ingredients: [String] = []
-    @Published var selectedIngredients: [String] = []
+//    @Published var ingredients: [String] = []
+//    @Published var selectedIngredients: [String] = []
     
     private var apiID: String {
         APIKeys.apiID
@@ -58,20 +58,22 @@ class RecipeSearch: ObservableObject {
         }.resume()
     }
     
-    func searchIngredients(for query: String) {
-        let urlString = "https://api.edamam.com/search?q=\(query)&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=8"
+    // Function to search recipes based on multiple selected ingredients
+    func searchRecipes(forSelectedIngredients selectedIngredients: [String]) {
+        guard !selectedIngredients.isEmpty else { return }
+        let query = selectedIngredients.joined(separator: ",").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let urlString = "https://api.edamam.com/search?q=\(query)&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=10"
         guard let url = URL(string: urlString) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if let data = data {
                 do {
                     let decodedResponse = try JSONDecoder().decode(RecipeResponse.self, from: data)
                     DispatchQueue.main.async {
-                        // Assuming `ingredients` is a list of the ingredient names from the response
-                        self.ingredients = decodedResponse.hits.flatMap { $0.recipe.ingredients?.map { $0.food } ?? [] }
+                        self.recipes.append(contentsOf: decodedResponse.hits)  // Append to the existing list of recipes
                     }
                 } catch {
-                    print("Error decoding data: \(error)")
+                    print("Error decoding: \(error)")
                 }
             }
         }.resume()
