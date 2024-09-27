@@ -94,18 +94,21 @@ struct RecipeHit: Decodable, Identifiable {
 struct Recipe: Decodable {
     let label: String
     let image: String
-    let source: String?             // Optional, it might not always be present
-    let url: String?                // Optional, full URL to the recipe
-    let yield: Double?              // Optional, number of servings
-    let calories: Double?           // Optional, total calories
-    let dietLabels: [String]?       // Optional, list of diet labels
-    let healthLabels: [String]?     // Optional, list of health labels
-    let ingredients: [Ingredient]?  // List of ingredients
+    let yield: Double?               // Optional, number of servings
+    let calories: Double?            // Optional, total calories
+    let totalWeight: Double?         // Optional, total weight of the recipe
+    let totalTime: Double?           // Optional, total time in minutes
+    let cautions: [String]?          // Optional, list of cautions (e.g., allergies)
+    let ingredients: [Ingredient]?   // List of ingredients
+    let cuisineType: [String]?       // Optional, list of cuisine types (e.g., "American")
+    let mealType: [String]?          // Optional, list of meal types (e.g., "Dinner")
+    let dishType: [String]?          // Optional, list of dish types (e.g., "Main course")
 }
 
 struct Ingredient: Decodable {
     let food: String  // Ingredient name
 }
+
 
 struct APIKeys {
     static var apiID: String {

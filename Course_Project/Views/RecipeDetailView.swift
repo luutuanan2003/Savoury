@@ -30,19 +30,7 @@ struct RecipeDetailView: View {
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.horizontal)
-                
-                // Source and URL
-                if let source = recipe.source, let url = recipe.url {
-                    Text("Source: \(source)")
-                        .font(.headline)
-                        .padding(.horizontal)
-                    
-                    Link("View Full Recipe", destination: URL(string: url)!)
-                        .font(.headline)
-                        .foregroundColor(.blue)
-                        .padding(.horizontal)
-                }
-                
+
                 // Yield and Calories
                 HStack {
                     if let yield = recipe.yield {
@@ -55,20 +43,42 @@ struct RecipeDetailView: View {
                 .font(.subheadline)
                 .padding(.horizontal)
                 
-                // Diet Labels
-                if let dietLabels = recipe.dietLabels, !dietLabels.isEmpty {
-                    Text("Diet Labels: \(dietLabels.joined(separator: ", "))")
+                // Total Weight and Total Time
+                HStack {
+                    if let totalWeight = recipe.totalWeight {
+                        Text("Total Weight: \(Int(totalWeight)) g")
+                    }
+                    if let totalTime = recipe.totalTime {
+                        Text("Total Time: \(Int(totalTime)) minutes")
+                    }
+                }
+                .font(.subheadline)
+                .padding(.horizontal)
+
+                // Cautions
+                if let cautions = recipe.cautions, !cautions.isEmpty {
+                    Text("Cautions: \(cautions.joined(separator: ", "))")
                         .font(.subheadline)
                         .padding(.horizontal)
                 }
-                
-                // Health Labels
-                if let healthLabels = recipe.healthLabels, !healthLabels.isEmpty {
-                    Text("Health Labels: \(healthLabels.joined(separator: ", "))")
+
+                // Cuisine Type, Meal Type, and Dish Type
+                if let cuisineType = recipe.cuisineType, !cuisineType.isEmpty {
+                    Text("Cuisine Type: \(cuisineType.joined(separator: ", "))")
                         .font(.subheadline)
                         .padding(.horizontal)
                 }
-                
+                if let mealType = recipe.mealType, !mealType.isEmpty {
+                    Text("Meal Type: \(mealType.joined(separator: ", "))")
+                        .font(.subheadline)
+                        .padding(.horizontal)
+                }
+                if let dishType = recipe.dishType, !dishType.isEmpty {
+                    Text("Dish Type: \(dishType.joined(separator: ", "))")
+                        .font(.subheadline)
+                        .padding(.horizontal)
+                }
+
                 // Ingredients
                 if let ingredients = recipe.ingredients {
                     Text("Ingredients:")
@@ -81,7 +91,7 @@ struct RecipeDetailView: View {
                             .font(.body)
                     }
                 }
-                
+
                 Spacer()
             }
             .navigationBarTitle("Recipe Details", displayMode: .inline)
@@ -92,8 +102,26 @@ struct RecipeDetailView: View {
 // Preview
 struct RecipeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeDetailView(recipe: Recipe(label: "Sample Recipe", image: "https://example.com/image.jpg", source: "Example Source", url: "https://example.com", yield: 4, calories: 200, dietLabels: ["Low-Fat"], healthLabels: ["Vegan"], ingredients: [Ingredient(food: "Chicken"), Ingredient(food: "Salt")]))
+        RecipeDetailView(
+            recipe: Recipe(
+                label: "Spaghetti Carbonara",
+                image: "https://www.example.com/spaghetti.jpg",
+                yield: 4,
+                calories: 500,
+                totalWeight: 800,
+                totalTime: 25,
+                cautions: ["Gluten", "Dairy"],
+                ingredients: [
+                    Ingredient(food: "Spaghetti"),
+                    Ingredient(food: "Bacon"),
+                    Ingredient(food: "Egg"),
+                    Ingredient(food: "Parmesan cheese"),
+                    Ingredient(food: "Black pepper")
+                ],
+                cuisineType: ["Italian"],
+                mealType: ["Lunch", "Dinner"],
+                dishType: ["Main course"]
+            )
+        )
     }
 }
-
-
