@@ -11,6 +11,8 @@ import SwiftUI
 /// It features an introductory screen that leads to the SetupPreferencesView for detailed preference configuration.
 struct CulinaryPreferencesView: View {
     
+    @Binding var showCulinaryPreferencesView: Bool
+
     @State var show = false
 
     var body: some View {
@@ -37,7 +39,7 @@ struct CulinaryPreferencesView: View {
                 Image("guyCooking")
                     .padding()
                 Spacer()
-                NavigationLink(destination: SetupPreferencesView(show: $show)) {
+                NavigationLink(destination: SetupPreferencesView(show: $show)){
                     Text("Next")
                         .font(.title2)
                         .fontWeight(.bold)
@@ -59,5 +61,5 @@ struct CulinaryPreferencesView: View {
 }
 
 #Preview {
-    CulinaryPreferencesView()
+    CulinaryPreferencesView(showCulinaryPreferencesView: .constant(true))
 }

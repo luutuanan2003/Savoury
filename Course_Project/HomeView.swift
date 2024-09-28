@@ -16,6 +16,7 @@ struct HomeView: View {
 
     
     /// State to control the visibility of the  screens
+    @State private var showCulinaryPreferencesView = false
     @State private var showIngredientsScreen = false
     @State private var showRecipeScreen = false
     @State private var showInstructionScreen = false
@@ -46,10 +47,14 @@ struct HomeView: View {
                         .fontWeight(.bold)
                     Spacer()
                     Image(systemName: "magnifyingglass")
-                    Image(systemName: "person.crop.circle")
-                        .padding(.horizontal)
+                    NavigationLink(destination: CulinaryPreferencesView(showCulinaryPreferencesView: $showCulinaryPreferencesView)) {
+                        Image(systemName: "person.crop.circle")
+                            .padding(.horizontal)
+                    }
                 }
                 .padding()
+                
+                
                 
                 CategoryTab()
                 
@@ -80,7 +85,15 @@ struct HomeView: View {
                     showTimerScreen: $showTimerScreen)
             }
             
+            
+            
             // Conditionally display the selected screen if @State variable above is true.
+            
+            if showCulinaryPreferencesView{
+                CulinaryPreferencesView(showCulinaryPreferencesView: $showCulinaryPreferencesView)
+                    .transition(.move(edge: .leading))
+                    .zIndex(1)
+            }
             
             if showIngredientsScreen {
                 IngredientsView(

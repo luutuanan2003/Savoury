@@ -13,8 +13,9 @@ import SwiftUI
 struct Savoury: App {
     var body: some Scene {
         WindowGroup {
+            CulinaryPreferencesView(showCulinaryPreferencesView: .constant(true))
 //            HomeView()
-            UserAuthenticationView()
+//            UserAuthenticationView()
         }
     }
 }
