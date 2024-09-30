@@ -2,7 +2,7 @@
 //  DishImageView.swift
 //  Savoury
 //
-//  Created by Elwiz Scott on 26/9/24.
+//  Created by Kien Le on 26/9/24.
 //
 
 import SwiftUI

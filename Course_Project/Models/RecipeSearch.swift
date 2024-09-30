@@ -78,6 +78,11 @@ class RecipeSearch: ObservableObject {
             }
         }.resume()
     }
+    
+    // Function to clear recipes before a new search
+    func clearRecipes() {
+        recipes.removeAll()
+    }
 }
 
 

@@ -2,7 +2,7 @@
 //  RecipeDetailView.swift
 //  Savoury
 //
-//  Created by Elwiz Scott on 27/9/24.
+//  Created by Kien Le on 27/9/24.
 //
 
 import SwiftUI
@@ -18,70 +18,56 @@ struct RecipeDetailView: View {
                     AsyncImage(url: imageUrl) { image in
                         image
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .aspectRatio(contentMode: .fill)
+                            .padding()
                             .frame(width: UIScreen.main.bounds.width, height: 300)
                     } placeholder: {
                         ProgressView()
                     }
                 }
                 
-                // Recipe Title
-                Text(recipe.label)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.horizontal)
-
-                // Yield and Calories
+                // Recipe Title and Rating (Example Rating Placeholder)
                 HStack {
-                    if let yield = recipe.yield {
-                        Text("Servings: \(Int(yield))")
+                    Text(recipe.label)
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                    Spacer()
+                    
+                    // Rating Placeholder (optional)
+                    HStack {
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.yellow)
+                        Text("4.5")  // Example rating
                     }
+                    .padding(8)
+                    .background(Capsule().fill(Color.yellow.opacity(0.2)))
+                }
+                .padding(.horizontal)
+
+                // Capsules for Total Time, Servings, Calories, Total Weight
+                HStack {
+                    if let totalTime = recipe.totalTime {
+                        RecipeDetailCapsule(iconName: "clock", label: "\(Int(totalTime)) mins")
+                    }
+                    
+                    if let yield = recipe.yield {
+                        RecipeDetailCapsule(iconName: "person.2.fill", label: "\(Int(yield)) Servings")
+                    }
+                    
                     if let calories = recipe.calories {
-                        Text("Calories: \(Int(calories)) kcal")
+                        RecipeDetailCapsule(iconName: "flame.fill", label: "\(Int(calories)) Cal")
+                    }
+                    
+                    if let totalWeight = recipe.totalWeight {
+                        RecipeDetailCapsule(iconName: "square.stack.3d.up.fill", label: "\(Int(totalWeight)) g")
                     }
                 }
-                .font(.subheadline)
                 .padding(.horizontal)
                 
-                // Total Weight and Total Time
-                HStack {
-                    if let totalWeight = recipe.totalWeight {
-                        Text("Total Weight: \(Int(totalWeight)) g")
-                    }
-                    if let totalTime = recipe.totalTime {
-                        Text("Total Time: \(Int(totalTime)) minutes")
-                    }
-                }
-                .font(.subheadline)
-                .padding(.horizontal)
-
-                // Cautions
-                if let cautions = recipe.cautions, !cautions.isEmpty {
-                    Text("Cautions: \(cautions.joined(separator: ", "))")
-                        .font(.subheadline)
-                        .padding(.horizontal)
-                }
-
-                // Cuisine Type, Meal Type, and Dish Type
-                if let cuisineType = recipe.cuisineType, !cuisineType.isEmpty {
-                    Text("Cuisine Type: \(cuisineType.joined(separator: ", "))")
-                        .font(.subheadline)
-                        .padding(.horizontal)
-                }
-                if let mealType = recipe.mealType, !mealType.isEmpty {
-                    Text("Meal Type: \(mealType.joined(separator: ", "))")
-                        .font(.subheadline)
-                        .padding(.horizontal)
-                }
-                if let dishType = recipe.dishType, !dishType.isEmpty {
-                    Text("Dish Type: \(dishType.joined(separator: ", "))")
-                        .font(.subheadline)
-                        .padding(.horizontal)
-                }
-
                 // Ingredients
                 if let ingredients = recipe.ingredients {
-                    Text("Ingredients:")
+                    Text("Ingredients")
                         .font(.headline)
                         .padding(.horizontal)
                     
@@ -91,11 +77,54 @@ struct RecipeDetailView: View {
                             .font(.body)
                     }
                 }
-
+                
                 Spacer()
+
+                // Optional additional sections (Cautions, Cuisine Type, etc.)
+                if let cautions = recipe.cautions, !cautions.isEmpty {
+                    Text("Cautions: \(cautions.joined(separator: ", "))")
+                        .font(.subheadline)
+                        .padding(.horizontal)
+                }
+                
+                if let cuisineType = recipe.cuisineType, !cuisineType.isEmpty {
+                    Text("Cuisine Type: \(cuisineType.joined(separator: ", "))")
+                        .font(.subheadline)
+                        .padding(.horizontal)
+                }
+                
+                if let mealType = recipe.mealType, !mealType.isEmpty {
+                    Text("Meal Type: \(mealType.joined(separator: ", "))")
+                        .font(.subheadline)
+                        .padding(.horizontal)
+                }
+                
+                if let dishType = recipe.dishType, !dishType.isEmpty {
+                    Text("Dish Type: \(dishType.joined(separator: ", "))")
+                        .font(.subheadline)
+                        .padding(.horizontal)
+                }
             }
             .navigationBarTitle("Recipe Details", displayMode: .inline)
         }
+    }
+}
+
+// View to show each capsule for the recipe details
+struct RecipeDetailCapsule: View {
+    var iconName: String
+    var label: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: iconName)
+                .foregroundColor(.yellow)
+            Text(label)
+                .font(.footnote)
+                .bold()
+        }
+        .padding(12)
+        .background(Capsule().fill(Color.yellow.opacity(0.2)))
     }
 }
 
