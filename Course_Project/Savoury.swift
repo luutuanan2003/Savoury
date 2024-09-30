@@ -13,9 +13,12 @@ import SwiftUI
 struct Savoury: App {
     var body: some Scene {
         WindowGroup {
-            CulinaryPreferencesView(showCulinaryPreferencesView: .constant(true))
+            // DO NOT DELETE COMMENT THIS IS FOR TESTING THE MODEL
+//            CulinaryPreferencesView(showCulinaryPreferencesView: .constant(true))
 //            HomeView()
-//            UserAuthenticationView()
+            UserAuthenticationView()
         }
+        .modelContainer(for: userPreferences.self)
+
     }
 }
