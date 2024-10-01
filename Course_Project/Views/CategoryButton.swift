@@ -14,29 +14,28 @@ import SwiftUI
 struct CategoryButton: View {
     
     let category: Category
-    
     var isSelected: Bool
+    var onSelect: () -> Void  // Callback when a button is tapped
     
     var body: some View {
         VStack {
             Button(action: {
-                // No action is needed for now; the button is purely for display purposes.
-                    }) {
-                        Image(systemName: category.categorySymbol)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 34, height: 34) // Size of the flame symbol
-                            .padding(30)
-                            
-                            .foregroundColor(isSelected ? .black : .gray)
-                            .background(RoundedRectangle(cornerRadius: 45) // Rounded rectangle with circular radius
-                                .fill(isSelected ? Color.yellow : Color.gray.opacity(0.1)) // Yellow background color
-                                .frame(width: 74, height: 84))
-                    }
+                onSelect()  // Perform the category selection when the button is tapped
+            }) {
+                Image(systemName: category.categorySymbol)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 34, height: 34) // Size of the flame symbol
+                    .padding(30)
+                    .foregroundColor(isSelected ? .black : .gray) // Icon color changes based on selection
+                    .background(RoundedRectangle(cornerRadius: 45) // Rounded rectangle with circular radius
+                        .fill(isSelected ? Color.yellow : Color.gray.opacity(0.1)) // Background color changes when selected
+                        .frame(width: 74, height: 84))
+            }
             Text(category.categoryName)
                 .bold()
                 .font(.footnote)
-                .foregroundColor(isSelected ? .black : .gray)
+                .foregroundColor(isSelected ? .black : .gray) // Text color changes based on selection
         }
     }
 }
@@ -44,6 +43,6 @@ struct CategoryButton: View {
 
 struct CategoryButton_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryButton(category: .popular, isSelected: true)
+        CategoryButton(category: .popular, isSelected: true, onSelect: {})
     }
 }

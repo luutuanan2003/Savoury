@@ -12,7 +12,8 @@ import SwiftUI
 /// A SwiftUI view that displays a horizontal scrollable list of category buttons.
 /// Users can select a category by tapping on one of the buttons, and the selected category will be highlighted. But for now the default value is "popular" case
 struct CategoryTab: View {
-    @State private var selectedCategory: Category = .popular
+    @Binding var selectedCategory: Category
+    @ObservedObject var recipeSearch: RecipeSearch
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -20,22 +21,36 @@ struct CategoryTab: View {
                 ForEach(Category.allItems, id: \.self) { category in
                     CategoryButton(
                         category: category,
-                        isSelected: selectedCategory == category
+                        isSelected: selectedCategory == category,
+                        onSelect: {
+                            selectedCategory = category  // Update the selected category when tapped
+                        }
                     )
                     .onTapGesture {
                         selectedCategory = category
+                        handleCategorySelection(category: category)
                     }
                 }
             }
         }
         .padding(.leading, 2)
     }
+    
+    // Handle category change and fetch recipes accordingly
+    private func handleCategorySelection(category: Category) {
+        switch category {
+        case .popular:
+            recipeSearch.fetchRecipes()  // Fetch popular recipes
+        case .dessert:
+            recipeSearch.fetchDessert()  // Fetch dessert recipes
+        default:
+            break
+        }
+    }
 }
 
-
-
-struct CategoryTabView_Previews: PreviewProvider {
+struct CategoryTab_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryTab()
+        CategoryTab(selectedCategory: .constant(.popular), recipeSearch: RecipeSearch())
     }
 }

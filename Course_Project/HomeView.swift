@@ -13,7 +13,8 @@ struct HomeView: View {
     
     /// This username value is passed in by the authentication process
     var username: String
-
+    
+    @State private var selectedCategory: Category = .popular  // Default to "Popular"
     
     /// State to control the visibility of the  screens
     @State private var showCulinaryPreferencesView = false
@@ -22,14 +23,10 @@ struct HomeView: View {
     @State private var showInstructionScreen = false
     @State private var showTimerScreen = false
     @State private var fromInstructionScreen = false
-
-    /// List of dishes to display on the home screen.
-    @State var dishes = [
-        Dish(name: "Nasi Lemak", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"]),
-        Dish(name: "Nasi Lemak1", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"]),
-        Dish(name: "Nasi Lemak2", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"]),
-        Dish(name: "Nasi Lemak3", type: "Main Dish", image: "Nasi Lemak", isFavorite: false, ingredients: ["Egg", "Rice", "Sambal", "Cucumber", "Anchovie"])
-    ]
+    
+    
+    // Observed RecipeSearch for Popular recipes
+        @ObservedObject var recipeSearch = RecipeSearch()
     
     // Layout configuration for displaying dishes in a grid with flexible columns.
     let columns = [
@@ -54,29 +51,15 @@ struct HomeView: View {
                 }
                 .padding()
                 
-                
-                
-                CategoryTab()
-                
-                HStack {
-                    Text("Top dishes of the day")
-                        .font(.title)
-                        .fontWeight(.black)
-                        .padding()
-                    Spacer()
+                // CategoryTab for selection
+                CategoryTab(selectedCategory: $selectedCategory, recipeSearch: recipeSearch)
+
+                // Conditionally show views based on selected category
+                if selectedCategory == .popular {
+                    PopularView()
+                } else if selectedCategory == .dessert {
+                    DessertView()
                 }
-                
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach($dishes, id: \.self) { $dish in
-                            // Using the BasicTextImageRow view
-                            BasicTextImageRow(dish: $dish)
-                                .frame(width: 160, height: 200)
-                        }
-                    }
-                    .padding(.horizontal)
-                }
-                .frame(height: 430)
                 
                 
                 // Using the TabBarView for navigating to other parts of the application.

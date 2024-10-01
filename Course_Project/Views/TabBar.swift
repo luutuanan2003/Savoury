@@ -21,7 +21,7 @@ struct TabBar: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            Color.white.edgesIgnoringSafeArea(.all)
+//            Color.white.edgesIgnoringSafeArea(.all)
             HStack {
                 Spacer()
                 
@@ -62,6 +62,7 @@ struct TabBar: View {
                     .padding(.horizontal, 20)
             )
             .padding(.bottom, -10)
+            
         }
     }
 }

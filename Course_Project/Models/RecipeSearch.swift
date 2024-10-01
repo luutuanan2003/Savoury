@@ -39,6 +39,25 @@ class RecipeSearch: ObservableObject {
         }.resume()
     }
     
+    // New function to fetch dessert recipes using dishType
+    func fetchDessert() {
+        let urlString = "https://api.edamam.com/search?q=&dishType=Desserts&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=20"
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let data = data {
+                do {
+                    let decodedResponse = try JSONDecoder().decode(RecipeResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        self.recipes = decodedResponse.hits
+                    }
+                } catch {
+                    print("Error decoding data: \(error)")
+                }
+            }
+        }.resume()
+    }
+    
     func searchRecipes(for ingredient: String) {
         let query = ingredient.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let urlString = "https://api.edamam.com/search?q=\(query)&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=10"

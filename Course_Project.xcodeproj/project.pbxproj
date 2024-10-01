@@ -22,6 +22,8 @@
 		0D4415402C802684004B4AB9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D44153F2C802684004B4AB9 /* TimerView.swift */; };
 		0D4415462C804DAD004B4AB9 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415452C804DAD004B4AB9 /* Dish.swift */; };
 		0D44154A2C843F96004B4AB9 /* TimeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4415492C843F96004B4AB9 /* TimeSelection.swift */; };
+		0D6FCEA32CAB960B0072F49F /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FCEA22CAB960B0072F49F /* PopularView.swift */; };
+		0D6FCEA52CABAF330072F49F /* DessertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FCEA42CABAF330072F49F /* DessertView.swift */; };
 		0DD6F6D52C79D1540036E36A /* Savoury.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6F6D42C79D1540036E36A /* Savoury.swift */; };
 		0DD6F6D92C79D1550036E36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6F6D82C79D1550036E36A /* Assets.xcassets */; };
 		0DD6F6DC2C79D1550036E36A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6F6DB2C79D1550036E36A /* Preview Assets.xcassets */; };
@@ -57,6 +59,8 @@
 		0D44153F2C802684004B4AB9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		0D4415452C804DAD004B4AB9 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		0D4415492C843F96004B4AB9 /* TimeSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelection.swift; sourceTree = "<group>"; };
+		0D6FCEA22CAB960B0072F49F /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
+		0D6FCEA42CABAF330072F49F /* DessertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertView.swift; sourceTree = "<group>"; };
 		0DD6F6D12C79D1540036E36A /* Savoury.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savoury.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD6F6D42C79D1540036E36A /* Savoury.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Savoury.swift; sourceTree = "<group>"; };
 		0DD6F6D82C79D1550036E36A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 				0D353C012CA574BE00084EE7 /* DishImageView.swift */,
 				0D353C032CA6568700084EE7 /* RecipeDetailView.swift */,
 				0D353C052CA65F2000084EE7 /* IngredientSelectionView.swift */,
+				0D6FCEA22CAB960B0072F49F /* PopularView.swift */,
+				0D6FCEA42CABAF330072F49F /* DessertView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,6 +254,7 @@
 				0DD6F6E92C79E0770036E36A /* CategoryButton.swift in Sources */,
 				0D4415462C804DAD004B4AB9 /* Dish.swift in Sources */,
 				C6D206912CA510E600E8D196 /* Allergy.swift in Sources */,
+				0D6FCEA52CABAF330072F49F /* DessertView.swift in Sources */,
 				C6D2067C2CA1380900E8D196 /* SetupPreferencesView.swift in Sources */,
 				C6BBE0522C841F0300ED637D /* Tab.swift in Sources */,
 				0D44153E2C801AE7004B4AB9 /* InstructionView.swift in Sources */,
@@ -270,6 +277,7 @@
 				0D353C022CA574BE00084EE7 /* DishImageView.swift in Sources */,
 				C6D2068B2CA3F3AF00E8D196 /* Profile.swift in Sources */,
 				0D4415372C7EFBA1004B4AB9 /* RecipeView.swift in Sources */,
+				0D6FCEA32CAB960B0072F49F /* PopularView.swift in Sources */,
 				C6D206892CA3F38E00E8D196 /* UserAuthenticationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
