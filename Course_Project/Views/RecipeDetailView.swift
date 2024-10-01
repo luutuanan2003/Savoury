@@ -31,17 +31,7 @@ struct RecipeDetailView: View {
                     Text(recipe.label)
                         .font(.title)
                         .fontWeight(.bold)
-                    
                     Spacer()
-                    
-                    // Rating Placeholder (optional)
-                    HStack {
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.yellow)
-                        Text("4.5")  // Example rating
-                    }
-                    .padding(8)
-                    .background(Capsule().fill(Color.yellow.opacity(0.2)))
                 }
                 .padding(.horizontal)
 
@@ -134,7 +124,7 @@ struct RecipeDetailView_Previews: PreviewProvider {
         RecipeDetailView(
             recipe: Recipe(
                 label: "Spaghetti Carbonara",
-                image: "https://www.example.com/spaghetti.jpg",
+                image: "https://www.allrecipes.com/thmb/ewSWaXqsw97lWyAWek_u9fguJ3g=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/Easyspaghettiwithtomatosauce_11715_DDMFS_4x3_2424-8d7bf30b2622465f9dd78a2c6277eeb8.jpg",
                 yield: 4,
                 calories: 500,
                 totalWeight: 800,
