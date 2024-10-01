@@ -1,5 +1,5 @@
 //
-//  PopularView.swift
+//  MainDishView.swift
 //  Savoury
 //
 //  Created by Elwiz Scott on 1/10/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PopularView: View {
+struct MainDishView: View {
     @ObservedObject var recipeSearch = RecipeSearch() // Observing the RecipeSearch ViewModel
 
     // Layout configuration for displaying dishes in a grid with flexible columns.
@@ -37,14 +37,14 @@ struct PopularView: View {
             }
             .onAppear {
                 // Fetch recipes when the view appears
-                recipeSearch.fetchRecipes()
+                recipeSearch.fetchMainDish()
             }
         }
     }
 }
 
-struct PopularView_Previews: PreviewProvider {
+struct MainDishView_Previews: PreviewProvider {
     static var previews: some View {
-        PopularView(recipeSearch: RecipeSearch())  // Use an instance of RecipeSearch for the preview
+        MainDishView(recipeSearch: RecipeSearch())  // Use an instance of RecipeSearch for the preview
     }
 }

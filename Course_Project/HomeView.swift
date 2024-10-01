@@ -14,7 +14,7 @@ struct HomeView: View {
     /// This username value is passed in by the authentication process
     var username: String
     
-    @State private var selectedCategory: Category = .popular  // Default to "Popular"
+    @State private var selectedCategory: Category = .maindish  // Default to "Main Dishes"
     
     /// State to control the visibility of the  screens
     @State private var showCulinaryPreferencesView = false
@@ -55,12 +55,15 @@ struct HomeView: View {
                 CategoryTab(selectedCategory: $selectedCategory, recipeSearch: recipeSearch)
 
                 // Conditionally show views based on selected category
-                if selectedCategory == .popular {
-                    PopularView()
+                if selectedCategory == .maindish {
+                    MainDishView()
                 } else if selectedCategory == .dessert {
                     DessertView()
+                } else if selectedCategory == .salad {
+                    SaladView()
+                } else if selectedCategory == .drinks {
+                    DrinkView()
                 }
-                
                 
                 // Using the TabBarView for navigating to other parts of the application.
                 TabBar(

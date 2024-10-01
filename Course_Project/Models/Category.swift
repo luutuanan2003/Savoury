@@ -13,36 +13,36 @@ import Foundation
 /// Enum representing different categories used within the application.
 /// Each case corresponds to a specific type of category, such as popular items, recently added items, desserts, and main dishes.
 enum Category {
-    case popular, recently, dessert, maindishes
+    case maindish, salad, dessert, drinks
     
     var categoryName: String {
         switch self {
-        case .popular:
-            return "Popular"
-        case .recently:
-            return "Recently"
+        case .maindish:
+            return "Main Dishes"
+        case .salad:
+            return "Salad"
         case .dessert:
             return "Dessert"
-        case .maindishes:
-            return "Main Dishes"
+        case .drinks:
+            return "Drinks"
         }
     }
     
     /// SF-Symbol to return the system symbol name associated with each case.
     var categorySymbol: String {
         switch self {
-        case .popular:
-            return "flame.fill"
-        case .recently:
-            return "clock"
+        case .maindish:
+            return "fork.knife"
+        case .salad:
+            return "leaf.fill"
         case .dessert:
             return "popcorn.fill"
-        case .maindishes:
-            return "fork.knife"
+        case .drinks:
+            return "cup.and.saucer.fill"
         }
     }
     
     static var allItems: [Category] {
-        return [.popular, .recently, .dessert, .maindishes]
+        return [.maindish, .salad, .dessert, .drinks]
     }
 }

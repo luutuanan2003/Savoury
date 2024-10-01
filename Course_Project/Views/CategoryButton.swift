@@ -43,6 +43,6 @@ struct CategoryButton: View {
 
 struct CategoryButton_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryButton(category: .popular, isSelected: true, onSelect: {})
+        CategoryButton(category: .maindish, isSelected: true, onSelect: {})
     }
 }

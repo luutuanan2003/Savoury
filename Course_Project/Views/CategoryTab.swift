@@ -39,7 +39,7 @@ struct CategoryTab: View {
     // Handle category change and fetch recipes accordingly
     private func handleCategorySelection(category: Category) {
         switch category {
-        case .popular:
+        case .maindish:
             recipeSearch.fetchRecipes()  // Fetch popular recipes
         case .dessert:
             recipeSearch.fetchDessert()  // Fetch dessert recipes
@@ -51,6 +51,6 @@ struct CategoryTab: View {
 
 struct CategoryTab_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryTab(selectedCategory: .constant(.popular), recipeSearch: RecipeSearch())
+        CategoryTab(selectedCategory: .constant(.maindish), recipeSearch: RecipeSearch())
     }
 }

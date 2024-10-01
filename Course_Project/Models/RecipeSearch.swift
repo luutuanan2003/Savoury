@@ -10,8 +10,6 @@ import Foundation
 // ViewModel for fetching recipes
 class RecipeSearch: ObservableObject {
     @Published var recipes: [RecipeHit] = []
-//    @Published var ingredients: [String] = []
-//    @Published var selectedIngredients: [String] = []
     
     private var apiID: String {
         APIKeys.apiID
@@ -22,7 +20,7 @@ class RecipeSearch: ObservableObject {
     }
     
     func fetchRecipes() {
-        let urlString = "https://api.edamam.com/search?q=chicken&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=20"
+        let urlString = "https://api.edamam.com/search?q=chicken&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=10"
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -39,9 +37,62 @@ class RecipeSearch: ObservableObject {
         }.resume()
     }
     
-    // New function to fetch dessert recipes using dishType
+    func fetchMainDish() {
+        let urlString = "https://api.edamam.com/search?q=&dishType=Main course&app_id=\(apiID)&app_key=\(apiKey)&from=2&to=12"
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let data = data {
+                do {
+                    let decodedResponse = try JSONDecoder().decode(RecipeResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        self.recipes = decodedResponse.hits
+                    }
+                } catch {
+                    print("Error decoding data: \(error)")
+                }
+            }
+        }.resume()
+    }
+    
+    func fetchSalad() {
+        let urlString = "https://api.edamam.com/search?q=&dishType=Salad&app_id=\(apiID)&app_key=\(apiKey)&from=2&to=12"
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let data = data {
+                do {
+                    let decodedResponse = try JSONDecoder().decode(RecipeResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        self.recipes = decodedResponse.hits
+                    }
+                } catch {
+                    print("Error decoding data: \(error)")
+                }
+            }
+        }.resume()
+    }
+    
+    func fetchDrinks() {
+        let urlString = "https://api.edamam.com/search?q=&dishType=Drinks&app_id=\(apiID)&app_key=\(apiKey)&from=2&to=12"
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let data = data {
+                do {
+                    let decodedResponse = try JSONDecoder().decode(RecipeResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        self.recipes = decodedResponse.hits
+                    }
+                } catch {
+                    print("Error decoding data: \(error)")
+                }
+            }
+        }.resume()
+    }
+    
     func fetchDessert() {
-        let urlString = "https://api.edamam.com/search?q=&dishType=Desserts&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=20"
+        let urlString = "https://api.edamam.com/search?q=&dishType=Desserts&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=10"
         guard let url = URL(string: urlString) else { return }
 
         URLSession.shared.dataTask(with: url) { (data, response, error) in
