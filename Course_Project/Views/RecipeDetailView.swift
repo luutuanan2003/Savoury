@@ -13,17 +13,39 @@ struct RecipeDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                // Recipe Image
-                if let imageUrl = URL(string: recipe.image) {
-                    AsyncImage(url: imageUrl) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .padding()
-                            .frame(width: UIScreen.main.bounds.width, height: 300)
-                    } placeholder: {
-                        ProgressView()
+                ZStack {
+                    // Recipe Image
+                    if let imageUrl = URL(string: recipe.image) {
+                        AsyncImage(url: imageUrl) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .padding(.vertical, 30)
+                                .frame(width: UIScreen.main.bounds.width, height: 300)
+                        } placeholder: {
+                            ProgressView()
+                        }
                     }
+                    
+                    Button(action: {
+                        // Action for the save or bookmark functionality
+                    }) {
+                        ZStack {
+                            Circle()
+                                .foregroundColor(.white)
+                                .frame(width: 50, height: 50)
+                                .shadow(radius: 4)
+                            
+                            Image(systemName: "bookmark")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(.black)
+                        }
+                        
+                    }
+                    .padding(.leading, 300)
+                    .padding(.bottom, 200)
                 }
                 
                 // Recipe Title and Rating (Example Rating Placeholder)
@@ -34,31 +56,156 @@ struct RecipeDetailView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
+                .padding(.top, 60)
+                
+                if let cuisineType = recipe.cuisineType, !cuisineType.isEmpty {
+                    Text("\(cuisineType.joined(separator: ", "))")
+                        .font(.title3)
+                        .padding(.horizontal)
+                        .padding(.top, -10)
+                        .foregroundColor(.gray)
+                }
 
                 // Capsules for Total Time, Servings, Calories, Total Weight
                 HStack {
-                    if let totalTime = recipe.totalTime {
-                        RecipeDetailCapsule(iconName: "clock", label: "\(Int(totalTime)) mins")
-                    }
-                    
-                    if let yield = recipe.yield {
-                        RecipeDetailCapsule(iconName: "person.2.fill", label: "\(Int(yield)) Servings")
-                    }
-                    
-                    if let calories = recipe.calories {
-                        RecipeDetailCapsule(iconName: "flame.fill", label: "\(Int(calories)) Cal")
-                    }
-                    
-                    if let totalWeight = recipe.totalWeight {
-                        RecipeDetailCapsule(iconName: "square.stack.3d.up.fill", label: "\(Int(totalWeight)) g")
+                    HStack {
+                        Spacer()
+
+                        // Capsule for Total Time
+                        if let totalTime = recipe.totalTime {
+                            ZStack {
+                                Capsule()
+                                    .frame(width: 70, height: 120)
+                                    .foregroundColor(.yellow)
+                                VStack {
+                                    Circle()
+                                        .frame(width: 60, height: 60)
+                                        .foregroundColor(.white)
+                                        .padding(.top, -10)
+                                        .padding(.bottom, 5)
+                                        .overlay(
+                                            Image(systemName: "clock")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 30, height: 30)
+                                                .foregroundColor(.black)
+                                                .padding(.top, -15)
+                                        )
+                                    Text("\(Int(totalTime))")
+                                        .font(.system(size: 12, weight: .bold))
+                                        .foregroundColor(.black)
+                                    Text("mins")
+                                        .font(.system(size: 12))
+                                        .foregroundColor(.black)
+                                }
+                            }
+                        }
+
+                        Spacer()
+
+                        // Capsule for Servings
+                        if let yield = recipe.yield {
+                            ZStack {
+                                Capsule()
+                                    .frame(width: 70, height: 120)
+                                    .foregroundColor(.yellow)
+                                VStack {
+                                    Circle()
+                                        .frame(width: 60, height: 60)
+                                        .foregroundColor(.white)
+                                        .padding(.top, -10)
+                                        .padding(.bottom, 5)
+                                        .overlay(
+                                            Image(systemName: "person.2.fill")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 30, height: 30)
+                                                .foregroundColor(.black)
+                                                .padding(.top, -15)
+                                        )
+                                    Text("\(Int(yield))")
+                                        .font(.system(size: 12, weight: .bold))
+                                        .foregroundColor(.black)
+                                    Text("Servings")
+                                        .font(.system(size: 12))
+                                        .foregroundColor(.black)
+                                }
+                            }
+                        }
+
+                        Spacer()
+
+                        // Capsule for Calories
+                        if let calories = recipe.calories {
+                            ZStack {
+                                Capsule()
+                                    .frame(width: 70, height: 120)
+                                    .foregroundColor(.yellow)
+                                VStack {
+                                    Circle()
+                                        .frame(width: 60, height: 60)
+                                        .foregroundColor(.white)
+                                        .padding(.top, -10)
+                                        .padding(.bottom, 5)
+                                        .overlay(
+                                            Image(systemName: "flame.fill")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 30, height: 30)
+                                                .foregroundColor(.black)
+                                                .padding(.top, -15)
+                                        )
+                                    Text("\(Int(calories))")
+                                        .font(.system(size: 12, weight: .bold))
+                                        .foregroundColor(.black)
+                                    Text("Cal")
+                                        .font(.system(size: 12))
+                                        .foregroundColor(.black)
+                                }
+                            }
+                        }
+
+                        Spacer()
+
+                        // Capsule for Total Weight
+                        if let totalWeight = recipe.totalWeight {
+                            ZStack {
+                                Capsule()
+                                    .frame(width: 70, height: 120)
+                                    .foregroundColor(.yellow)
+                                VStack {
+                                    Circle()
+                                        .frame(width: 60, height: 60)
+                                        .foregroundColor(.white)
+                                        .padding(.top, -10)
+                                        .padding(.bottom, 5)
+                                        .overlay(
+                                            Image(systemName: "square.stack.3d.up.fill")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 30, height: 30)
+                                                .foregroundColor(.black)
+                                                .padding(.top, -15)
+                                        )
+                                    Text("\(Int(totalWeight))")
+                                        .font(.system(size: 12, weight: .bold))
+                                        .foregroundColor(.black)
+                                    Text("Gram")
+                                        .font(.system(size: 12))
+                                        .foregroundColor(.black)
+                                }
+                            }
+                        }
+
+                        Spacer()
                     }
                 }
-                .padding(.horizontal)
+                .padding()
                 
                 // Ingredients
                 if let ingredients = recipe.ingredients {
                     Text("Ingredients")
-                        .font(.headline)
+                        .font(.system(.title3, weight: .bold))
                         .padding(.horizontal)
                     
                     ForEach(ingredients, id: \.food) { ingredient in
@@ -73,12 +220,6 @@ struct RecipeDetailView: View {
                 // Optional additional sections (Cautions, Cuisine Type, etc.)
                 if let cautions = recipe.cautions, !cautions.isEmpty {
                     Text("Cautions: \(cautions.joined(separator: ", "))")
-                        .font(.subheadline)
-                        .padding(.horizontal)
-                }
-                
-                if let cuisineType = recipe.cuisineType, !cuisineType.isEmpty {
-                    Text("Cuisine Type: \(cuisineType.joined(separator: ", "))")
                         .font(.subheadline)
                         .padding(.horizontal)
                 }
