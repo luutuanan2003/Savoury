@@ -12,6 +12,8 @@ import SwiftUI
 struct CulinaryPreferencesView: View {
     
     @Binding var showCulinaryPreferencesView: Bool
+    
+    @Binding var userName_homeview: String
 
     @State var show = false
 
@@ -39,7 +41,7 @@ struct CulinaryPreferencesView: View {
                 Image("guyCooking")
                     .padding()
                 Spacer()
-                NavigationLink(destination: SetupPreferencesView(show: $show)){
+                NavigationLink(destination: SetupPreferencesView(username: $userName_homeview, show: $show)){
                     Text("Next")
                         .font(.title2)
                         .fontWeight(.bold)
@@ -52,14 +54,9 @@ struct CulinaryPreferencesView: View {
                 Spacer()
             }
         }
-        if show{
-            SetupPreferencesView(show: $show)
-            .transition(.move(edge: .leading))
-            .zIndex(1)
-        }
     }
 }
 
 #Preview {
-    CulinaryPreferencesView(showCulinaryPreferencesView: .constant(true))
+    CulinaryPreferencesView(showCulinaryPreferencesView: .constant(true), userName_homeview: .constant("Dummy"))
 }

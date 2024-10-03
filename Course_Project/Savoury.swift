@@ -18,7 +18,5 @@ struct Savoury: App {
 //            HomeView()
             UserAuthenticationView()
         }
-        .modelContainer(for: userPreferences.self)
-
     }
 }

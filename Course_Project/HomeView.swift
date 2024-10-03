@@ -12,7 +12,8 @@ import SwiftUI
 struct HomeView: View {
     
     /// This username value is passed in by the authentication process
-    var username: String
+    @State var username: String
+
     
     @State private var selectedCategory: Category = .maindish  // Default to "Main Dishes"
     
@@ -44,10 +45,11 @@ struct HomeView: View {
                         .fontWeight(.bold)
                     Spacer()
                     Image(systemName: "magnifyingglass")
-                    NavigationLink(destination: CulinaryPreferencesView(showCulinaryPreferencesView: $showCulinaryPreferencesView)) {
-                        Image(systemName: "person.crop.circle")
-                            .padding(.horizontal)
-                    }
+                    Image(systemName: "person.crop.circle")
+                        .padding(.horizontal)
+                        .onTapGesture {
+                            showCulinaryPreferencesView = true
+                        }
                 }
                 .padding()
                 
@@ -71,12 +73,12 @@ struct HomeView: View {
                     showTimerScreen: $showTimerScreen)
             }
             
-            
-            
+            // TODO:Remove multiple zIndex values and set all to zIndex(1) since only one view is active at a time.
+            // No need for complex stacking of views when they are conditionally displayed.            
             // Conditionally display the selected screen if @State variable above is true.
-            
+        
             if showCulinaryPreferencesView{
-                CulinaryPreferencesView(showCulinaryPreferencesView: $showCulinaryPreferencesView)
+                CulinaryPreferencesView(showCulinaryPreferencesView: $showCulinaryPreferencesView, userName_homeview: $username)
                     .transition(.move(edge: .leading))
                     .zIndex(1)
             }
