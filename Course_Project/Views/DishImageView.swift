@@ -89,7 +89,8 @@ struct ImageDishView_Previews: PreviewProvider {
                 ],
                 cuisineType: ["Italian"],
                 mealType: ["Lunch", "Dinner"],
-                dishType: ["Main course"]
+                dishType: ["Main course"],
+                url: "https://honestcooking.com/spring-strawberry-pea-salad-chicken/"
             )
         )
     }

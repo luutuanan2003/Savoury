@@ -178,6 +178,7 @@ struct Recipe: Decodable {
     let cuisineType: [String]?       // Optional, list of cuisine types (e.g., "American")
     let mealType: [String]?          // Optional, list of meal types (e.g., "Dinner")
     let dishType: [String]?          // Optional, list of dish types (e.g., "Main course")
+    let url: String?                 // URL to the original recipe with instructions
 }
 
 struct Ingredient: Decodable {

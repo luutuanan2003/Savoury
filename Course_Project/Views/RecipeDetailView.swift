@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct RecipeDetailView: View {
     let recipe: Recipe
@@ -209,9 +210,16 @@ struct RecipeDetailView: View {
                         .padding(.horizontal)
                     
                     ForEach(ingredients, id: \.food) { ingredient in
-                        Text("• \(ingredient.food)")
-                            .padding(.horizontal)
-                            .font(.body)
+                        HStack {
+                            Text("•")
+                                .font(.largeTitle)
+                                .foregroundColor(.yellow)
+                                .padding(.leading)
+                            Text("\(ingredient.food)")
+                                .font(.body)
+                        }
+                        .padding(.vertical, -10)
+                        
                     }
                 }
                 
@@ -235,6 +243,24 @@ struct RecipeDetailView: View {
                         .font(.subheadline)
                         .padding(.horizontal)
                 }
+                
+                if let url = recipe.url {
+                    Text("View Recipe Instructions")
+                        .font(.subheadline)
+                        .foregroundColor(.blue)
+                        .underline()
+                        .padding(.horizontal)
+                        .onTapGesture {
+                            // Add print statement or visual feedback for debugging
+                            print("Link tapped: \(url)")
+                            
+                            // Open the link in the default browser
+                            if let recipeURL = URL(string: url) {
+                                UIApplication.shared.open(recipeURL)
+                            }
+                        }
+                }
+
             }
             .navigationBarTitle("Recipe Details", displayMode: .inline)
         }
@@ -280,7 +306,8 @@ struct RecipeDetailView_Previews: PreviewProvider {
                 ],
                 cuisineType: ["Italian"],
                 mealType: ["Lunch", "Dinner"],
-                dishType: ["Main course"]
+                dishType: ["Main course"], 
+                url: "https://honestcooking.com/spring-strawberry-pea-salad-chicken/"
             )
         )
     }
