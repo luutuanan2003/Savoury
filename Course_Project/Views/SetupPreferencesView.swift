@@ -5,14 +5,25 @@ import SwiftData
 /// It features an interactive list where users can select their allergies and diet preferences using multiple-choice options.
 struct SetupPreferencesView: View {
     
+    /// Binding to pass the username from CulinaryPreferencesView.
     @Binding var username: String
-    @Binding var show: Bool
-    @State var selectedAllergies: [String] = []
-    @State var selectedDiets: [String] = []
-    @State private var showAlert = false  // State to control the alert
-    @State private var showHomeView = false  // State to control navigation to HomeView
     
-
+    /// Binding to control the visibility of the setup view.
+    @Binding var showSetUp: Bool
+    
+    /// State to track user-selected allergies.
+    @State var selectedAllergies: [String] = []
+    
+    /// State to track user-selected dietary preferences.
+    @State var selectedDiets: [String] = []
+    
+    /// State to control the alert
+    @State private var showAlert = false
+    
+    /// State to control navigation to HomeView
+    @State private var showHomeView = false
+    
+    /// Access UserDefaults for saving and retrieving local data.
     let defaults = UserDefaults.standard
 
     var body: some View {
@@ -104,6 +115,8 @@ struct SetupPreferencesView: View {
         } // ZStack
     }
 
+    
+    /// Define a subview for multiple-choice rows.
     struct MultipleChoiceRow: View {
         var title: String
         var isSelected: Bool
@@ -126,5 +139,5 @@ struct SetupPreferencesView: View {
 }
 
 #Preview {
-    SetupPreferencesView(username: .constant("dummy"),show: .constant(true))
+    SetupPreferencesView(username: .constant("dummy"),showSetUp: .constant(true))
 }

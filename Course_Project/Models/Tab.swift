@@ -18,8 +18,7 @@ enum Tab: String, CaseIterable {
     case cooking
     case timer
     
-    // SF-Symbol to return the system symbol name associated with each case.
-
+    /// SF-Symbol to return the system symbol name associated with each case.
     var iconName: String {
         switch self {
         case .home:

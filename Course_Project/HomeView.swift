@@ -73,10 +73,9 @@ struct HomeView: View {
                     showTimerScreen: $showTimerScreen)
             }
             
-            // TODO:Remove multiple zIndex values and set all to zIndex(1) since only one view is active at a time.
-            // No need for complex stacking of views when they are conditionally displayed.            
+                    
             // Conditionally display the selected screen if @State variable above is true.
-        
+
             if showCulinaryPreferencesView{
                 CulinaryPreferencesView(showCulinaryPreferencesView: $showCulinaryPreferencesView, userName_homeview: $username)
                     .transition(.move(edge: .leading))

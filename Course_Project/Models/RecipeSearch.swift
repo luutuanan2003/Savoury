@@ -7,36 +7,47 @@
 
 import Foundation
 
-// ViewModel for fetching recipes
+/// ViewModel for fetching recipes from an API and managing the recipe data within an app.
 class RecipeSearch: ObservableObject {
+    
+    /// An array to hold the search results, observable by the UI for updates.
     @Published var recipes: [RecipeHit] = []
     
+    /// Computed properties to fetch the API ID and key from a static property manager.
     private var apiID: String {
         APIKeys.apiID
     }
-        
+    
+    /// Function to fetch recipes with a default query "chicken". This is likely meant as a default search or example.
     private var apiKey: String {
         APIKeys.apiKey
     }
     
+    /// Function to fetch recipes with a default query "chicken". This is likely meant as a default search or example.
     func fetchRecipes() {
+        // Constructs the URL with parameters including the API keys and query.
         let urlString = "https://api.edamam.com/search?q=chicken&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=10"
         guard let url = URL(string: urlString) else { return }
         
+        // URLSession to handle the network request.
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let data = data {
                 do {
+                    // Decode the JSON data into RecipeResponse model
                     let decodedResponse = try JSONDecoder().decode(RecipeResponse.self, from: data)
+                    // Ensure UI updates happen on the main thread
                     DispatchQueue.main.async {
+                        // Update the published recipes array
                         self.recipes = decodedResponse.hits
                     }
                 } catch {
                     print("Error decoding data: \(error)")
                 }
             }
-        }.resume()
+        }.resume() // Start the network task
     }
     
+    /// Additional fetch functions are structured similarly, aiming to fetch different types of dishes.
     func fetchMainDish() {
         let urlString = "https://api.edamam.com/search?q=&dishType=Main course&app_id=\(apiID)&app_key=\(apiKey)&from=2&to=12"
         guard let url = URL(string: urlString) else { return }
@@ -55,6 +66,7 @@ class RecipeSearch: ObservableObject {
         }.resume()
     }
     
+    /// Similar function for fetching salads.
     func fetchSalad() {
         let urlString = "https://api.edamam.com/search?q=&dishType=Salad&app_id=\(apiID)&app_key=\(apiKey)&from=2&to=12"
         guard let url = URL(string: urlString) else { return }
@@ -73,6 +85,7 @@ class RecipeSearch: ObservableObject {
         }.resume()
     }
     
+    /// Similar function for fetching drinks.
     func fetchDrinks() {
         let urlString = "https://api.edamam.com/search?q=&dishType=Drinks&app_id=\(apiID)&app_key=\(apiKey)&from=2&to=12"
         guard let url = URL(string: urlString) else { return }
@@ -91,6 +104,7 @@ class RecipeSearch: ObservableObject {
         }.resume()
     }
     
+    /// Similar function for fetching desserts.
     func fetchDessert() {
         let urlString = "https://api.edamam.com/search?q=&dishType=Desserts&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=10"
         guard let url = URL(string: urlString) else { return }
@@ -109,6 +123,8 @@ class RecipeSearch: ObservableObject {
         }.resume()
     }
     
+    
+    /// Function to search recipes based on a custom ingredient.
     func searchRecipes(for ingredient: String) {
         let query = ingredient.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let urlString = "https://api.edamam.com/search?q=\(query)&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=10"
@@ -128,7 +144,7 @@ class RecipeSearch: ObservableObject {
         }.resume()
     }
     
-    // Function to search recipes based on multiple selected ingredients
+    /// Function to search recipes based on multiple selected ingredients
     func searchRecipes(forSelectedIngredients selectedIngredients: [String]) {
         guard !selectedIngredients.isEmpty else { return }
         let query = selectedIngredients.joined(separator: ",").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
@@ -149,23 +165,25 @@ class RecipeSearch: ObservableObject {
         }.resume()
     }
     
-    // Function to clear recipes before a new search
+    /// Function to clear recipes before a new search
     func clearRecipes() {
         recipes.removeAll()
     }
 }
 
 
-// Create a model to parse API response
+/// Create a model to parse API response
 struct RecipeResponse: Decodable {
     let hits: [RecipeHit]
 }
 
+/// Represents a single search result item.
 struct RecipeHit: Decodable, Identifiable {
     let id = UUID()
     let recipe: Recipe
 }
 
+/// Detailed model for a recipe.
 struct Recipe: Decodable {
     let label: String
     let image: String
@@ -181,20 +199,25 @@ struct Recipe: Decodable {
     let url: String?                 // URL to the original recipe with instructions
 }
 
+/// Ingredient model represents individual ingredients within a recipe.
 struct Ingredient: Decodable {
     let food: String  // Ingredient name
 }
 
-
+/// APIKeys struct provides a mechanism to securely fetch and store API keys from a local plist file.
 struct APIKeys {
+    
+    /// Static properties fetch the keys on demand.
     static var apiID: String {
         getValueFromAPI(for: "API_ID")
     }
     
+    /// Static properties fetch the keys on demand.
     static var apiKey: String {
         getValueFromAPI(for: "API_KEY")
     }
     
+    /// Helper function to get values from the plist file.
     static func getValueFromAPI(for key: String) -> String {
         if let path = Bundle.main.path(forResource: "API", ofType: "plist"),
            let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {

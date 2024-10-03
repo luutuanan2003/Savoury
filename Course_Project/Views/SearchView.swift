@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct SearchView: View {
+    
+    /// Binding to control the visibility of the screens
     @Binding var showIngredientsScreen: Bool
     @Binding var showRecipeScreen: Bool
     @Binding var showInstructionScreen: Bool
     
-    // New state for search query
+    /// New state for search query
     @State private var searchQuery: String = ""
     
-    // ViewModel to fetch recipes based on search query
+    /// ViewModel to fetch recipes based on search query
     @ObservedObject var recipeViewModel = RecipeSearch()
     
-    // Filtered recipes based on the search query
+    /// Filtered recipes based on the search query
     var filteredRecipes: [RecipeHit] {
         if searchQuery.isEmpty {
             return recipeViewModel.recipes

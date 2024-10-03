@@ -11,11 +11,14 @@ import SwiftUI
 /// It features an introductory screen that leads to the SetupPreferencesView for detailed preference configuration.
 struct CulinaryPreferencesView: View {
     
+    /// Binding to control the visibility of this view from the home view.
     @Binding var showCulinaryPreferencesView: Bool
     
+    /// Binding to pass the user's name across views.
     @Binding var userName_homeview: String
 
-    @State var show = false
+    /// State variable to manage the display of the next screen, which is the SetupPreferencesView.
+    @State var showSetUp = false
 
     var body: some View {
         NavigationView{
@@ -41,7 +44,7 @@ struct CulinaryPreferencesView: View {
                 Image("guyCooking")
                     .padding()
                 Spacer()
-                NavigationLink(destination: SetupPreferencesView(username: $userName_homeview, show: $show)){
+                NavigationLink(destination: SetupPreferencesView(username: $userName_homeview, showSetUp: $showSetUp)){
                     Text("Next")
                         .font(.title2)
                         .fontWeight(.bold)

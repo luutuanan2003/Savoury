@@ -7,16 +7,27 @@
 
 import SwiftUI
 
-// View to display the list of ingredients and trigger the recipe search
+/// View to display the list of ingredients and trigger the recipe search
 struct IngredientSelectionView: View {
-    @State private var selectedIngredients: [String] = []  // Track selected ingredients
-    @State private var availableIngredients = ["Chicken", "Cucumber", "Onion", "Tomato", "Garlic", "Pasta"] // Example ingredients
-    @State private var newIngredient = ""  // Track new ingredient input
-    @State private var isAddingNewIngredient = false  // Control visibility of new ingredient input
-    @State private var showResults = false  // Track if search results should be shown
-
-    @ObservedObject var recipeViewModel = RecipeSearch()   // Use your RecipeSearch ViewModel
+    /// Track selected ingredients
+    @State private var selectedIngredients: [String] = []
     
+    /// Example ingredients
+    @State private var availableIngredients = ["Chicken", "Cucumber", "Onion", "Tomato", "Garlic", "Pasta"]
+    
+    /// Track new ingredient input
+    @State private var newIngredient = ""
+    
+    /// Control visibility of new ingredient input
+    @State private var isAddingNewIngredient = false
+    
+    /// Track if search results should be shown
+    @State private var showResults = false
+
+    /// Use the RecipeSearch ViewModel
+    @ObservedObject var recipeViewModel = RecipeSearch()
+    
+    /// Layout configuration for displaying in a grid with flexible columns.
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -117,7 +128,7 @@ struct IngredientSelectionView: View {
     }
 }
 
-// New view to display the search results
+/// New view to display the search results
 struct RecipeResultsView: View {
     let recipes: [RecipeHit]  // Pass the recipes to the new view
 

@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ImageDishView: View {
+    
+    /// Holds the recipe data passed to this view.
     var recipe: Recipe
-    @State private var showDetailView = false  // State to show the detail view
+    
+    /// State to show the detail view
+    @State private var showDetailView = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -64,7 +68,7 @@ struct ImageDishView: View {
         }
         .frame(width: 160, height: 200)  // Adjust frame to fit in the grid
         .sheet(isPresented: $showDetailView) {
-            RecipeDetailView(recipe: recipe)  // Show detail view modally
+            RecipeDetailView(isFavorite: true, recipe: recipe)  // Show detail view modally
         }
     }
 }

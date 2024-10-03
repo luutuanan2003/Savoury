@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct SaladView: View {
-    @ObservedObject var recipeSearch = RecipeSearch() // Observing the RecipeSearch ViewModel
+    
+    /// Observing the RecipeSearch ViewModel
+    @ObservedObject var recipeSearch = RecipeSearch()
 
-    // Layout configuration for displaying dishes in a grid with flexible columns.
+    /// Layout configuration for displaying dishes in a grid with flexible columns.
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())

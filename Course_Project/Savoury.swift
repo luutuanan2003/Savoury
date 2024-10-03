@@ -15,8 +15,15 @@ struct Savoury: App {
         WindowGroup {
             // DO NOT DELETE COMMENT THIS IS FOR TESTING THE MODEL
 //            CulinaryPreferencesView(showCulinaryPreferencesView: .constant(true))
-//            HomeView()
-            UserAuthenticationView()
+//            HomeView(username: "Dummy")
+//                .onAppear {
+//                    print(URL.applicationSupportDirectory.path(percentEncoded: false))
+//                }
+//            UserAuthenticationView()
+            
+            // TODO: delete when submit because this is only for testing the model
+            ContentView()
         }
+        .modelContainer(for: AddFavorite.self)
     }
 }

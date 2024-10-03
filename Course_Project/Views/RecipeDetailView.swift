@@ -7,8 +7,21 @@
 
 import SwiftUI
 import UIKit
+import SwiftData
 
+/// A view that displays detailed information about a recipe, including images, descriptions, and interactive elements.
 struct RecipeDetailView: View {
+    
+    /// State variable to manage whether a recipe is marked as favorite.
+    @State var isFavorite: Bool
+    
+    /// Access to the model context for database operations.
+    @Environment(\.modelContext) private var modelContext
+    
+    /// Query to fetch favorite recipes.
+    @Query var addFavorite: [AddFavorite]
+    
+    /// Constant that stores the recipe being detailed.
     let recipe: Recipe
 
     var body: some View {
@@ -28,20 +41,48 @@ struct RecipeDetailView: View {
                         }
                     }
                     
+                    // Button to toggle favorite status.
                     Button(action: {
                         // Action for the save or bookmark functionality
+                        if isFavorite {
+                            // Find the existing favorite and delete it
+                            if let favoriteItem = addFavorite.first(where: { $0.dish == recipe.label }) {
+                                modelContext.delete(favoriteItem)
+                                try? modelContext.save()  // Commit the changes
+                                isFavorite = false
+                            }
+                        } else {
+                            // Add a new favorite
+                            let newFavorite = AddFavorite(Recipe: recipe.label)
+                            modelContext.insert(newFavorite)
+                            try? modelContext.save()  // Commit the changes
+                            isFavorite = true
+                        }
+                        
+                        // just to test but right now it is some how only printing one dish
+                        for favorite in addFavorite {
+                            print("Favorite dish: \(favorite.dish)")
+                        }
                     }) {
+                        // this for the save button
                         ZStack {
                             Circle()
                                 .foregroundColor(.white)
                                 .frame(width: 50, height: 50)
                                 .shadow(radius: 4)
-                            
-                            Image(systemName: "bookmark")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 24, height: 24)
-                                .foregroundColor(.black)
+                            if isFavorite {
+                                Image(systemName: "bookmark.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 24, height: 24)
+                                    .foregroundColor(.yellow)
+                            } else {
+                                Image(systemName: "bookmark")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 24, height: 24)
+                                    .foregroundColor(.black)
+                            }
                         }
                         
                     }
@@ -264,10 +305,22 @@ struct RecipeDetailView: View {
             }
             .navigationBarTitle("Recipe Details", displayMode: .inline)
         }
+        .onAppear {
+            // Use a regular `for` loop for logic
+            for addFavoriteItem in addFavorite {
+                if addFavoriteItem.dish == recipe.label {
+                    isFavorite = true
+                    return // Exit the loop as we found a favorite match
+                }
+            }
+            isFavorite = false // If no match found, set to false
+        }
     }
 }
 
-// View to show each capsule for the recipe details
+
+
+/// View to show each capsule for the recipe details
 struct RecipeDetailCapsule: View {
     var iconName: String
     var label: String
@@ -289,7 +342,7 @@ struct RecipeDetailCapsule: View {
 struct RecipeDetailView_Previews: PreviewProvider {
     static var previews: some View {
         RecipeDetailView(
-            recipe: Recipe(
+            isFavorite: true, recipe: Recipe(
                 label: "Spaghetti Carbonara",
                 image: "https://www.allrecipes.com/thmb/ewSWaXqsw97lWyAWek_u9fguJ3g=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/Easyspaghettiwithtomatosauce_11715_DDMFS_4x3_2424-8d7bf30b2622465f9dd78a2c6277eeb8.jpg",
                 yield: 4,
@@ -310,5 +363,6 @@ struct RecipeDetailView_Previews: PreviewProvider {
                 url: "https://honestcooking.com/spring-strawberry-pea-salad-chicken/"
             )
         )
+        .modelContainer(for: AddFavorite.self)
     }
 }
