@@ -1,8 +1,8 @@
 import SwiftUI
 import SwiftData
 
-/// This SwiftUI view facilitates the configuration of user dietary preferences and allergy selections.
-/// It features an interactive list where users can select their allergies and diet preferences using multiple-choice options.
+/// This SwiftUI view facilitates the configuration of user dietary preferences and health selections.
+/// It features an interactive list where users can select their health and diet preferences using multiple-choice options.
 struct SetupPreferencesView: View {
     
     /// Binding to pass the username from CulinaryPreferencesView.
@@ -11,8 +11,8 @@ struct SetupPreferencesView: View {
     /// Binding to control the visibility of the setup view.
     @Binding var showSetUp: Bool
     
-    /// State to track user-selected allergies.
-    @State var selectedAllergies: [String] = []
+    /// State to track user-selected health.
+    @State var selectedHealth: [String] = []
     
     /// State to track user-selected dietary preferences.
     @State var selectedDiets: [String] = []
@@ -32,16 +32,16 @@ struct SetupPreferencesView: View {
             VStack {
                 NavigationStack {
                     List {
-                        Section(header: Text("Allergies")) {
-                            ForEach(Allergy.allCases, id: \.self) { allergy in
+                        Section(header: Text("Health")) {
+                            ForEach(Health.allCases, id: \.self) { health in
                                 MultipleChoiceRow(
-                                    title: allergy.description,
-                                    isSelected: selectedAllergies.contains(allergy.description)
+                                    title: health.description,
+                                    isSelected: selectedHealth.contains(health.description)
                                 ) {
-                                    if let index = selectedAllergies.firstIndex(of: allergy.description) {
-                                        selectedAllergies.remove(at: index)
+                                    if let index = selectedHealth.firstIndex(of: health.description) {
+                                        selectedHealth.remove(at: index)
                                     } else {
-                                        selectedAllergies.append(allergy.description)
+                                        selectedHealth.append(health.description)
                                     }
                                 }
                             }
@@ -75,7 +75,7 @@ struct SetupPreferencesView: View {
                     .onTapGesture {
                         
                         // Save selected preferences
-                        defaults.set(selectedAllergies, forKey: "selectedAllergies")
+                        defaults.set(selectedHealth, forKey: "selectedHealth")
                         defaults.set(selectedDiets, forKey: "selectedDiets")
                         // Trigger the alert when user taps confirm
                             showAlert = true
@@ -98,8 +98,8 @@ struct SetupPreferencesView: View {
                     } // VStack
             .onAppear {
                 // Load saved preferences
-                if let savedAllergies = defaults.array(forKey: "selectedAllergies") as? [String] {
-                    selectedAllergies = savedAllergies
+                if let savedHealth = defaults.array(forKey: "selectedHealth") as? [String] {
+                    selectedHealth = savedHealth
                 }
                 if let savedDiets = defaults.array(forKey: "selectedDiets") as? [String] {
                     selectedDiets = savedDiets

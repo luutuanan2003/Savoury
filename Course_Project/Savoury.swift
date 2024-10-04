@@ -19,10 +19,11 @@ struct Savoury: App {
 //                .onAppear {
 //                    print(URL.applicationSupportDirectory.path(percentEncoded: false))
 //                }
-//            UserAuthenticationView()
+            
+            UserAuthenticationView()
             
             // TODO: delete when submit because this is only for testing the model
-            ContentView()
+//            ContentView()
         }
         .modelContainer(for: AddFavorite.self)
     }

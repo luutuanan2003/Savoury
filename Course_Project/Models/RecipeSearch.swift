@@ -50,7 +50,7 @@ class RecipeSearch: ObservableObject {
     // Unified method to fetch recipes based on the selected category
     func fetchRecipes(for category: Category) {
         var dishType = ""
-        
+
         // Map the selected category to a corresponding dishType query parameter
         switch category {
         case .maindish:
@@ -62,10 +62,32 @@ class RecipeSearch: ObservableObject {
         case .dessert:
             dishType = "Desserts"
         }
-        
-        let urlString = "https://api.edamam.com/search?q=&dishType=\(dishType)&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=10"
+
+        // Construct the base URL for the API request
+        var urlString = "https://api.edamam.com/search?q=&dishType=\(dishType)&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=10"
+
+        // Access the saved healthes and diets from UserDefaults
+        let savedHealth = UserDefaults.standard.array(forKey: "selectedHealth") as? [String] ?? []
+        let savedDiets = UserDefaults.standard.array(forKey: "selectedDiets") as? [String] ?? []
+
+        // Append health parameters for health
+        for health in savedHealth {
+            if let healthEnum = Health.allCases.first(where: { $0.description == health }) {
+                urlString += "&health=\(healthEnum.apiValue)"
+            }
+        }
+
+        // Append health parameters for diets
+        for diet in savedDiets {
+            if let dietEnum = Diet.allCases.first(where: { $0.description == diet }) {
+                urlString += "&diet=\(dietEnum.apiValue)"
+            }
+        }
+
+        // Ensure the URL is valid
         guard let url = URL(string: urlString) else { return }
 
+        // Make the API request
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let data = data {
                 do {
@@ -73,14 +95,14 @@ class RecipeSearch: ObservableObject {
                     DispatchQueue.main.async {
                         self.recipes = decodedResponse.hits
                     }
+                    print("API Request URL: \(urlString)")
                 } catch {
                     print("Error decoding data: \(error)")
                 }
             }
         }.resume()
     }
-       
-    
+
     /// Function to search recipes based on a custom ingredient.
     func searchRecipes(for ingredient: String) {
         let query = ingredient.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""

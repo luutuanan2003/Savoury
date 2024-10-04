@@ -10,18 +10,14 @@ import Foundation
 ///  Defines enums for dietary preferences and allergies used in the Savoury app.
 ///  - Diet: Covers diets such as Vegan, Keto, and others, providing clear labels for UI display.
 enum Diet: CaseIterable, CustomStringConvertible {
-    case vegan, vegetarian, porkFree, keto, lowFat, highProtein, highFiber, balanced
+    case lowCarb, lowSodium, lowFat, highProtein, highFiber, balanced
 
     var description: String {
         switch self {
-        case .vegan:
-            return "Vegan"
-        case .vegetarian:
-            return "Vegetarian"
-        case .porkFree:
-            return "Pork Free"
-        case .keto:
-            return "Keto"
+        case .lowCarb:
+            return "Low Carb"
+        case .lowSodium:
+            return "Low Sodium"
         case .lowFat:
             return "Low Fat"
         case .highProtein:
@@ -35,14 +31,10 @@ enum Diet: CaseIterable, CustomStringConvertible {
     
     var apiValue: String {
         switch self {
-        case .vegan:
-            return "vegan"
-        case .vegetarian:
-            return "vegetarian"
-        case .porkFree:
-            return "pork-free"
-        case .keto:
-            return "keto"
+        case .lowCarb:
+            return "low-carb"
+        case .lowSodium:
+            return "low-sodium"
         case .lowFat:
             return "low-fat"
         case .highProtein:
@@ -54,3 +46,4 @@ enum Diet: CaseIterable, CustomStringConvertible {
         }
     }
 }
+
