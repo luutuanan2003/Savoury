@@ -11,7 +11,6 @@ import SwiftUI
 struct TimerView: View {
     /// Track where the TimerScreen was launched from
     @Binding var isTimerViewVisible: Bool
-    @Binding var fromInstructionScreen: Bool
 
 //    @State private var timeRemaining: Int = 0
 //    @State private var isTimerRunning: Bool = false
@@ -25,13 +24,7 @@ struct TimerView: View {
                 // Top navigation bar
                 HStack {
                     Button(action: {
-                        // Back action
-                        if fromInstructionScreen {
-                            isTimerViewVisible = false  // Hide TimerScreen
-                            fromInstructionScreen = false  // Reset state
-                        } else {
-                            isTimerViewVisible = false  // Hide TimerScreen
-                        }
+                        isTimerViewVisible = false  // Hide TimerScreen
                     }) {
                         Image(systemName: "chevron.backward")
                             .foregroundColor(.black)
@@ -143,7 +136,7 @@ struct TimerView: View {
 
 struct TimerScreen_Previews: PreviewProvider {
     static var previews: some View {
-        TimerView(isTimerViewVisible: .constant(true), fromInstructionScreen: .constant(false))
+        TimerView(isTimerViewVisible: .constant(true))
     }
 }
 

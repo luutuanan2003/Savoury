@@ -19,11 +19,7 @@ struct HomeView: View {
     
     /// State to control the visibility of the  screens
     @State private var showCulinaryPreferencesView = false
-    @State private var showIngredientsScreen = false
-    @State private var showRecipeScreen = false
-    @State private var showInstructionScreen = false
     @State private var showTimerScreen = false
-    @State private var fromInstructionScreen = false
     
     
     // Observed RecipeSearch for Popular recipes
@@ -49,30 +45,14 @@ struct HomeView: View {
                 
                 // CategoryTab for selection
                 CategoryTab(selectedCategory: $selectedCategory, recipeSearch: recipeSearch)
-
-                // Conditionally show views based on selected category
-//                if selectedCategory == .maindish {
-//                    MainDishView()
-//                } else if selectedCategory == .dessert {
-//                    DessertView()
-//                } else if selectedCategory == .salad {
-//                    SaladView()
-//                } else if selectedCategory == .drinks {
-//                    DrinkView()
-//                }
-                
                 
                 // Display the RecipeCategoryView for the selected category
                 RecipeCategoryView(recipeSearch: recipeSearch, selectedCategory: $selectedCategory)
                 
-                
                 // Using the TabBarView for navigating to other parts of the application.
-                TabBar(
-                    showIngredientsScreen: $showIngredientsScreen,
-                    showTimerScreen: $showTimerScreen)
+                TabBar(showTimerScreen: $showTimerScreen)
             }
             
-                    
             // Conditionally display the selected screen if @State variable above is true.
 
             if showCulinaryPreferencesView{
@@ -81,38 +61,9 @@ struct HomeView: View {
                     .zIndex(1)
             }
             
-            if showIngredientsScreen {
-                IngredientsView(
-                    showIngredientsScreen: $showIngredientsScreen,
-                    showRecipeScreen: $showRecipeScreen,
-                    showInstructionScreen: $showInstructionScreen)
-                    .transition(.move(edge: .leading))
-                    .zIndex(1)
-            }
-            
-            if showRecipeScreen {
-                RecipeView(
-                    showIngredientsScreen: $showIngredientsScreen,
-                    showRecipeScreen: $showRecipeScreen,
-                    showInstructionScreen: $showInstructionScreen)
-                    .transition(.move(edge: .leading))
-                    .zIndex(2)
-            }
-            
-            if showInstructionScreen {
-                InstructionView(
-                    showInstructionScreen: $showInstructionScreen,
-                    showRecipeScreen: $showRecipeScreen,
-                    showTimerScreen: $showTimerScreen,
-                    fromInstructionScreen: $fromInstructionScreen)  // Pass the state for TimerScreen launch source
-                    .transition(.move(edge: .leading))
-                    .zIndex(3)
-            }
-            
             if showTimerScreen {
                 TimerView(
-                    isTimerViewVisible: $showTimerScreen,
-                    fromInstructionScreen: $fromInstructionScreen)  // Pass the state to TimerScreen
+                    isTimerViewVisible: $showTimerScreen)  // Pass the state to TimerScreen
                     .transition(.move(edge: .leading))
                     .zIndex(4)  // Ensure TimerScreen is on top
             }

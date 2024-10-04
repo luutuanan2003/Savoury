@@ -14,7 +14,6 @@ import SwiftUI
 struct TabBar: View {
     
     /// Binding to control the visibility of the screens.
-    @Binding var showIngredientsScreen: Bool
     @Binding var showTimerScreen: Bool
     
     /// State variable to track the currently selected tab, defaulting to the home tab.
@@ -28,9 +27,7 @@ struct TabBar: View {
                 
                 ForEach(Tab.allCases, id: \.self) { tab in
                     Button(action: {
-                        if tab == .cooking {
-                            showIngredientsScreen = true
-                        } else if tab == .timer {
+                        if tab == .timer {
                             showTimerScreen = true
                         } else {
                             selectedTab = tab
@@ -70,7 +67,6 @@ struct TabBar: View {
 
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar(showIngredientsScreen: .constant(false),
-                   showTimerScreen: .constant(false))
+        TabBar(showTimerScreen: .constant(false))
     }
 }
