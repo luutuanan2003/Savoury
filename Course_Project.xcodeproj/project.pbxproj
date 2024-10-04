@@ -26,6 +26,7 @@
 		0D6FCEA52CABAF330072F49F /* DessertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FCEA42CABAF330072F49F /* DessertView.swift */; };
 		0D6FCEA72CABDB520072F49F /* SaladView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FCEA62CABDB520072F49F /* SaladView.swift */; };
 		0D6FCEA92CABDC4F0072F49F /* DrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FCEA82CABDC4F0072F49F /* DrinkView.swift */; };
+		0D6FCEAB2CAF92A30072F49F /* RecipeCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FCEAA2CAF92A30072F49F /* RecipeCategoryView.swift */; };
 		0DD6F6D52C79D1540036E36A /* Savoury.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6F6D42C79D1540036E36A /* Savoury.swift */; };
 		0DD6F6D92C79D1550036E36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6F6D82C79D1550036E36A /* Assets.xcassets */; };
 		0DD6F6DC2C79D1550036E36A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6F6DB2C79D1550036E36A /* Preview Assets.xcassets */; };
@@ -66,6 +67,7 @@
 		0D6FCEA42CABAF330072F49F /* DessertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertView.swift; sourceTree = "<group>"; };
 		0D6FCEA62CABDB520072F49F /* SaladView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaladView.swift; sourceTree = "<group>"; };
 		0D6FCEA82CABDC4F0072F49F /* DrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkView.swift; sourceTree = "<group>"; };
+		0D6FCEAA2CAF92A30072F49F /* RecipeCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryView.swift; sourceTree = "<group>"; };
 		0DD6F6D12C79D1540036E36A /* Savoury.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savoury.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD6F6D42C79D1540036E36A /* Savoury.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Savoury.swift; sourceTree = "<group>"; };
 		0DD6F6D82C79D1550036E36A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				0D6FCEA62CABDB520072F49F /* SaladView.swift */,
 				0D6FCEA82CABDC4F0072F49F /* DrinkView.swift */,
 				C67A5BE72CAEAB61008806A4 /* SwiftUIView.swift */,
+				0D6FCEAA2CAF92A30072F49F /* RecipeCategoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				C6D2067C2CA1380900E8D196 /* SetupPreferencesView.swift in Sources */,
 				C6BBE0522C841F0300ED637D /* Tab.swift in Sources */,
 				0D44153E2C801AE7004B4AB9 /* InstructionView.swift in Sources */,
+				0D6FCEAB2CAF92A30072F49F /* RecipeCategoryView.swift in Sources */,
 				0D6FCEA72CABDB520072F49F /* SaladView.swift in Sources */,
 				0D44152F2C7DAA27004B4AB9 /* TabBar.swift in Sources */,
 				0D4415332C7DB7B0004B4AB9 /* HomeView.swift in Sources */,

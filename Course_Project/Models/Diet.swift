@@ -32,4 +32,25 @@ enum Diet: CaseIterable, CustomStringConvertible {
             return "Balanced"
         }
     }
+    
+    var apiValue: String {
+        switch self {
+        case .vegan:
+            return "vegan"
+        case .vegetarian:
+            return "vegetarian"
+        case .porkFree:
+            return "pork-free"
+        case .keto:
+            return "keto"
+        case .lowFat:
+            return "low-fat"
+        case .highProtein:
+            return "high-protein"
+        case .highFiber:
+            return "high-fiber"
+        case .balanced:
+            return "balanced"
+        }
+    }
 }

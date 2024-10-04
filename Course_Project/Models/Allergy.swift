@@ -25,4 +25,17 @@ enum Allergy: CaseIterable, CustomStringConvertible {
             return "Shellfish Free"
         }
     }
+    
+    var apiValue: String {
+        switch self {
+        case .dairyFree:
+            return "dairy-free"
+        case .glutenFree:
+            return "gluten-free"
+        case .peanutFree:
+            return "peanut-free"
+        case .shellfishFree:
+            return "shellfish-free"
+        }
+    }
 }

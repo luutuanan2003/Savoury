@@ -47,6 +47,39 @@ class RecipeSearch: ObservableObject {
         }.resume() // Start the network task
     }
     
+    // Unified method to fetch recipes based on the selected category
+    func fetchRecipes(for category: Category) {
+        var dishType = ""
+        
+        // Map the selected category to a corresponding dishType query parameter
+        switch category {
+        case .maindish:
+            dishType = "Main course"
+        case .salad:
+            dishType = "Salad"
+        case .drinks:
+            dishType = "Drinks"
+        case .dessert:
+            dishType = "Desserts"
+        }
+        
+        let urlString = "https://api.edamam.com/search?q=&dishType=\(dishType)&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=10"
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let data = data {
+                do {
+                    let decodedResponse = try JSONDecoder().decode(RecipeResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        self.recipes = decodedResponse.hits
+                    }
+                } catch {
+                    print("Error decoding data: \(error)")
+                }
+            }
+        }.resume()
+    }
+    
     /// Additional fetch functions are structured similarly, aiming to fetch different types of dishes.
     func fetchMainDish() {
         let urlString = "https://api.edamam.com/search?q=&dishType=Main course&app_id=\(apiID)&app_key=\(apiKey)&from=2&to=12"

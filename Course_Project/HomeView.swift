@@ -27,13 +27,7 @@ struct HomeView: View {
     
     
     // Observed RecipeSearch for Popular recipes
-        @ObservedObject var recipeSearch = RecipeSearch()
-    
-    // Layout configuration for displaying dishes in a grid with flexible columns.
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
+    @ObservedObject var recipeSearch = RecipeSearch()
     
     var body: some View {
         ZStack {
@@ -57,15 +51,20 @@ struct HomeView: View {
                 CategoryTab(selectedCategory: $selectedCategory, recipeSearch: recipeSearch)
 
                 // Conditionally show views based on selected category
-                if selectedCategory == .maindish {
-                    MainDishView()
-                } else if selectedCategory == .dessert {
-                    DessertView()
-                } else if selectedCategory == .salad {
-                    SaladView()
-                } else if selectedCategory == .drinks {
-                    DrinkView()
-                }
+//                if selectedCategory == .maindish {
+//                    MainDishView()
+//                } else if selectedCategory == .dessert {
+//                    DessertView()
+//                } else if selectedCategory == .salad {
+//                    SaladView()
+//                } else if selectedCategory == .drinks {
+//                    DrinkView()
+//                }
+                
+                
+                // Display the RecipeCategoryView for the selected category
+                RecipeCategoryView(recipeSearch: recipeSearch, selectedCategory: $selectedCategory)
+                
                 
                 // Using the TabBarView for navigating to other parts of the application.
                 TabBar(
