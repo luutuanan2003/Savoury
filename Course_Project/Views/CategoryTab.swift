@@ -28,24 +28,11 @@ struct CategoryTab: View {
                     )
                     .onTapGesture {
                         selectedCategory = category
-                        handleCategorySelection(category: category)
                     }
                 }
             }
         }
         .padding(.leading, 2)
-    }
-    
-    // Handle category change and fetch recipes accordingly
-    private func handleCategorySelection(category: Category) {
-        switch category {
-        case .maindish:
-            recipeSearch.fetchRecipes()  // Fetch popular recipes
-        case .dessert:
-            recipeSearch.fetchDessert()  // Fetch dessert recipes
-        default:
-            break
-        }
     }
 }
 
