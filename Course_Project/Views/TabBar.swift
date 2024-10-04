@@ -15,9 +15,10 @@ struct TabBar: View {
     
     /// Binding to control the visibility of the screens.
     @Binding var showTimerScreen: Bool
+    @Binding var showSearchIngredients: Bool
     
     /// State variable to track the currently selected tab, defaulting to the home tab.
-    @State private var selectedTab: Tab = .home
+    @State var selectedTab: Tab = .home
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -27,7 +28,10 @@ struct TabBar: View {
                 
                 ForEach(Tab.allCases, id: \.self) { tab in
                     Button(action: {
-                        if tab == .timer {
+                        if tab == .cooking {
+                            showSearchIngredients = true
+                        }
+                        else if tab == .timer {
                             showTimerScreen = true
                         } else {
                             selectedTab = tab
@@ -67,6 +71,6 @@ struct TabBar: View {
 
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar(showTimerScreen: .constant(false))
+        TabBar(showTimerScreen: .constant(false), showSearchIngredients: .constant(false))
     }
 }

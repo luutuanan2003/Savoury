@@ -9,6 +9,9 @@ import SwiftUI
 
 /// View to display the list of ingredients and trigger the recipe search
 struct IngredientSelectionView: View {
+    /// Binding to control the visibility of the screens
+    @Binding var showSearchIngredients: Bool
+    
     /// Track selected ingredients
     @State private var selectedIngredients: [String] = []
     
@@ -102,27 +105,46 @@ struct IngredientSelectionView: View {
                 }
                 .padding(.top, -10)
                 
-                // Button to trigger search
-                Button(action: {
-                    recipeViewModel.clearRecipes() // Clear old results
-                    recipeViewModel.searchRecipes(forSelectedIngredients: selectedIngredients)
-                    showResults = true  // Show results when search is triggered
-                }) {
-                    Text("Search Recipes")
-                        .font(.system(size: 18, weight: .bold))
-                        .foregroundColor(.black)
-                        .padding(.horizontal, 30)
-                        .padding(.vertical, 10)
-                        .background(Capsule()
-                            .fill(Color.yellow)
-                            .frame(height: 50)
-                            .shadow(radius: 4))
+                HStack {
+                    HStack {
+                        Button(action: {
+                             showSearchIngredients = false
+                        }) {
+                            Image(systemName: "house")
+                                .bold()
+                                .foregroundColor(.black)
+                                .padding()
+                                .background(Circle()
+                                    .fill(Color.yellow)
+                                    .shadow(radius: 4))
+                        }
+                        .padding(.trailing)
+                    }
+                    
+                    // Button to trigger search
+                    Button(action: {
+                        recipeViewModel.clearRecipes() // Clear old results
+                        recipeViewModel.searchRecipes(forSelectedIngredients: selectedIngredients)
+                        showResults = true  // Show results when search is triggered
+                    }) {
+                        Text("Search Recipes")
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundColor(.black)
+                            .padding(.horizontal, 30)
+                            .padding(.vertical, 10)
+                            .background(Capsule()
+                                .fill(Color.yellow)
+                                .frame(height: 50)
+                                .shadow(radius: 4))
+                    }
+                    .padding()
+                    // Navigate to RecipeResultsView when `showResults` is true
+                    .navigationDestination(isPresented: $showResults) {
+                        RecipeResultsView(recipes: recipeViewModel.recipes)
+                    }
                 }
-                .padding()
-                // Navigate to RecipeResultsView when `showResults` is true
-                .navigationDestination(isPresented: $showResults) {
-                    RecipeResultsView(recipes: recipeViewModel.recipes)
-                }
+                
+                
             }
         }
     }
@@ -164,6 +186,6 @@ struct RecipeResultsView: View {
 // Preview
 struct IngredientSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientSelectionView()
+        IngredientSelectionView(showSearchIngredients: .constant(true))
     }
 }

@@ -10,9 +10,7 @@ import SwiftUI
 struct SearchView: View {
     
     /// Binding to control the visibility of the screens
-    @Binding var showIngredientsScreen: Bool
-    @Binding var showRecipeScreen: Bool
-    @Binding var showInstructionScreen: Bool
+    @Binding var showSearchByNameView: Bool
     
     /// New state for search query
     @State private var searchQuery: String = ""
@@ -37,6 +35,7 @@ struct SearchView: View {
     
     var body: some View {
         ZStack {
+            Color.white.edgesIgnoringSafeArea(.all)
             NavigationView {
                 VStack {
                     // ScrollView with LazyVGrid for a grid layout
@@ -60,7 +59,7 @@ struct SearchView: View {
             
             HStack {
                 Button(action: {
-                    showIngredientsScreen = false
+                    showSearchByNameView = false
                 }) {
                     Image(systemName: "chevron.backward")
                         .bold()
@@ -80,9 +79,7 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(showIngredientsScreen: .constant(true),
-                   showRecipeScreen: .constant(false),
-                   showInstructionScreen: .constant(false))
+        SearchView(showSearchByNameView: .constant(true))
     }
 }
 

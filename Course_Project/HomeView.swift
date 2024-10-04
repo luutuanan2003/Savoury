@@ -19,6 +19,8 @@ struct HomeView: View {
     
     /// State to control the visibility of the  screens
     @State private var showCulinaryPreferencesView = false
+    @State private var showSearchByNameView = false
+    @State private var showSearchIngredients = false
     @State private var showTimerScreen = false
     
     
@@ -35,6 +37,9 @@ struct HomeView: View {
                         .fontWeight(.bold)
                     Spacer()
                     Image(systemName: "magnifyingglass")
+                        .onTapGesture {
+                            showSearchByNameView = true
+                        }
                     Image(systemName: "person.crop.circle")
                         .padding(.horizontal)
                         .onTapGesture {
@@ -50,7 +55,7 @@ struct HomeView: View {
                 RecipeCategoryView(recipeSearch: recipeSearch, selectedCategory: $selectedCategory)
                 
                 // Using the TabBarView for navigating to other parts of the application.
-                TabBar(showTimerScreen: $showTimerScreen)
+                TabBar(showTimerScreen: $showTimerScreen, showSearchIngredients: $showSearchIngredients)
             }
             
             // Conditionally display the selected screen if @State variable above is true.
@@ -61,11 +66,25 @@ struct HomeView: View {
                     .zIndex(1)
             }
             
+            if showSearchByNameView {
+                SearchView(
+                    showSearchByNameView: $showSearchByNameView)  // Pass the state to SearchView
+                    .transition(.move(edge: .leading))
+                    .zIndex(1)  // Ensure SearchView is on top
+            }
+            
+            if showSearchIngredients {
+                IngredientSelectionView(
+                    showSearchIngredients: $showSearchIngredients)  // Pass the state to IngredientSelectionView
+                    .transition(.move(edge: .leading))
+                    .zIndex(1)  // Ensure IngredientSelectionView is on top
+            }
+            
             if showTimerScreen {
                 TimerView(
                     isTimerViewVisible: $showTimerScreen)  // Pass the state to TimerScreen
                     .transition(.move(edge: .leading))
-                    .zIndex(4)  // Ensure TimerScreen is on top
+                    .zIndex(1)  // Ensure TimerScreen is on top
             }
 
         }

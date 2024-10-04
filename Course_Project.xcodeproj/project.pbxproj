@@ -134,9 +134,9 @@
 				0D4415322C7DB7B0004B4AB9 /* HomeView.swift */,
 				0D44153F2C802684004B4AB9 /* TimerView.swift */,
 				C6D206882CA3F38E00E8D196 /* UserAuthenticationView.swift */,
+				0D353C052CA65F2000084EE7 /* IngredientSelectionView.swift */,
 				0D353BFF2CA573B800084EE7 /* SearchView.swift */,
 				0D353C032CA6568700084EE7 /* RecipeDetailView.swift */,
-				0D353C052CA65F2000084EE7 /* IngredientSelectionView.swift */,
 				C67A5BE72CAEAB61008806A4 /* SwiftUIView.swift */,
 				0D6FCEAA2CAF92A30072F49F /* RecipeCategoryView.swift */,
 			);
