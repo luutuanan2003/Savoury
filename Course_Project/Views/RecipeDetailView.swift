@@ -53,7 +53,7 @@ struct RecipeDetailView: View {
                             }
                         } else {
                             // Add a new favorite
-                            let newFavorite = AddFavorite(Recipe: recipe.label)
+                            let newFavorite = AddFavorite(Recipe: recipe.label, RecipeID: recipe.uri)
                             modelContext.insert(newFavorite)
                             try? modelContext.save()  // Commit the changes
                             isFavorite = true
@@ -62,6 +62,7 @@ struct RecipeDetailView: View {
                         // just to test but right now it is some how only printing one dish
                         for favorite in addFavorite {
                             print("Favorite dish: \(favorite.dish)")
+                            print("Favorite uri: \(favorite.recipeID)")
                         }
                     }) {
                         // this for the save button
@@ -90,7 +91,7 @@ struct RecipeDetailView: View {
                     .padding(.bottom, 200)
                 }
                 
-                // Recipe Title and Rating (Example Rating Placeholder)
+                // Recipe Title
                 HStack {
                     Text(recipe.label)
                         .font(.title)
@@ -285,6 +286,15 @@ struct RecipeDetailView: View {
                         .padding(.horizontal)
                 }
                 
+                HStack {
+                    Text(recipe.uri)
+                        .font(.title)
+                        .fontWeight(.bold)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.top, 60)
+                
                 if let url = recipe.url {
                     Text("View Recipe Instructions")
                         .font(.subheadline)
@@ -343,6 +353,7 @@ struct RecipeDetailView_Previews: PreviewProvider {
     static var previews: some View {
         RecipeDetailView(
             isFavorite: true, recipe: Recipe(
+                uri: "123",
                 label: "Spaghetti Carbonara",
                 image: "https://www.allrecipes.com/thmb/ewSWaXqsw97lWyAWek_u9fguJ3g=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/Easyspaghettiwithtomatosauce_11715_DDMFS_4x3_2424-8d7bf30b2622465f9dd78a2c6277eeb8.jpg",
                 yield: 4,

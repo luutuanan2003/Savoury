@@ -2,7 +2,7 @@
 //  RecipeCategoryView.swift
 //  Savoury
 //
-//  Created by Elwiz Scott on 4/10/24.
+//  Created by Kien Le on 4/10/24.
 //
 
 import SwiftUI

@@ -20,6 +20,7 @@ struct HomeView: View {
     /// State to control the visibility of the  screens
     @State private var showCulinaryPreferencesView = false
     @State private var showSearchByNameView = false
+    @State private var showFavoriteView = false
     @State private var showSearchIngredients = false
     @State private var showTimerScreen = false
     
@@ -55,7 +56,8 @@ struct HomeView: View {
                 RecipeCategoryView(recipeSearch: recipeSearch, selectedCategory: $selectedCategory)
                 
                 // Using the TabBarView for navigating to other parts of the application.
-                TabBar(showTimerScreen: $showTimerScreen, showSearchIngredients: $showSearchIngredients)
+                TabBar(showTimerScreen: $showTimerScreen, showSearchIngredients: $showSearchIngredients,
+                showFavoriteView: $showFavoriteView)
             }
             
             // Conditionally display the selected screen if @State variable above is true.
@@ -71,6 +73,13 @@ struct HomeView: View {
                     showSearchByNameView: $showSearchByNameView)  // Pass the state to SearchView
                     .transition(.move(edge: .leading))
                     .zIndex(1)  // Ensure SearchView is on top
+            }
+            
+            if showFavoriteView {
+                FavoriteView(
+                    showFavoriteView: $showFavoriteView)  // Pass the state to FavoriteView
+                    .transition(.move(edge: .leading))
+                    .zIndex(1)  // Ensure FavoriteView is on top
             }
             
             if showSearchIngredients {

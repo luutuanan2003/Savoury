@@ -17,11 +17,13 @@ struct ContentView: View {
                 ForEach(add) { Adding in
                     HStack {
                         Text(Adding.dish)
+//                        Text(Adding.recipeID)
 
                         Spacer()
 
                     }
                 }
+                .onDelete(perform: deleteItem)
             }
 
             .navigationTitle("To Do List")
@@ -33,6 +35,15 @@ struct ContentView: View {
             }
         }
     }
+    
+    // Function to handle deletion
+        func deleteItem(at offsets: IndexSet) {
+            for index in offsets {
+                let itemToDelete = add[index]
+                modelContext.delete(itemToDelete)  // Delete from the model context
+            }
+            try? modelContext.save()  // Commit the changes
+        }
 }
 
 #Preview {
