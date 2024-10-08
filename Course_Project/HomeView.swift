@@ -23,13 +23,6 @@ struct HomeView: View {
     @State private var showFavoriteView = false
     @State private var showSearchIngredients = false
     @State private var showTimerScreen = false
-//=======
-//    @State var showCulinaryPreferencesView = false
-//    @State var showSearchByNameView = false
-//    @State var showSearchIngredients = false
-//    @State var showTimerScreen = false
-//>>>>>>> Stashed changes
-    
     
     // Observed RecipeSearch for Popular recipes
     @ObservedObject var recipeSearch = RecipeSearch()

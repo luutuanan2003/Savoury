@@ -23,23 +23,24 @@ final class APIcalltests: XCTestCase {
         super.tearDown()
     }
 
-//    // Test for fetching recipes using the default query (real API)
-//    func testFetchRecipesRealAPI() {
-//        let expectation = self.expectation(description: "Fetching recipes from real API")
-//        
-//        // When: Fetch recipes is called
-//        recipeSearch.fetchRecipes()
-//
-//        // Wait for the network response
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-//            // Then: Verify the response and recipes are not empty
-//            XCTAssertFalse(self.recipeSearch.recipes.isEmpty, "Recipes should not be empty after API call")
-//            XCTAssertNotNil(self.recipeSearch.recipes.first?.recipe.label, "First recipe label should not be nil")
-//            expectation.fulfill()
-//        }
-//
-//        waitForExpectations(timeout: 10, handler: nil)
-//    }
+
+    // Test for fetching recipes using the default query (real API)
+    func testFetchRecipesRealAPI() {
+        let expectation = self.expectation(description: "Fetching recipes from real API")
+        
+        // When: Fetch recipes is called
+        recipeSearch.fetchRecipes(for: .maindish)
+
+        // Wait for the network response
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            // Then: Verify the response and recipes are not empty
+            XCTAssertFalse(self.recipeSearch.recipes.isEmpty, "Recipes should not be empty after API call")
+            XCTAssertNotNil(self.recipeSearch.recipes.first?.recipe.label, "First recipe label should not be nil")
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 
 
     // Test for searching recipes based on an ingredient (real API)
@@ -78,18 +79,16 @@ final class APIcalltests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
 
-//    // Test for clearing the recipe array
-//    func testClearRecipes() {
-//        // Given: There are some recipes in the array
-//        recipeSearch.recipes = [RecipeHit(recipe: Recipe(label: "Chicken", image: "", yield: 4, calories: 500, totalWeight: 1000, totalTime: 60, cautions: [], ingredients: [], cuisineType: [], mealType: [], dishType: [], url: ""))]
-//
-//        // When: Clear recipes is called
-//        recipeSearch.clearRecipes()
-//
-//        // Then: Verify the recipes array is cleared
-//        XCTAssertTrue(recipeSearch.recipes.isEmpty, "Recipes array should be empty after clearing")
-//    }
-    
-    
+    // Test for clearing the recipe array
+    func testClearRecipes() {
+        // Given: There are some recipes in the array
+        recipeSearch.recipes = [RecipeHit(recipe: Recipe(uri: "Dummy", label: "Chicken", image: "", yield: 4, calories: 500, totalWeight: 1000, totalTime: 60, cautions: [], ingredients: [], cuisineType: [], mealType: [], dishType: [], url: ""))]
+
+        // When: Clear recipes is called
+        recipeSearch.clearRecipes()
+
+        // Then: Verify the recipes array is cleared
+        XCTAssertTrue(recipeSearch.recipes.isEmpty, "Recipes array should be empty after clearing")
+    }
 }
 
