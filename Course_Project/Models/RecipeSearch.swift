@@ -2,10 +2,11 @@
 //  RecipeSearch.swift
 //  Savoury
 //
-//  Created by Elwiz Scott on 26/9/24.
+//  Created by Kien Le on 26/9/24.
 //
 
 import Foundation
+import SwiftData
 
 /// ViewModel for fetching recipes from an API and managing the recipe data within an app.
 class RecipeSearch: ObservableObject {
@@ -21,30 +22,6 @@ class RecipeSearch: ObservableObject {
     /// Function to fetch recipes with a default query "chicken". This is likely meant as a default search or example.
     private var apiKey: String {
         APIKeys.apiKey
-    }
-    
-    /// Function to fetch recipes with a default query "chicken". This is likely meant as a default search or example.
-    func fetchRecipes() {
-        // Constructs the URL with parameters including the API keys and query.
-        let urlString = "https://api.edamam.com/search?q=chicken&app_id=\(apiID)&app_key=\(apiKey)&from=0&to=10"
-        guard let url = URL(string: urlString) else { return }
-        
-        // URLSession to handle the network request.
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let data = data {
-                do {
-                    // Decode the JSON data into RecipeResponse model
-                    let decodedResponse = try JSONDecoder().decode(RecipeResponse.self, from: data)
-                    // Ensure UI updates happen on the main thread
-                    DispatchQueue.main.async {
-                        // Update the published recipes array
-                        self.recipes = decodedResponse.hits
-                    }
-                } catch {
-                    print("Error decoding data: \(error)")
-                }
-            }
-        }.resume() // Start the network task
     }
     
     // Unified method to fetch recipes based on the selected category
@@ -87,12 +64,15 @@ class RecipeSearch: ObservableObject {
         // Ensure the URL is valid
         guard let url = URL(string: urlString) else { return }
 
-        // Make the API request
+        // URLSession to handle the API network request.
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let data = data {
                 do {
+                    // Decode the JSON data into RecipeResponse model
                     let decodedResponse = try JSONDecoder().decode(RecipeResponse.self, from: data)
+                    // Ensure UI updates happen on the main thread
                     DispatchQueue.main.async {
+                        // Update the published recipes array
                         self.recipes = decodedResponse.hits
                     }
                     print("API Request URL: \(urlString)")
@@ -100,7 +80,41 @@ class RecipeSearch: ObservableObject {
                     print("Error decoding data: \(error)")
                 }
             }
-        }.resume()
+        }.resume() // Start the network task
+    }
+    
+    /// Fetches the recipe details for a list of URIs.
+    func fetchRecipesByURI(_ uris: [String]) {
+        // Clear any existing recipes
+        self.recipes.removeAll()
+
+        for uri in uris {
+            // Extract the recipe ID from the URI (after "recipe_" part)
+            guard let recipeID = uri.split(separator: "_").last else {
+                print("Invalid URI format: \(uri)")
+                continue
+            }
+
+            // Construct the URL
+            let urlString = "https://api.edamam.com/api/recipes/v2/\(recipeID)?type=public&app_id=\(apiID)&app_key=\(apiKey)"
+            guard let url = URL(string: urlString) else { return }
+
+            // Make the API request
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if let data = data {
+                    do {
+                        // Decode the JSON response directly into a Recipe object (no hits array)
+                        let decodedRecipe = try JSONDecoder().decode(RecipeHit.self, from: data)
+                        DispatchQueue.main.async {
+                            // Append the fetched recipe to the list
+                            self.recipes.append(decodedRecipe)
+                        }
+                    } catch {
+                        print("Error decoding data: \(error)")
+                    }
+                }
+            }.resume()
+        }
     }
 
     /// Function to search recipes based on a custom ingredient.
@@ -164,6 +178,7 @@ struct RecipeHit: Decodable, Identifiable {
 
 /// Detailed model for a recipe.
 struct Recipe: Decodable {
+    let uri: String
     let label: String
     let image: String
     let yield: Double?               // Optional, number of servings

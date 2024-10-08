@@ -9,13 +9,13 @@ import SwiftUI
 
 /// A SwiftUI view representing a custom hour min sec bar for the application.
 struct TimeSelection: View {
-    @State private var selectedTimeUnit: TimeUnit = .hour
+    @Binding var selectedTimeUnit: TimeUnit  // Binding to allow communication with parent view
 
     var body: some View {
         HStack(spacing: 0) {
             ForEach(TimeUnit.allCases, id: \.self) { unit in
                 Button(action: {
-                    selectedTimeUnit = unit
+                    selectedTimeUnit = unit  // Update the selected time unit
                 }) {
                     Text(unit.rawValue.uppercased())
                         .font(.system(size: 18, weight: .bold))
@@ -40,6 +40,7 @@ struct TimeSelection: View {
     }
 }
 
+
 enum TimeUnit: String, CaseIterable {
     case hour = "Hour"
     case min = "Min"
@@ -48,5 +49,5 @@ enum TimeUnit: String, CaseIterable {
 
 
 #Preview {
-    TimeSelection()
+    TimeSelection(selectedTimeUnit: .constant(.sec))
 }

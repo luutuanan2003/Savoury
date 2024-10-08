@@ -16,6 +16,7 @@ struct TabBar: View {
     /// Binding to control the visibility of the screens.
     @Binding var showTimerScreen: Bool
     @Binding var showSearchIngredients: Bool
+    @Binding var showFavoriteView: Bool
     
     /// State variable to track the currently selected tab, defaulting to the home tab.
     @State var selectedTab: Tab = .home
@@ -28,7 +29,10 @@ struct TabBar: View {
                 
                 ForEach(Tab.allCases, id: \.self) { tab in
                     Button(action: {
-                        if tab == .cooking {
+                        if tab == .bookmark {
+                            showFavoriteView = true
+                        }
+                        else if tab == .cooking {
                             showSearchIngredients = true
                         }
                         else if tab == .timer {
@@ -71,6 +75,7 @@ struct TabBar: View {
 
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar(showTimerScreen: .constant(false), showSearchIngredients: .constant(false))
+        TabBar(showTimerScreen: .constant(false), showSearchIngredients: .constant(false),
+               showFavoriteView: .constant(false))
     }
 }

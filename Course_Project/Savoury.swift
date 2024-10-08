@@ -22,8 +22,11 @@ struct Savoury: App {
             
             UserAuthenticationView()
             
+
+            
             // TODO: delete when submit because this is only for testing the model
 //            ContentView()
+//            SimpleRotateView()
         }
         .modelContainer(for: AddFavorite.self)
     }

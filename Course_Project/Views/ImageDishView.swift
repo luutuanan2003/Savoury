@@ -77,6 +77,7 @@ struct ImageDishView_Previews: PreviewProvider {
     static var previews: some View {
         ImageDishView(
             recipe: Recipe(
+                uri: "",
                 label: "Spaghetti Carbonara",
                 image: "https://www.allrecipes.com/thmb/ewSWaXqsw97lWyAWek_u9fguJ3g=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/Easyspaghettiwithtomatosauce_11715_DDMFS_4x3_2424-8d7bf30b2622465f9dd78a2c6277eeb8.jpg",  // Example image
                 yield: 4,
