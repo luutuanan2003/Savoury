@@ -18,13 +18,13 @@ struct SetupPreferencesView: View {
     @State var selectedDiets: [String] = []
     
     /// State to control the alert
-    @State private var showAlert = false
+    @State var showAlert = false
     
     /// State to control navigation to HomeView
-    @State private var showHomeView = false
+    @State var showHomeView = false
     
     /// Access UserDefaults for saving and retrieving local data.
-    let defaults = UserDefaults.standard
+    var defaults = UserDefaults.standard
 
     var body: some View {
         ZStack {
