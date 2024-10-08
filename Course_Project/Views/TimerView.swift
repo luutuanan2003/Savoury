@@ -77,26 +77,26 @@ struct TimerView: View {
                     .opacity(rotateState.isPressing ? 0.5 : 1.0)
                     .rotationEffect(currentAngle + finalAngle)
                     .gesture(
-                        LongPressGesture(minimumDuration: 0.5)
-                            .sequenced(before: DragGesture())
+                        LongPressGesture(minimumDuration: 0.5)  // Long press for 0.5 seconds
+                            .sequenced(before: DragGesture())   // Sequence: First long press, then drag
                             .updating($rotateState) { value, state, _ in
                                 switch value {
-                                case .first(true):
-                                    state = .pressing
+                                case .first(true):   // Detect long press
+                                    state = .pressing  // Update the state to pressing
                                 case .second(true, let dragValue):
                                     if let dragValue = dragValue {
-                                        let center = CGPoint(x: 80, y: 80)
+                                        let center = CGPoint(x: 80, y: 80)  // Assuming the circle's center is at (80, 80)
                                         let vector = CGVector(dx: dragValue.location.x - center.x, dy: dragValue.location.y - center.y)
-                                        var angle = atan2(vector.dy, vector.dx) * 180 / .pi
+                                        var angle = atan2(vector.dy, vector.dx) * 180 / .pi  // Get the angle in degrees
                                         
                                         if angle < 0 {
-                                            angle += 360
+                                            angle += 360  // Normalize the angle
                                         }
                                         
-                                        currentAngle = .degrees(angle)
-                                        
-                                        // Update only the selected time unit (hour, min, or sec)
-                                        convertRotationToTime(currentAngle)
+                                        DispatchQueue.main.async {
+                                            currentAngle = .degrees(angle)
+                                            convertRotationToTime(currentAngle)
+                                        }
                                     }
                                 default:
                                     break
@@ -105,10 +105,13 @@ struct TimerView: View {
                             .onEnded { value in
                                 if case .second(true, _) = value {
                                     finalAngle += currentAngle
-                                    currentAngle = .degrees(0)
+                                    DispatchQueue.main.async {
+                                        currentAngle = .degrees(0)  // Reset the angle after dragging ends
+                                    }
                                 }
                             }
                     )
+
        
                     RadialLayout {
                         ForEach(0..<7, id: \.self) { index in
