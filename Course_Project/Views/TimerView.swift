@@ -9,11 +9,15 @@ import SwiftUI
 
 /// This view make use of the custom layout provided in the lectorial code example in example 9, week 4 to resemble the twist timer appears in most of the kitchen ware.
 struct TimerView: View {
+    
     /// Track where the TimerScreen was launched from
     @Binding var isTimerViewVisible: Bool
     
-    @State private var showAlert = false  // Controls when the alert is shown
-    @State private var selectedTimeUnit: TimeUnit = .sec  // Default to seconds, can change as needed
+    /// Controls when the alert is shown
+    @State private var showAlert = false
+    
+    /// Default to seconds, can change as needed
+    @State private var selectedTimeUnit: TimeUnit = .sec
     @State private var currentAngle: Angle = .degrees(0)
     @State private var finalAngle: Angle = .degrees(0)
     @State private var isTimerRunning: Bool = false

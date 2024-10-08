@@ -7,11 +7,17 @@
 
 import SwiftUI
 
+/// View to display a grid of dishes for a selected recipe category
 struct RecipeCategoryView: View {
     
+    /// Observed object to manage and update recipe search results
     @ObservedObject var recipeSearch: RecipeSearch
+    
+    /// Binding variable to track the currently selected category
     @Binding var selectedCategory: Category
     
+    
+    /// Defines the layout of the grid with two flexible columns
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())

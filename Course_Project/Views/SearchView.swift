@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View to handle the search functionality for recipes
 struct SearchView: View {
     
     /// Binding to control the visibility of the screens

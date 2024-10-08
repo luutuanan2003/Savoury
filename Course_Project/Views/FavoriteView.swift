@@ -8,11 +8,20 @@
 import SwiftUI
 import SwiftData
 
-struct FavoriteView: View {
-    @Binding var showFavoriteView: Bool
-    @ObservedObject var recipeSearch = RecipeSearch()
-    @Query var addFavorites: [AddFavorite]  // Assuming AddFavorite contains saved URIs
 
+/// View to display the user's favorite recipes
+struct FavoriteView: View {
+    
+    /// Binding to control the visibility of the favorite view
+    @Binding var showFavoriteView: Bool
+    
+    /// Observed object to manage the search and fetch of recipes
+    @ObservedObject var recipeSearch = RecipeSearch()
+    
+    /// Assuming AddFavorite contains saved URIs. Query to fetch favorite recipes saved by their URIs
+    @Query var addFavorites: [AddFavorite]
+
+    /// Defines the layout of the grid with two flexible columns
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())

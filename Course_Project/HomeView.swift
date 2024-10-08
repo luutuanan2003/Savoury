@@ -14,8 +14,8 @@ struct HomeView: View {
     /// This username value is passed in by the authentication process
     @State var username: String
 
-    
-    @State var selectedCategory: Category = .maindish  // Default to "Main Dishes"
+    /// Default to "Main Dishes"
+    @State var selectedCategory: Category = .maindish
     
     /// State to control the visibility of the  screens
     @State private var showCulinaryPreferencesView = false
@@ -24,7 +24,7 @@ struct HomeView: View {
     @State private var showSearchIngredients = false
     @State private var showTimerScreen = false
     
-    // Observed RecipeSearch for Popular recipes
+    /// Observed RecipeSearch for Popular recipes
     @ObservedObject var recipeSearch = RecipeSearch()
     
     var body: some View {

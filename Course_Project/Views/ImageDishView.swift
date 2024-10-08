@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View to display a dish image along with its recipe details
 struct ImageDishView: View {
     
     /// Holds the recipe data passed to this view.

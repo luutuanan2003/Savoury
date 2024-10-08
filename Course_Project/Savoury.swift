@@ -9,24 +9,12 @@
 
 import SwiftUI
 
+/// Main entry point for the Savoury app
 @main
 struct Savoury: App {
     var body: some Scene {
         WindowGroup {
-            // DO NOT DELETE COMMENT THIS IS FOR TESTING THE MODEL
-//            CulinaryPreferencesView(showCulinaryPreferencesView: .constant(true))
-//            HomeView(username: "Dummy")
-//                .onAppear {
-//                    print(URL.applicationSupportDirectory.path(percentEncoded: false))
-//                }
-            
             UserAuthenticationView()
-            
-
-            
-            // TODO: delete when submit because this is only for testing the model
-//            ContentView()
-//            SimpleRotateView()
         }
         .modelContainer(for: AddFavorite.self)
     }

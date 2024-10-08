@@ -18,8 +18,12 @@
 ### Models
 
 - ``Category``
-- ``Dish``
 - ``Tab``
 - ``Profile``
-- ``Allergy``
+- ``Profile``
+- ``Health``
 - ``Diet``
+- ``RecipeSearch``
+- ``AddFavorite``
+
+

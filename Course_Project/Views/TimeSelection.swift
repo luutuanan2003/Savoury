@@ -9,7 +9,9 @@ import SwiftUI
 
 /// A SwiftUI view representing a custom hour min sec bar for the application.
 struct TimeSelection: View {
-    @Binding var selectedTimeUnit: TimeUnit  // Binding to allow communication with parent view
+    
+    /// Binding to allow communication with parent view
+    @Binding var selectedTimeUnit: TimeUnit
 
     var body: some View {
         HStack(spacing: 0) {
