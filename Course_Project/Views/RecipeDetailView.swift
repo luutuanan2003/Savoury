@@ -286,15 +286,6 @@ struct RecipeDetailView: View {
                         .padding(.horizontal)
                 }
                 
-                HStack {
-                    Text(recipe.uri)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .padding(.top, 60)
-                
                 if let url = recipe.url {
                     Text("View Recipe Instructions")
                         .font(.subheadline)
