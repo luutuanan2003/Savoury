@@ -15,6 +15,9 @@ struct Savoury: App {
     var body: some Scene {
         WindowGroup {
             UserAuthenticationView()
+            
+//            ContentView(ingredients: [], classifier: ImageClassifier())
+
         }
         .modelContainer(for: AddFavorite.self)
     }

@@ -39,6 +39,11 @@
 		C6A17A8C2CB254800061751D /* MockContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A17A8B2CB254800061751D /* MockContainer.swift */; };
 		C6A17A8D2CB254AD0061751D /* AddFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60713F62CA6C8A500CC677C /* AddFavorite.swift */; };
 		C6A17A8E2CB257F70061751D /* AddFavoriteBackendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A17A842CB24E420061751D /* AddFavoriteBackendTests.swift */; };
+		C6B338F42CB64E41002F2344 /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B338F32CB64E41002F2344 /* Classifier.swift */; };
+		C6B338F62CB64E53002F2344 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C6B338F52CB64E53002F2344 /* MobileNetV2.mlmodel */; };
+		C6B338F82CB64E60002F2344 /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B338F72CB64E60002F2344 /* ImageClassifier.swift */; };
+		C6B338FE2CB64EDE002F2344 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B338FD2CB64EDE002F2344 /* CameraView.swift */; };
+		C6B339002CB64F46002F2344 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B338FF2CB64F46002F2344 /* ImagePicker.swift */; };
 		C6BBE0522C841F0300ED637D /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BBE0512C841F0300ED637D /* Tab.swift */; };
 		C6D2067A2CA1322A00E8D196 /* CulinaryPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D206792CA1322A00E8D196 /* CulinaryPreferencesView.swift */; };
 		C6D2067C2CA1380900E8D196 /* SetupPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2067B2CA1380900E8D196 /* SetupPreferencesView.swift */; };
@@ -85,14 +90,14 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		0D6FCEF32CB534AD0072F49F /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
 				0D6FCEF22CB534AD0072F49F /* RecipeWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -133,6 +138,11 @@
 		C6A17A822CB24E420061751D /* AddFavoriteBackendTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AddFavoriteBackendTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A17A842CB24E420061751D /* AddFavoriteBackendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteBackendTests.swift; sourceTree = "<group>"; };
 		C6A17A8B2CB254800061751D /* MockContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContainer.swift; sourceTree = "<group>"; };
+		C6B338F32CB64E41002F2344 /* Classifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Classifier.swift; path = "../../../../Library/CloudStorage/OneDrive-RMITUniversity/IPSE/week10/L10_code/Example1/seefood-main/SeeFood/Classifier.swift"; sourceTree = "<group>"; };
+		C6B338F52CB64E53002F2344 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MobileNetV2.mlmodel; path = "../../../../Library/CloudStorage/OneDrive-RMITUniversity/IPSE/week10/L10_code/Example1/seefood-main/SeeFood/MobileNetV2.mlmodel"; sourceTree = "<group>"; };
+		C6B338F72CB64E60002F2344 /* ImageClassifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageClassifier.swift; path = "../../../../Library/CloudStorage/OneDrive-RMITUniversity/IPSE/week10/L10_code/Example1/seefood-main/SeeFood/ImageClassifier.swift"; sourceTree = "<group>"; };
+		C6B338FD2CB64EDE002F2344 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		C6B338FF2CB64F46002F2344 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C6BBE0512C841F0300ED637D /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		C6D206792CA1322A00E8D196 /* CulinaryPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulinaryPreferencesView.swift; sourceTree = "<group>"; };
 		C6D2067B2CA1380900E8D196 /* SetupPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPreferencesView.swift; sourceTree = "<group>"; };
@@ -274,6 +284,7 @@
 				0D353BFF2CA573B800084EE7 /* SearchView.swift */,
 				0D353C032CA6568700084EE7 /* RecipeDetailView.swift */,
 				0D6FCEB12CB219870072F49F /* FavoriteView.swift */,
+				C6B338FD2CB64EDE002F2344 /* CameraView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -281,7 +292,11 @@
 		0DD6F6E52C79DBE70036E36A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C6B338F72CB64E60002F2344 /* ImageClassifier.swift */,
+				C6B338F52CB64E53002F2344 /* MobileNetV2.mlmodel */,
+				C6B338F32CB64E41002F2344 /* Classifier.swift */,
 				0DD6F6E62C79DC100036E36A /* Category.swift */,
+				C6B338FF2CB64F46002F2344 /* ImagePicker.swift */,
 				C6BBE0512C841F0300ED637D /* Tab.swift */,
 				C6D2068A2CA3F3AF00E8D196 /* Profile.swift */,
 				C6D206902CA510E600E8D196 /* Health.swift */,
@@ -527,7 +542,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6B338F42CB64E41002F2344 /* Classifier.swift in Sources */,
 				0D44152D2C7DA3DE004B4AB9 /* CategoryTab.swift in Sources */,
+				C6B338FE2CB64EDE002F2344 /* CameraView.swift in Sources */,
 				0DD6F6E92C79E0770036E36A /* CategoryButton.swift in Sources */,
 				C6D206912CA510E600E8D196 /* Health.swift in Sources */,
 				0D6FCEB22CB219870072F49F /* FavoriteView.swift in Sources */,
@@ -536,11 +553,13 @@
 				0D6FCEAB2CAF92A30072F49F /* RecipeCategoryView.swift in Sources */,
 				0D44152F2C7DAA27004B4AB9 /* TabBar.swift in Sources */,
 				0D4415332C7DB7B0004B4AB9 /* HomeView.swift in Sources */,
+				C6B338F82CB64E60002F2344 /* ImageClassifier.swift in Sources */,
 				C6D2067A2CA1322A00E8D196 /* CulinaryPreferencesView.swift in Sources */,
 				0D353BFE2CA5712B00084EE7 /* RecipeSearch.swift in Sources */,
 				0D4415402C802684004B4AB9 /* TimerView.swift in Sources */,
 				0D353C002CA573B800084EE7 /* SearchView.swift in Sources */,
 				C6D206932CA5111F00E8D196 /* Diet.swift in Sources */,
+				C6B339002CB64F46002F2344 /* ImagePicker.swift in Sources */,
 				0DD6F6D52C79D1540036E36A /* Savoury.swift in Sources */,
 				0D353C042CA6568700084EE7 /* RecipeDetailView.swift in Sources */,
 				0D44154A2C843F96004B4AB9 /* TimeSelection.swift in Sources */,
@@ -550,6 +569,7 @@
 				0DD6F6E72C79DC100036E36A /* Category.swift in Sources */,
 				0D353C022CA574BE00084EE7 /* ImageDishView.swift in Sources */,
 				C6D2068B2CA3F3AF00E8D196 /* Profile.swift in Sources */,
+				C6B338F62CB64E53002F2344 /* MobileNetV2.mlmodel in Sources */,
 				C6D206892CA3F38E00E8D196 /* UserAuthenticationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,7 +633,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L448KH6FC7;
+				DEVELOPMENT_TEAM = KM8628P2Q3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RecipeWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RecipeWidget;
@@ -624,7 +644,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Savoury.RecipeWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = Savoury.RecipeWidget101;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -640,7 +660,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L448KH6FC7;
+				DEVELOPMENT_TEAM = KM8628P2Q3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RecipeWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RecipeWidget;
@@ -651,7 +671,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Savoury.RecipeWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = Savoury.RecipeWidget101;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -788,9 +808,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Course_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = L448KH6FC7;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Using camera to take a picture ";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Using photo library to take picture";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -818,9 +840,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Course_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = L448KH6FC7;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Using camera to take a picture ";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Using photo library to take picture";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

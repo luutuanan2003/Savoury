@@ -28,7 +28,7 @@ struct SearchView: View {
         }
     }
     
-    // For grid layout similar to home screen
+    /// For grid layout similar to home screen
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())

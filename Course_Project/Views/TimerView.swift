@@ -26,10 +26,14 @@ struct TimerView: View {
     @State private var seconds: Int = 0
     @State private var totalTimeInSeconds: Int = 0
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var hasTimerStarted: Bool = false  // New state to track if the timer has started
     
+    /// New state to track if the timer has started
+    @State private var hasTimerStarted: Bool = false
+    
+    /// Gesture state to track the state of the long press and drag gesture for rotating the timer needle.
     @GestureState private var rotateState = RotateState.inactive
     
+    /// Minimum and maximum rotation angles for the timer needle.
     let minRotation: Angle = .degrees(0)
     let maxRotation: Angle = .degrees(270)
     
@@ -232,6 +236,7 @@ struct TimerView: View {
         updateSelectedTimeUnit(with: timeValue)
     }
 
+    /// Helper method to update the selected time unit (hours, minutes, or seconds). The time is updated based on the selected unit.
     func updateSelectedTimeUnit(with value: Int) {
         switch selectedTimeUnit {
         case .hour:
@@ -248,6 +253,7 @@ struct TimerView: View {
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
 
+    /// Method to start the timer countdown. This function initializes the timer with the selected time (hours, minutes, seconds) and starts the countdown.
     func startTimer() {
         currentAngle = .degrees(0)
         finalAngle = .degrees(0)
@@ -266,6 +272,7 @@ struct TimerView: View {
     }
 
 
+    /// Method to reset the timer to its initial state. This function stops the timer and resets the hours, minutes, seconds, and rotation angles.
     func resetTimer() {
         isTimerRunning = false
         hours = 0
@@ -276,6 +283,7 @@ struct TimerView: View {
     }
 }
 
+/// Enum to track the state of the rotation gesture (inactive, pressing, or rotating). This enum is used to handle different states of user interaction with the timer's rotating gesture.
 enum RotateState {
     case inactive
     case pressing

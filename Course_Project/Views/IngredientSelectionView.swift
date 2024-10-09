@@ -152,8 +152,11 @@ struct IngredientSelectionView: View {
 
 /// New view to display the search results
 struct RecipeResultsView: View {
-    let recipes: [RecipeHit]  // Pass the recipes to the new view
+    
+    /// Pass the recipes to the new view
+    let recipes: [RecipeHit]
 
+    /// Layout configuration for displaying in a grid with flexible columns.
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())

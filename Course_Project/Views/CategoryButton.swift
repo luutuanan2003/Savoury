@@ -15,7 +15,9 @@ struct CategoryButton: View {
     
     let category: Category
     var isSelected: Bool
-    var onSelect: () -> Void  // Callback when a button is tapped
+    
+    /// Callback when a button is tapped
+    var onSelect: () -> Void
     
     var body: some View {
         VStack {
