@@ -17,6 +17,7 @@ struct TabBar: View {
     @Binding var showTimerScreen: Bool
     @Binding var showSearchIngredients: Bool
     @Binding var showFavoriteView: Bool
+    @Binding var showCameraView: Bool
     
     /// State variable to track the currently selected tab, defaulting to the home tab.
     @State var selectedTab: Tab = .home
@@ -31,6 +32,9 @@ struct TabBar: View {
                     Button(action: {
                         if tab == .bookmark {
                             showFavoriteView = true
+                        }
+                        else if tab == .camera {
+                            showCameraView = true
                         }
                         else if tab == .cooking {
                             showSearchIngredients = true
@@ -76,6 +80,6 @@ struct TabBar: View {
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
         TabBar(showTimerScreen: .constant(false), showSearchIngredients: .constant(false),
-               showFavoriteView: .constant(false))
+               showFavoriteView: .constant(false), showCameraView: .constant(false))
     }
 }

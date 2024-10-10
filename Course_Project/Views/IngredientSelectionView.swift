@@ -11,12 +11,19 @@ import SwiftUI
 struct IngredientSelectionView: View {
     /// Binding to control the visibility of the screens
     @Binding var showSearchIngredients: Bool
+    @Binding var openedFromCameraView: Bool
+    
+    /// Binding to get ingredients from CameraView
+    @Binding var ingredientsFromPhotos: Array<String>
     
     /// Track selected ingredients
     @State private var selectedIngredients: [String] = []
     
+    /// Environment value to allow dismissing the view manually (custom back button)
+    @Environment(\.dismiss) var dismiss
+    
     /// Example ingredients
-    @State private var availableIngredients = ["Chicken", "Cucumber", "Onion", "Tomato", "Garlic", "Pasta"]
+    @State var availableIngredients = ["Chicken", "Cucumber", "Onion", "Tomato", "Garlic", "Pasta"]
     
     /// Track new ingredient input
     @State private var newIngredient = ""
@@ -47,10 +54,13 @@ struct IngredientSelectionView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
+                
+                // Ingredient selection list, checking if ingredientsFromPhotos is empty or not
+                var ingredientsToShow = ingredientsFromPhotos.isEmpty ? availableIngredients : ingredientsFromPhotos
 
                 // Ingredient selection list
                 List {
-                    ForEach(availableIngredients, id: \.self) { ingredient in
+                    ForEach(ingredientsToShow, id: \.self) { ingredient in
                         HStack {
                             Text(ingredient)
                             Spacer()
@@ -88,7 +98,7 @@ struct IngredientSelectionView: View {
                             // Button to add new ingredient
                             Button(action: {
                                 if !newIngredient.isEmpty {
-                                    availableIngredients.append(newIngredient.capitalized)  // Add the new ingredient to the list
+                                    ingredientsToShow.append(newIngredient.capitalized)  // Add the new ingredient to the list
                                     newIngredient = ""  // Clear input field
                                 }
                                 isAddingNewIngredient = false  // Hide input field after adding
@@ -106,20 +116,58 @@ struct IngredientSelectionView: View {
                 .padding(.top, -10)
                 
                 HStack {
-                    HStack {
+                    // Show two buttons if opened from CameraView, else show only the back button
+                    if openedFromCameraView {
                         Button(action: {
-                             showSearchIngredients = false
+                            dismiss()  // Dismiss the view manually
                         }) {
-                            Image(systemName: "house")
-                                .bold()
-                                .foregroundColor(.black)
-                                .padding()
-                                .background(Circle()
+                            ZStack {
+                                Circle()
                                     .fill(Color.yellow)
-                                    .shadow(radius: 4))
+                                    .frame(width: 50, height: 50) // Circle size
+                                    .shadow(radius: 3)
+                                
+                                Image(systemName: "chevron.backward")
+                                    .font(.system(size: 24))
+                                    .foregroundColor(.black)
+                            }
+                        }
+                        .padding(.horizontal)
+                        
+                        Button(action: {
+                            showSearchIngredients = false
+                        }) {
+                            ZStack {
+                                Circle()
+                                    .fill(Color.yellow)
+                                    .frame(width: 50, height: 50) // Circle size
+                                    .shadow(radius: 3)
+                                
+                                Image(systemName: "house")
+                                    .font(.system(size: 24))
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }
+                    
+                    else {
+                        Button(action: {
+                            showSearchIngredients = false
+                        }) {
+                            ZStack {
+                                Circle()
+                                    .fill(Color.yellow)
+                                    .frame(width: 50, height: 50) // Circle size
+                                    .shadow(radius: 3)
+                                
+                                Image(systemName: "house")
+                                    .font(.system(size: 24))
+                                    .foregroundColor(.black)
+                            }
                         }
                         .padding(.trailing)
                     }
+                    
                     
                     // Button to trigger search
                     Button(action: {
@@ -135,7 +183,7 @@ struct IngredientSelectionView: View {
                             .background(Capsule()
                                 .fill(Color.yellow)
                                 .frame(height: 50)
-                                .shadow(radius: 4))
+                                .shadow(radius: 3))
                     }
                     .padding()
                     // Navigate to RecipeResultsView when `showResults` is true
@@ -143,9 +191,8 @@ struct IngredientSelectionView: View {
                         RecipeResultsView(recipes: recipeViewModel.recipes)
                     }
                 }
-                
-                
             }
+            .navigationBarBackButtonHidden(true)
         }
     }
 }
@@ -189,6 +236,6 @@ struct RecipeResultsView: View {
 // Preview
 struct IngredientSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientSelectionView(showSearchIngredients: .constant(true))
+        IngredientSelectionView(showSearchIngredients: .constant(true), openedFromCameraView: .constant(true), ingredientsFromPhotos: .constant([]))
     }
 }

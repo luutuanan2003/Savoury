@@ -13,6 +13,9 @@ struct SearchView: View {
     /// Binding to control the visibility of the screens
     @Binding var showSearchByNameView: Bool
     
+    /// Environment value to allow dismissing the view manually (custom back button)
+    @Environment(\.dismiss) var dismiss
+    
     /// New state for search query
     @State private var searchQuery: String = ""
     
@@ -36,7 +39,6 @@ struct SearchView: View {
     
     var body: some View {
         ZStack {
-            Color.white.edgesIgnoringSafeArea(.all)
             NavigationView {
                 VStack {
                     // ScrollView with LazyVGrid for a grid layout
@@ -56,24 +58,26 @@ struct SearchView: View {
                 }
             }
             
-            .padding(.top, 52)
-            
             HStack {
+                Spacer()
                 Button(action: {
                     showSearchByNameView = false
                 }) {
-                    Image(systemName: "chevron.backward")
-                        .bold()
-                        .foregroundColor(.black)
-                        .padding()
-                        .background(Circle()
+                    ZStack {
+                        Circle()
                             .fill(Color.yellow)
-                            .shadow(radius: 4))
+                            .frame(width: 60, height: 60) // Circle size
+                            .shadow(radius: 3)
+                        
+                        Image(systemName: "house")
+                            .font(.system(size: 24))
+                            .foregroundColor(.black)
+                    }
                 }
                 Spacer()
             }
-            .padding(.leading)
-            .padding(.bottom, 760)
+            .padding(.top, 700)
+            
         }
     }
 }

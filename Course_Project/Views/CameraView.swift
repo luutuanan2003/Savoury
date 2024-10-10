@@ -9,6 +9,10 @@ import SwiftUI
 import Vision
 
 struct CameraView: View {
+    /// Binding to control the visibility of the screens
+    @Binding var showCameraView: Bool
+    @State private var showSearchIngredients = false
+    @State private var openedFromCameraView = false
     /// State to track whether the image picker sheet is presented (used for photo library or camera)
     @State var isPresenting: Bool = false
     
@@ -28,68 +32,24 @@ struct CameraView: View {
     private let confidenceThreshold: VNConfidence = 0.1
     
     var body: some View {
-        VStack{
-            Rectangle()
-                .strokeBorder()
-                .foregroundColor(.yellow)
-                .overlay(
-                    Group {
-                        if uiImage != nil {
-                            Image(uiImage: uiImage!)
-                                .resizable()
-                                .scaledToFit()
-                        }
-                    }
-                )
-            Spacer()
-            HStack{
-                Image(systemName: "photo")
-                    .onTapGesture {
-                        isPresenting = true
-                        sourceType = .photoLibrary
-                    }
-                
-                Image(systemName: "camera")
-                    .onTapGesture {
-                        isPresenting = true
-                        sourceType = .camera
-                    }
-            }
-            .font(.title)
-            .foregroundColor(.blue)
-            
-            Spacer()
-            
+        NavigationView {
             VStack{
-                Button(action: {
-                    if uiImage != nil {
-                        classifier.detect(uiImage: uiImage!)
-                    }
-                }) {
-                    Image(systemName: "bolt.fill")
-                        .foregroundColor(.orange)
-                        .font(.title)
-                }
-                
-                
                 Group {
-                // Filter and display only results with confidence >= threshold
+                    // Filter and display only results with confidence >= threshold
                     let filteredResults = classifier.allImageClasses.filter { $0.confidence >= confidenceThreshold }
                     
                     if !filteredResults.isEmpty {
                         VStack {
                             Text("Detected Objects:")
                                 .font(.caption)
-                            
                             ForEach(filteredResults, id: \.identifier) { result in
                                 HStack {
                                     Text(result.identifier)
                                         .bold()
-                                    Text(String(format: "%.2f", result.confidence * 100) + "% confidence")
-                                    }
                                 }
                             }
-                        } else {
+                        }
+                    } else {
                         HStack{
                             Text("Image categories: NA")
                                 .font(.caption)
@@ -98,40 +58,138 @@ struct CameraView: View {
                 }
                 .font(.subheadline)
                 .padding()
+                
+                Rectangle()
+                    .strokeBorder()
+                    .foregroundColor(.yellow)
+                    .overlay(
+                        Group {
+                            if uiImage != nil {
+                                Image(uiImage: uiImage!)
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                        }
+                    )
+                
+                Spacer()
+                
+                HStack{
+                    Button(action: {
+                        showCameraView = false
+                    }) {
+                        ZStack {
+                            Circle()
+                                .fill(Color.yellow)
+                                .frame(width: 60, height: 60) // Circle size
+                                .shadow(radius: 3)
+                            
+                            Image(systemName: "house")
+                                .font(.system(size: 24))
+                                .foregroundColor(.black)
+                        }
+                    }
+                    
+                    Button(action: {
+                        isPresenting = true
+                        sourceType = .photoLibrary
+                    }) {
+                        ZStack {
+                            Circle()
+                                .fill(Color.yellow)
+                                .frame(width: 60, height: 60) // Circle size
+                                .shadow(radius: 3)
+                            
+                            Image(systemName: "photo")
+                                .font(.system(size: 24))
+                                .foregroundColor(.black)
+                        }
+                    }
+                    
+                    Button(action: {
+                        isPresenting = true
+                        sourceType = .camera
+                    }) {
+                        ZStack {
+                            Circle()
+                                .fill(Color.yellow)
+                                .frame(width: 60, height: 60) // Circle size
+                                .shadow(radius: 3)
+                            
+                            Image(systemName: "camera")
+                                .font(.system(size: 24))
+                                .foregroundColor(.black)
+                        }
+                    }
+                    
+                    // Button to append confident classifications to ingredients
+                    Button(action: {
+                        let filteredResults = classifier.allImageClasses.filter { $0.confidence >= confidenceThreshold }
+                        if !filteredResults.isEmpty {
+                            for result in filteredResults {
+                                ingredients.append(result.identifier) // Append detected objects with high confidence
+                            }
+                            print(ingredients)
+                        } else {
+                            print("No confident detections available.")
+                        }
+                    }, label: {
+                        Image(systemName: "bolt")
+                    })
+                    .padding()
+                    
+                    // Button to navigate to IngredientSelectionView and pass detected ingredients
+                    NavigationLink(
+                        destination: IngredientSelectionView(
+                            showSearchIngredients: $showSearchIngredients,
+                            openedFromCameraView: .constant(true),
+                            ingredientsFromPhotos: $ingredients
+                        )
+                        .navigationBarBackButtonHidden(true)
+                        .onAppear {
+                            // Clear ingredients before adding new ones
+                            ingredients.removeAll()
+                            
+                            // Filter the results and add to ingredients
+                            let filteredResults = classifier.allImageClasses.filter { $0.confidence >= confidenceThreshold }
+                            
+                            for result in filteredResults {
+                                ingredients.append(result.identifier)
+                            }
+                        }
+                    ) {
+                        Text("Search")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .frame(width: 80, height: 30)
+                            .padding()
+                            .foregroundColor(.black)
+                            .background(Color.yellow)
+                            .cornerRadius(50)
+                            .shadow(radius: 3)
+                    }
+                }
+                .font(.title)
+                .foregroundColor(.blue)
+            }
+            
+            // Present the image picker sheet for photo library or camera
+            .sheet(isPresented: $isPresenting){
+                ImagePicker(uiImage: $uiImage, isPresenting:  $isPresenting, sourceType: $sourceType)
+                    .onDisappear{
+                        if uiImage != nil {
+                            classifier.detect(uiImage: uiImage!)
+                        }
+                    }
+                }
             }
         }
         
-        // Present the image picker sheet for photo library or camera
-        .sheet(isPresented: $isPresenting){
-            ImagePicker(uiImage: $uiImage, isPresenting:  $isPresenting, sourceType: $sourceType)
-                .onDisappear{
-                    if uiImage != nil {
-                        classifier.detect(uiImage: uiImage!)
-                    }
-                }
-        }
-        
-        // Button to append confident classifications to ingredients
-                Button(action: {
-                    let filteredResults = classifier.allImageClasses.filter { $0.confidence >= confidenceThreshold }
-                    if !filteredResults.isEmpty {
-                        for result in filteredResults {
-                            ingredients.append(result.identifier) // Append detected objects with high confidence
-                        }
-                        print(ingredients)
-                    } else {
-                        print("No confident detections available.")
-                    }
-                }, label: {
-                    Image(systemName: "bolt")
-                })
-        .padding()
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CameraView(ingredients: [""], classifier: ImageClassifier())
+        CameraView(showCameraView: .constant(true), ingredients: [""], classifier: ImageClassifier())
     }
 }
 

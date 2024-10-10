@@ -13,6 +13,8 @@ struct HomeView: View {
     
     /// This username value is passed in by the authentication process
     @State var username: String
+    
+    @State var ingredientsFromPhotos: [String] = []
 
     /// Default to "Main Dishes"
     @State var selectedCategory: Category = .maindish
@@ -21,6 +23,7 @@ struct HomeView: View {
     @State private var showCulinaryPreferencesView = false
     @State private var showSearchByNameView = false
     @State private var showFavoriteView = false
+    @State private var showCameraView = false
     @State private var showSearchIngredients = false
     @State private var showTimerScreen = false
     
@@ -55,8 +58,9 @@ struct HomeView: View {
                 RecipeCategoryView(recipeSearch: recipeSearch, selectedCategory: $selectedCategory)
                 
                 // Using the TabBarView for navigating to other parts of the application.
-                TabBar(showTimerScreen: $showTimerScreen, showSearchIngredients: $showSearchIngredients,
-                showFavoriteView: $showFavoriteView)
+                TabBar(showTimerScreen: $showTimerScreen, 
+                       showSearchIngredients: $showSearchIngredients,
+                       showFavoriteView: $showFavoriteView, showCameraView: $showCameraView)
             }
             
             // Conditionally display the selected screen if @State variable above is true.
@@ -69,28 +73,36 @@ struct HomeView: View {
             
             if showSearchByNameView {
                 SearchView(
-                    showSearchByNameView: $showSearchByNameView)  // Pass the state to SearchView
+                    showSearchByNameView: $showSearchByNameView) // Pass the state to SearchView
                     .transition(.move(edge: .leading))
                     .zIndex(1)  // Ensure SearchView is on top
             }
             
             if showFavoriteView {
                 FavoriteView(
-                    showFavoriteView: $showFavoriteView)  // Pass the state to FavoriteView
+                    showFavoriteView: $showFavoriteView) // Pass the state to FavoriteView
                     .transition(.move(edge: .leading))
                     .zIndex(1)  // Ensure FavoriteView is on top
             }
             
+            if showCameraView {
+                CameraView(showCameraView: $showCameraView, ingredients: [], classifier: ImageClassifier()) // Pass the state to CameraView
+                    .transition(.move(edge: .leading))
+                    .zIndex(1)  // Ensure CameraView is on top
+            }
+            
             if showSearchIngredients {
                 IngredientSelectionView(
-                    showSearchIngredients: $showSearchIngredients)  // Pass the state to IngredientSelectionView
+                    showSearchIngredients: $showSearchIngredients,
+                    openedFromCameraView: .constant(false),
+                    ingredientsFromPhotos: $ingredientsFromPhotos) // Pass the state to IngredientSelectionView
                     .transition(.move(edge: .leading))
                     .zIndex(1)  // Ensure IngredientSelectionView is on top
             }
             
             if showTimerScreen {
                 TimerView(
-                    isTimerViewVisible: $showTimerScreen)  // Pass the state to TimerScreen
+                    isTimerViewVisible: $showTimerScreen) // Pass the state to TimerScreen
                     .transition(.move(edge: .leading))
                     .zIndex(1)  // Ensure TimerScreen is on top
             }
