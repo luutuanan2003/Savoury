@@ -92,6 +92,7 @@
 		0D353C012CA574BE00084EE7 /* ImageDishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDishView.swift; sourceTree = "<group>"; };
 		0D353C032CA6568700084EE7 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		0D353C052CA65F2000084EE7 /* IngredientSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientSelectionView.swift; sourceTree = "<group>"; };
+		0D3F047A2CB8CB9C00992A9E /* ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 		0D44152C2C7DA3DE004B4AB9 /* CategoryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTab.swift; sourceTree = "<group>"; };
 		0D44152E2C7DAA27004B4AB9 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		0D4415322C7DB7B0004B4AB9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ../HomeView.swift; sourceTree = "<group>"; };
@@ -205,6 +206,7 @@
 				C6D206862CA3EDBB00E8D196 /* Auth0.plist */,
 				0D353BFB2CA56FFB00084EE7 /* API.plist */,
 				C6D2068E2CA50B8700E8D196 /* SavouryCatalog.docc */,
+				0D3F047A2CB8CB9C00992A9E /* ReadMe.md */,
 			);
 			path = Course_Project;
 			sourceTree = "<group>";
@@ -689,7 +691,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Course_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = KM8628P2Q3;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Using camera to take a picture ";
