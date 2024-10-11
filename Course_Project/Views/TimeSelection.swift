@@ -42,7 +42,7 @@ struct TimeSelection: View {
     }
 }
 
-
+/// Enum case for time
 enum TimeUnit: String, CaseIterable {
     case hour = "Hour"
     case min = "Min"

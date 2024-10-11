@@ -12,6 +12,7 @@
 - Technology and Design: Utilizes Apple's Visual Look Up for ingredient detection, and follows Apple’s Human Interface Guidelines for a clean and accessible design, focusing on usability and aesthetics.
 - Data Management: Employs EDAMAM API for recipe data and includes features for managing user preferences and recipe suggestions based on individual tastes.
 - Platform: Designed for iOS, taking advantage of specific iOS features and design aesthetics to ensure a seamless experience on Apple devices.
+- Reference: Kalra S (2024) 'iPhone Software Engineering' [Course's materials, COSC2472], RMIT University, Melbourne.
 
 ## Topics
 
@@ -25,5 +26,4 @@
 - ``Diet``
 - ``RecipeSearch``
 - ``AddFavorite``
-
 

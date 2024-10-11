@@ -45,6 +45,11 @@ struct IngredientSelectionView: View {
         GridItem(.flexible())
     ]
     
+    /// Computed property to determine which ingredients to show
+    private var ingredientsToShow: [String] {
+        return ingredientsFromPhotos.isEmpty ? availableIngredients : ingredientsFromPhotos
+    }
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -57,8 +62,6 @@ struct IngredientSelectionView: View {
                 }
                 .padding(.horizontal)
                 
-                // Ingredient selection list, checking if ingredientsFromPhotos is empty or not
-                var ingredientsToShow = ingredientsFromPhotos.isEmpty ? availableIngredients : ingredientsFromPhotos
 
                 // Ingredient selection list
                 List {
@@ -100,7 +103,11 @@ struct IngredientSelectionView: View {
                             // Button to add new ingredient
                             Button(action: {
                                 if !newIngredient.isEmpty {
-                                    ingredientsToShow.append(newIngredient.capitalized)  // Add the new ingredient to the list
+                                    if ingredientsFromPhotos.isEmpty {
+                                        availableIngredients.append(newIngredient.capitalized)  // Add to available ingredients if photos are empty
+                                    } else {
+                                        ingredientsFromPhotos.append(newIngredient.capitalized)  // Add to photo ingredients if they're used
+                                    }
                                     newIngredient = ""  // Clear input field
                                 }
                                 isAddingNewIngredient = false  // Hide input field after adding
@@ -220,7 +227,6 @@ struct RecipeResultsView: View {
     }
 }
 
-// Preview
 struct IngredientSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         IngredientSelectionView(showSearchIngredients: .constant(true), openedFromCameraView: .constant(false), ingredientsFromPhotos: .constant([]))
