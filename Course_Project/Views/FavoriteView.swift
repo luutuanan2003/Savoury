@@ -11,6 +11,8 @@ import SwiftData
 
 /// View to display the user's favorite recipes
 struct FavoriteView: View {
+    /// Detect light or dark mode
+    @Environment(\.colorScheme) var colorScheme
     
     /// Binding to control the visibility of the favorite view
     @Binding var showFavoriteView: Bool
@@ -29,8 +31,9 @@ struct FavoriteView: View {
 
     var body: some View {
         ZStack {
-            // White background to cover the entire screen
-            Color.white.edgesIgnoringSafeArea(.all)
+            /// Adapt the background color based on the system's color scheme
+            (colorScheme == .dark ? Color.black : Color.white)
+                .edgesIgnoringSafeArea(.all)
             VStack {
                 // Top navigation bar
                 HStack {

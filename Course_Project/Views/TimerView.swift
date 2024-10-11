@@ -16,6 +16,9 @@ struct TimerView: View {
     /// Controls when the alert is shown
     @State private var showAlert = false
     
+    /// Detect light or dark mode
+    @Environment(\.colorScheme) var colorScheme
+
     /// Default to seconds, can change as needed
     @State private var selectedTimeUnit: TimeUnit = .sec
     @State private var currentAngle: Angle = .degrees(0)
@@ -39,9 +42,9 @@ struct TimerView: View {
     
     var body: some View {
         ZStack {
-            // White background to cover the entire screen
-            Color.white.edgesIgnoringSafeArea(.all)
-            
+            /// Adapt the background color based on the system's color scheme
+            (colorScheme == .dark ? Color.black : Color.white)
+                .edgesIgnoringSafeArea(.all)
             VStack(spacing: 0) {
                 // Top navigation bar
                 HStack {
@@ -61,7 +64,7 @@ struct TimerView: View {
                 
                 Text(timeString())  // Use the combined time
                     .font(.system(size: 30, weight: .bold))
-                    .foregroundColor(.black)
+                    .foregroundColor(colorScheme == .dark ? .white : .black)  // Dynamically change based on mode
                     .padding(30)
                 
                 ZStack {
@@ -75,7 +78,7 @@ struct TimerView: View {
                         // Timer needle
                         VStack {
                             Rectangle()
-                                .fill(Color.black)
+                                .fill(colorScheme == .dark ? Color.white : Color.black)
                                 .frame(width: 8, height: 25)
                                 .cornerRadius(4.0)
                             Spacer()
@@ -126,7 +129,7 @@ struct TimerView: View {
                             VStack {
                                 Text("\(index * 10)")
                                     .font(.system(size: 22, weight: .bold))
-                                    .foregroundColor(.black)
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
                                 Spacer()
                             }
                              // Adjusts the spacing from the center

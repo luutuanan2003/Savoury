@@ -22,9 +22,11 @@ struct TabBar: View {
     /// State variable to track the currently selected tab, defaulting to the home tab.
     @State var selectedTab: Tab = .home
     
+    /// Detect light or dark mode
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ZStack(alignment: .bottom) {
-//            Color.white.edgesIgnoringSafeArea(.all)
             HStack {
                 Spacer()
                 
@@ -56,7 +58,7 @@ struct TabBar: View {
                             )
                     }
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(.black)
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
                 }
                 
                 Spacer()
@@ -66,13 +68,11 @@ struct TabBar: View {
             .padding(.vertical, 0)
             .background(
                 RoundedRectangle(cornerRadius: 40)
-                    .fill(Color.gray)
-                    .opacity(0.1)
+                    .fill(colorScheme == .dark ? Color.gray.opacity(0.4) : Color.gray.opacity(0.1)) // Brighter background in dark mode
                     .frame(height: 60)
                     .padding(.horizontal, 20)
             )
             .padding(.bottom, -10)
-            
         }
     }
 }

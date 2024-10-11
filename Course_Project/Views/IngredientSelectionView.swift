@@ -9,6 +9,8 @@ import SwiftUI
 
 /// View to display the list of ingredients and trigger the recipe search
 struct IngredientSelectionView: View {
+    /// Detect light or dark mode
+    @Environment(\.colorScheme) var colorScheme
     /// Binding to control the visibility of the screens
     @Binding var showSearchIngredients: Bool
     @Binding var openedFromCameraView: Bool
@@ -86,7 +88,7 @@ struct IngredientSelectionView: View {
                                 Spacer()
                                 Image(systemName: "plus.circle")
                             }
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     } else {
                         // TextField to input new ingredient
