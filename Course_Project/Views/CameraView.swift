@@ -89,7 +89,7 @@ struct CameraView: View {
                                 .foregroundColor(.black)
                         }
                     }
-                    
+                    Spacer()
                     Button(action: {
                         isPresenting = true
                         sourceType = .photoLibrary
@@ -105,7 +105,7 @@ struct CameraView: View {
                                 .foregroundColor(.black)
                         }
                     }
-                    
+                    Spacer()
                     Button(action: {
                         isPresenting = true
                         sourceType = .camera
@@ -121,22 +121,7 @@ struct CameraView: View {
                                 .foregroundColor(.black)
                         }
                     }
-                    
-                    // Button to append confident classifications to ingredients
-                    Button(action: {
-                        let filteredResults = classifier.allImageClasses.filter { $0.confidence >= confidenceThreshold }
-                        if !filteredResults.isEmpty {
-                            for result in filteredResults {
-                                ingredients.append(result.identifier) // Append detected objects with high confidence
-                            }
-                            print(ingredients)
-                        } else {
-                            print("No confident detections available.")
-                        }
-                    }, label: {
-                        Image(systemName: "bolt")
-                    })
-                    .padding()
+                    Spacer()
                     
                     // Button to navigate to IngredientSelectionView and pass detected ingredients
                     NavigationLink(
@@ -169,9 +154,12 @@ struct CameraView: View {
                             .shadow(radius: 3)
                     }
                 }
+                .padding(.top)
                 .font(.title)
                 .foregroundColor(.blue)
             }
+            
+            .padding(.horizontal)
             
             // Present the image picker sheet for photo library or camera
             .sheet(isPresented: $isPresenting){

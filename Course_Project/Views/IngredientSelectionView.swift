@@ -118,7 +118,7 @@ struct IngredientSelectionView: View {
                 .padding(.top, -10)
                 
                 HStack {
-                    // Show two buttons if opened from CameraView, else show only the back button
+                    // Show back button if opened from CameraView, else show the home button
                     if openedFromCameraView {
                         Button(action: {
                             dismiss()  // Dismiss the view manually
@@ -134,22 +134,7 @@ struct IngredientSelectionView: View {
                                     .foregroundColor(.black)
                             }
                         }
-                        .padding(.horizontal)
-                        
-                        Button(action: {
-                            showSearchIngredients = false
-                        }) {
-                            ZStack {
-                                Circle()
-                                    .fill(Color.yellow)
-                                    .frame(width: 50, height: 50) // Circle size
-                                    .shadow(radius: 3)
-                                
-                                Image(systemName: "house")
-                                    .font(.system(size: 24))
-                                    .foregroundColor(.black)
-                            }
-                        }
+                        .padding(.trailing)
                     }
                     
                     else {
@@ -238,6 +223,6 @@ struct RecipeResultsView: View {
 // Preview
 struct IngredientSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientSelectionView(showSearchIngredients: .constant(true), openedFromCameraView: .constant(true), ingredientsFromPhotos: .constant([]))
+        IngredientSelectionView(showSearchIngredients: .constant(true), openedFromCameraView: .constant(false), ingredientsFromPhotos: .constant([]))
     }
 }
